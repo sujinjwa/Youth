@@ -1,0 +1,88 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  nav {
+    position: relative;
+    width: 100%;
+    margin: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      align-items: center;
+      a {
+        transition: color 0.1s linear;
+        text-decoration: none;
+        font-family: $english;
+        color: $light--grey;
+      }
+      &.logo {
+        li {
+          font-size: 25px;
+          font-weight: 600;
+        }
+      }
+      &.navbar {
+        a {
+          li {
+            margin: 0px 30px;
+            font-weight: 500;
+            font-size: 18px;
+            &:hover {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+    .bar {
+      position: fixed;
+      top: 33px;
+      right: 0;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      transition: color 0.1s linear;
+      display: none;
+    }
+  }
+  &.change {
+    background-color: white;
+    height: 70px;
+    border-bottom: solid 2px $youthLightColor;
+    a,
+    .bar {
+      color: black;
+    }
+    .bar {
+      top: 19px;
+    }
+  }
+  &#contents {
+    background-color: white;
+    transition: all 0.1s linear;
+    nav {
+      ul.navbar {
+        a.bold {
+          li {
+            font-weight: 600;
+          }
+        }
+      }
+      a,
+      .bar {
+        color: black;
+        background-color: white;
+      }
+    }
+  }
+}

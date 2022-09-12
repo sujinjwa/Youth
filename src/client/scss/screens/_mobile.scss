@@ -1,0 +1,295 @@
+@media screen and (max-width: $mobileSize) {
+  header {
+    height: 50px;
+    &.change {
+      height: 50px;
+      .bar {
+        top: 10px;
+      }
+    }
+    nav {
+      margin: 0 15px;
+      .logo {
+        a {
+          li {
+            font-size: 18px;
+          }
+        }
+      }
+      .bar {
+        top: 10px;
+        font-size: 27px;
+      }
+    }
+  }
+
+  .modal {
+    button,
+    button.moveUp {
+      top: 10px;
+      // right: 15px;
+      font-size: 27px;
+    }
+  }
+
+  main {
+    .hero {
+      .hero__photo {
+        .hero__text {
+          width: 315px;
+          h1 {
+            font-size: 38px;
+          }
+          h3 {
+            font-size: 18px;
+          }
+          a {
+            font-size: 15px;
+            padding: 10px 40px;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    .coreMessage {
+      h1 {
+        font-size: 1.7em;
+        margin-bottom: 30px;
+      }
+      img {
+        margin-bottom: 30px;
+      }
+      h3 {
+        width: 90%;
+        font-size: 0.7em;
+      }
+    }
+    &#contents {
+      .contents__hero {
+        margin-top: 50px;
+        height: 20vh;
+        .hero__photo {
+          .hero__text {
+            // margin: 0;
+            h3 {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+
+      ul.contents__menu {
+        width: 100%;
+        a {
+          padding: 15px;
+          li {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .group_program {
+        padding: 50px 0px;
+        .inner_program {
+          section.box_program {
+            margin-bottom: 0px;
+            div.title {
+              font-size: 22px;
+              margin-bottom: 15px;
+            }
+            div.contents {
+              h1 {
+                font-size: 17px;
+              }
+              h3 {
+                font-size: 14px;
+                font-family: $kakao-regular;
+                margin-bottom: 50px;
+              }
+            }
+          }
+          .contents__qna {
+            margin-bottom: 50px;
+            ul.qna__menu {
+              width: 100%;
+              a {
+                i {
+                  font-size: 10px;
+                  padding: 5px;
+                }
+                li {
+                  font-size: 14px;
+                  padding: 5px;
+                }
+              }
+            }
+          }
+          .contents__qna__box {
+            .container__toggle {
+              margin: 10px;
+              .toggle {
+                width: 30px;
+                height: 15px;
+                border-radius: 15px;
+                &.active {
+                  .indicator {
+                    left: 15px;
+                  }
+                }
+                .indicator {
+                  width: 15px;
+                  height: 14px;
+                }
+              }
+              h3 {
+                font-size: 12px;
+                margin-right: 5px;
+              }
+            }
+          }
+          .panel-question {
+            font-size: 15px;
+            .panel-heading {
+              padding: 15px;
+              h3 {
+                i {
+                  margin: 0 5px;
+                }
+              }
+            }
+            .panel-body {
+              padding: 18px;
+              padding-left: 0;
+              & > i {
+                margin-left: 15px;
+              }
+              p {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+      }
+      .wrapper {
+        padding: 60px 0;
+        .about__people {
+          .people__title {
+            font-size: 22px;
+            margin-bottom: 20px;
+          }
+          .people__members {
+            .member {
+              padding: 10px;
+              img {
+                width: 100%;
+              }
+              .introduce {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                .name {
+                  font-size: 15px;
+                }
+                p {
+                  margin: 10px 0;
+                  &.txt_position {
+                    font-size: 13px;
+                    font-weight: 400;
+                  }
+                  &.txt_desc {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .blog {
+    .blog__title {
+      font-size: 27px;
+    }
+    .blog__post {
+      width: 100%;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 3fr 1fr;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      // &:nth-child(2) {
+      //   .post_content {
+      //     order: 1;
+      //   }
+      // }
+      .post__content {
+        // order: 1;
+        padding: 20px;
+        .post__title {
+          font-size: 14px;
+          margin-bottom: 1.4em;
+        }
+        h4 {
+          font-size: 20px;
+        }
+        .post__desc {
+          width: 100%;
+          font-size: 15px;
+          margin-bottom: 1.5em;
+        }
+        .more {
+          font-size: 15px;
+        }
+      }
+      a {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 40px 20px;
+    .footer__col1 {
+      font-size: 15px;
+      .col__row1 {
+        .footer__logo {
+          li {
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .col1__row2 {
+        p {
+          font-size: 10px;
+          padding: 5px 0;
+        }
+      }
+    }
+    .footer__col2 {
+      font-size: 10px;
+      .col2__row1 {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .col2__row2 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        p {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/client/main.js",
+  entry: {
+    main: "./src/client/js/main.js",
+    changeHeader: "./src/client/js/changeHeader.js",
+    clickBar: "./src/client/js/clickBar.js",
+    blogScrollAni: "./src/client/js/blogScrollAni.js",
+    messageScrollAni: "./src/client/js/messageScrollAni.js",
+    widthResize: "./src/client/js/widthResize.js",
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
@@ -12,7 +19,7 @@ module.exports = {
   ],
   watch: true,
   output: {
-    filename: "js/main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },
@@ -28,7 +35,7 @@ module.exports = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
           // JS파일에서 CSS 추출
           MiniCssExtractPlugin.loader,

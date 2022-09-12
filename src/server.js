@@ -13,6 +13,7 @@ app.use("/assets", express.static("assets")); // 정적 파일인 "assets" 폴�
 app.set("views", "./src/views");
 app.set("view engine", "pug");
 
+app.use("/uploads", express.static("uploads"));
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/contents", contentRouter);

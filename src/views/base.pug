@@ -1,13 +1,22 @@
 doctype html
-html(lang="en")
+html(lang="kr")
   head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/assets/css/styles.css")
-    title= title
+    title Youth
   body 
     include partials/header
-    | base
     block content
+    include partials/footer
+    script(
+      src="https://kit.fontawesome.com/271532994e.js",
+      crossorigin="anonymous"
+    )
     script(src="/assets/js/main.js")
+    script(src="/assets/js/clickBar.js")
+    script(src="/assets/js/changeHeader.js")
+    script(src="/assets/js/blogScrollAni.js")
+    script(src="/assets/js/messageScrollAni.js")
+    script(src="/assets/js/widthResize.js")

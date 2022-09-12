@@ -12,6 +12,10 @@ export const youthkit = (req, res) => {
   res.render("contents/youthkit");
 };
 
+export const community = (req, res) => {
+  res.render("contents/community");
+};
+
 export const why = (req, res) => {
   res.render("contents/why");
 };

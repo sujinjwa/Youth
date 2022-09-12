@@ -1,5 +1,32 @@
-@import "./variable";
+// reset
+@import "./reset.scss";
+
+// variables & elements
+@import "./variables";
+@import "./elements";
+
+// components
+@import "./components/header";
+@import "./components/footer";
+
+// screens
+@import "./screens/main";
+@import "./screens/about";
+@import "./screens/contents";
+@import "./screens/tablet";
+@import "./screens/mobile";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: blueviolet;
+  // font-family: "Hahmlet", serif;
+  font-family: $kakao-regular;
+
+  &.openModal {
+    overflow: hidden;
+    // filter: blur(5px);
+    // z-index: -4;
+  }
 }

@@ -1,4 +1,81 @@
 extends base.pug
 
 block content
-  p hello
+  // 캐쉬 슬라이드
+  // 펀딩 이미지 및 링크로 연결
+  main
+    .hero
+      .hero__photo
+        .hero__text
+          h1 YOUTH KIT
+          h3
+            | 오늘은 우리에게 가장 젊은 날이기에, 지금 이 순간이 청춘인 모두를
+            | 위해 추억 가득한 선물을 만들어 드리고 싶습니다.
+          a(href="https://www.tumblbug.com") 구매하러 가기
+
+    .coreMessage
+      h1 YOUTH : 유언을 쓰다
+      img(
+        src="https://tumblbug-pci.imgix.net/7ad81f8e5d8c79ed9534d70ee460540cab01def4/50ad87ce50f33be13d5409e150e3da3221553f48/d56328e3af29a81247e87c8ecfcbea3196b4c5df/0375e116-dacf-42b8-92d8-163297507a9d.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=80ebf1914ddec5665012f5db7b9b74f1",
+        alt=""
+      )
+      h3
+        p 당신이 가장 젊은 날, 함께 젊음을 써내려가요
+        p 모든 사람이 준비된 죽음을 맞이할 수 있는 사회를 꿈꿉니다
+        p 내가 사랑하는 사람들을 위해, 그리고 나를 위해
+
+  section.blog
+    h2.blog__title YOUTH MENU
+    article.blog__post
+      .post__content
+        h2.post__title
+          span ABOUT YOUTH
+        h4
+          span TEAM YOUTH
+          | 가 걸어온 길
+        span.post__desc 유언장의 대중화를 꿈꾸는 우리의 지난 기록을 살펴봅니다
+        span.more
+          a(href="/about")
+            | 자세히 보기
+            i.fa-solid.fa-arrow-right-long
+      a(href="/about")
+        img(
+          src="https://tumblbug-pci.imgix.net/7ad81f8e5d8c79ed9534d70ee460540cab01def4/50ad87ce50f33be13d5409e150e3da3221553f48/d56328e3af29a81247e87c8ecfcbea3196b4c5df/0375e116-dacf-42b8-92d8-163297507a9d.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=80ebf1914ddec5665012f5db7b9b74f1",
+          alt=""
+        )
+        // 유쓰 사진
+
+    article.blog__post.order
+      .post__content
+        h2.post__title
+          span YOUTH KIT
+        h4
+          span YOUTH KIT
+          | 제품 설명
+        span.post__desc 지금 이 순간 살아가는 모든 이들을 위한 선물입니다
+        span.more
+          a(href="/youthkit")
+            | 자세히 보기
+            i.fa-solid.fa-arrow-right-long
+      a(href="/youthkit")
+        img(
+          src="https://tumblbug-pci.imgix.net/7ad81f8e5d8c79ed9534d70ee460540cab01def4/50ad87ce50f33be13d5409e150e3da3221553f48/d56328e3af29a81247e87c8ecfcbea3196b4c5df/0375e116-dacf-42b8-92d8-163297507a9d.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=80ebf1914ddec5665012f5db7b9b74f1",
+          alt=""
+        )
+        // 유쓰 사진
+    article.blog__post
+      .post__content
+        h2.post__title
+          span YOUTH CONTENTS
+        h4 우리의 삶에 가깝게 다가올 수 있도록
+        span.post__desc 인식 개선을 위한 다양한 콘텐츠를 제공합니다
+        span.more
+          a(href="/contents/why")
+            | 자세히 보기
+            i.fa-solid.fa-arrow-right-long
+      a(href="/contents/why")
+        img(
+          src="https://tumblbug-pci.imgix.net/7ad81f8e5d8c79ed9534d70ee460540cab01def4/50ad87ce50f33be13d5409e150e3da3221553f48/d56328e3af29a81247e87c8ecfcbea3196b4c5df/0375e116-dacf-42b8-92d8-163297507a9d.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=80ebf1914ddec5665012f5db7b9b74f1",
+          alt=""
+        )
+        // 유쓰 사진

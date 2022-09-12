@@ -1,0 +1,80 @@
+@media screen and (max-width: $tabletSize) {
+  header {
+    nav {
+      margin: 0 30px;
+      .navbar {
+        display: none;
+      }
+      .bar {
+        display: block;
+      }
+    }
+  }
+  main {
+    .coreMessage {
+      h1 {
+        margin-bottom: 40px;
+      }
+      img {
+        margin-bottom: 40px;
+      }
+      h3 {
+        width: 650px;
+        font-size: 22px;
+      }
+    }
+    &#contents {
+      .contents__hero {
+        margin-top: 50px;
+        // height: 20vh;
+        .hero__photo {
+          .hero__text {
+            // margin: 0;
+            h3 {
+              font-size: 27px;
+            }
+          }
+        }
+      }
+      .group_program {
+        .inner_program {
+          section.box_program {
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            div.title {
+              margin-bottom: 50px;
+            }
+          }
+        }
+      }
+
+      .blog {
+        .blog__post {
+          width: 100%;
+          .post__content {
+            padding: 30px;
+          }
+        }
+      }
+
+      .wrapper {
+        .about__people {
+          .people__members {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            .member {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    padding: 50px;
+  }
+}
