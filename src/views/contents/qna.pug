@@ -1,0 +1,143 @@
+extends ../base.pug
+
+block content
+  main#contents
+    .contents__hero
+      .hero__photo
+        .hero__text
+          h3
+            p 유언 관련 명언
+            p 유쓰 콘텐츠 핵심 멘트
+
+    ul.contents__menu
+      a.menu1.active(href="/contents/qna/1")
+        li QnA
+      a.menu2(href="/contents/detail")
+        li QR코드 렌더링
+      a.menu3(href="#")
+        li 추천 콘텐츠
+
+    .group_program
+      .inner_program
+        .contents__qna 
+          ul.qna__menu 
+            a.active(href="/contents/qna/1")
+              i.fa-solid.fa-border-all 
+              li 전체
+            a(href="/contents/qna/2")
+              i.fa-solid.fa-file-signature 
+              li 유언
+            a(href="/contents/qna/3")
+              i.fa-solid.fa-hand-holding-dollar 
+              li 상속
+            a(href="/contents/qna/4")
+              i.fa-solid.fa-sack-dollar 
+              li 유증
+            a(href="/contents/qna/5")
+              i.fa-solid.fa-hands-holding-child 
+              li 증여
+
+        .contents__qna__box 
+          .container__toggle 
+            .toggle 
+              i.indicator 
+            h3 법률 용어 모드
+
+          .container 
+            section#fag 
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.
+              .panel-question 
+                .panel-heading 
+                  i.fa-solid.fa-q 
+                  h3 
+                    p 질문 부분
+                    i.fa-solid.fa-angle-down 
+                #thisone.panel-body 
+                  i.fa-solid.fa-a 
+                  p 
+                    | 목표금액은 기본적으로 한도가 없고 필요하신 모금액만큼 목표를 설정할 수 있습니다.
+                    | 다만, 온라인 모금의 특성 상 과도한 목표금액을 잡으시는 것보다 실제 사업에 필요한 실비를항목별로 나누어
+                    | 올리시는 것을 권장해드립니다.임대수익보장에 따른 보증금 및 월임대료 보전 금액은
+                    | 임대수익보장합의서에 표기 되어있습니다. 이때, 임대수익보장제 합의서상보증금액이 상이하거나 전세형일 경우
+                    span.original "환산보증금"
+                    span.changed "메롱!"
+                    | [환산보증금=보증금+(월세*100)]에 따릅니다.

@@ -11,6 +11,8 @@ module.exports = {
     blogScrollAni: "./src/client/js/blogScrollAni.js",
     messageScrollAni: "./src/client/js/messageScrollAni.js",
     widthResize: "./src/client/js/widthResize.js",
+    openAnswer: "./src/client/js/openAnswer",
+    toggleBtn: "./src/client/js/toggleBtn",
   },
   plugins: [
     new MiniCssExtractPlugin({
