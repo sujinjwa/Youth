@@ -5,7 +5,7 @@ export const home = (req, res) => {
 };
 
 export const about = (req, res) => {
-  res.render("contents/about");
+  res.render("contents/about", { pageTitle: "About" });
 };
 
 export const youthkit = (req, res) => {
@@ -13,7 +13,7 @@ export const youthkit = (req, res) => {
 };
 
 export const community = (req, res) => {
-  res.render("contents/community");
+  res.render("contents/community", { pageTitle: "Community" });
 };
 
 export const qna = (req, res) => {

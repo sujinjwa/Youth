@@ -5,7 +5,7 @@ import {
   youthkit,
   community,
 } from "../controllers/contentControllers";
-import { join, login } from "../controllers/userControllers";
+import { getJoin, postJoin, login } from "../controllers/userControllers";
 
 const globalRouter = express.Router();
 
@@ -13,7 +13,9 @@ globalRouter.get("/", home);
 globalRouter.get("/about", about);
 globalRouter.get("/youthkit", youthkit);
 globalRouter.get("/community", community);
-globalRouter.get("/join", join);
+globalRouter.route("/join").get(getJoin).post(postJoin);
 globalRouter.get("/login", login);
+// globalRouter.get("/login/findID", findID);
+// globalRouter.get("/login/findPW", findPW);
 
 export default globalRouter;

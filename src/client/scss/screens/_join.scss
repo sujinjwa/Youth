@@ -1,0 +1,89 @@
+main#join {
+  height: 127vh;
+  .wrapper {
+    margin-top: 85px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .join__box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        font-size: 45px;
+        font-weight: 500;
+        margin-bottom: 38px;
+      }
+    }
+    .social-login__box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h5 {
+        font-size: 15px;
+        color: $grey;
+        margin-bottom: 10px;
+      }
+      .social-login__btns {
+        display: flex;
+      }
+    }
+    .border {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      hr {
+        margin: 40px 0px;
+        width: 195px;
+        background-color: $youthLightColor;
+        height: 0.5px;
+        border: 0;
+      }
+      p {
+        margin: 0px 25px;
+        color: $medium--grey;
+        font-size: 15px;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: 470px;
+        border: 1px solid $youthLightColor;
+        margin: 6px;
+        padding: 22px 0px;
+        padding-left: 15px;
+        font-size: 18px;
+        &::placeholder {
+          color: $medium--grey;
+        }
+        &:focus {
+          outline: none;
+        }
+        &.join__btn {
+          border: none;
+          background-color: $youthDarkColor;
+          color: white;
+          cursor: pointer;
+          font-weight: 600;
+        }
+      }
+    }
+    .login__link {
+      margin-top: 15px;
+      display: flex;
+      font-size: 15px;
+      span {
+        margin-right: 5px;
+      }
+      a {
+        color: $dark---green;
+        font-weight: 600;
+      }
+    }
+  }
+}

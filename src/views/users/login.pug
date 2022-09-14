@@ -1,0 +1,44 @@
+extends ../base.pug
+
+block content
+  main#login 
+    .wrapper
+      .login__box 
+        h1 로그인
+
+        .social-login__box
+          h5 다른 서비스로 로그인
+          .social-login__btns 
+            a(href="/") 카톡(아이콘)
+            a(href="/") 네이버(아이콘)
+
+        .border
+          hr
+          p 또는
+          hr
+
+        form(method="POST")
+          input.input__email(
+            type="email",
+            required,
+            name="email",
+            placeholder="이메일"
+          )
+          input.input__pw(
+            type="password",
+            required,
+            name="password",
+            placeholder="비밀번호"
+          )
+          input.login__btn(type="submit", value="로그인")
+
+      .find__box 
+        a(href="/findID") 아이디 찾기
+        p ㅣ
+        a(href="/findPW") 비밀번호 찾기
+
+      .border
+        hr
+
+      .join__btn 
+        a(href="/join") 회원가입
