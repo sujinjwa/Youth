@@ -13,8 +13,14 @@ if pageTitle === "Home"
           li CONTENTS
         a(href="/community")
           li COMUNITY
-        a(href="/login")
-          li LOG IN
+        if !loggedIn
+          a(href="/login")
+            li LOG IN
+        else
+          a(href=`/users/${loggedInUser._id}`)
+            li #{ loggedInUser.name } 님의 PROFILE
+          a(href="/logout")
+            li LOG OUT
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
@@ -30,8 +36,14 @@ if pageTitle === "Home"
         li COONTENTS
       a(href="/community")
         li COMUNITY
-      a(href="/login")
-        li LOG IN
+      if !loggedIn
+        a(href="/login")
+          li LOG IN
+      else
+        a(href=`/users/${loggedInUser._id}`)
+          li #{ loggedInUser.name } 님의 PROFILE
+        a(href="/logout")
+          li LOG OUT
 
 else
   header#contents
@@ -48,8 +60,14 @@ else
           li CONTENTS
         a(href="/community")
           li COMUNITY
-        a(href="/login")
-          li LOG IN
+        if !loggedIn
+          a(href="/login")
+            li LOG IN
+        else
+          a(href=`/users/${loggedInUser._id}`)
+            li #{ loggedInUser.name } 님의 PROFILE
+          a(href="/logout")
+            li LOG OUT
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
@@ -65,5 +83,11 @@ else
         li COONTENTS
       a(href="/community")
         li COMUNITY
-      a(href="/login")
-        li LOG IN
+      if !loggedIn
+        a(href="/login")
+          li LOG IN
+      else
+        a(href=`/users/${loggedInUser._id}`)
+          li #{ loggedInUser.name } 님의 PROFILE
+        a(href="/logout")
+          li LOG OUT

@@ -48,6 +48,9 @@ main#join {
         font-size: 15px;
       }
     }
+    p#errorMessage {
+      display: none;
+    }
     form {
       display: flex;
       flex-direction: column;

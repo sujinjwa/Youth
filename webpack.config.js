@@ -13,6 +13,7 @@ module.exports = {
     widthResize: "./src/client/js/widthResize.js",
     openAnswer: "./src/client/js/openAnswer",
     toggleBtn: "./src/client/js/toggleBtn",
+    alert: "./src/client/js/alert",
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -16,7 +16,11 @@ block content
         hr
         p 또는
         hr
+      // 이 부분을 경고창으로 대체하던지, form에 focus되면 errorMessage 사라지도록! 구현 (css)
+      if errorMessage
+        p#errorMessage #{ errorMessage }
 
+      // 네이버처럼 form에 input 들어갈 때 그 value를 프론트엔드 js에서 가져와서 비교해서 바로 경고창 주는 건 가능하지 않을까?
       form(method="POST")
         input.input__email(
           type="email",
@@ -28,7 +32,9 @@ block content
           type="password",
           required,
           name="password",
-          placeholder="비밀번호"
+          placeholder="비밀번호",
+          minlength="8",
+          maxlength="15"
         )
         input.input__pwConfirm(
           type="password",

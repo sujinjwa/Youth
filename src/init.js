@@ -1,3 +1,4 @@
+import "dotenv/config";
 import "./db";
 import "./model/User";
 import app from "./server";

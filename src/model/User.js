@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
 // schema
@@ -5,7 +6,14 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  phone: { type: Number, required: true },
+  phone: { type: String, required: true },
+});
+
+userSchema.pre("save", async function () {
+  // this := userSchema 또는 create되는 User
+  // console.log(this.password);
+  this.password = await bcrypt.hash(this.password, 5); // 5번 해싱
+  // console.log(this.password);
 });
 
 // User 모델 (이름: "User", 스키마: userSchema)
