@@ -53,6 +53,7 @@ export const postJoin = async (req, res) => {
       pageTitle,
       errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. "${error._message}"`,
     });
+  } finally {
   }
 };
 
@@ -173,6 +174,82 @@ export const finishKakaoLogin = async (req, res) => {
 
   // console.log(json);
   // res.send(JSON.stringify(json));
+};
+
+export const startNaverLogin = (req, res) => {
+  const baseUri = "https://nid.naver.com/oauth2.0/authorize";
+
+  const config = {
+    response_type: "code",
+    client_id: process.env.NAVER_CLIENT_ID,
+    redirect_uri: process.env.NAVER_REDIRECT_URL,
+    state: "STATE_STRING",
+  };
+
+  const params = new URLSearchParams(config).toString();
+  const finalUri = `${baseUri}?${params}`;
+
+  return res.redirect(finalUri);
+};
+
+export const finishNaverLogin = async (req, res) => {
+  const baseUri = "https://nid.naver.com/oauth2.0/token";
+
+  const config = {
+    client_id: process.env.NAVER_CLIENT_ID,
+    client_secret: process.env.NAVER_CLIENT_SECRET,
+    grant_type: "authorization_code",
+    code: req.query.code,
+    state: req.query.state,
+  };
+
+  const params = new URLSearchParams(config).toString();
+  const finalUri = `${baseUri}?${params}`;
+
+  const tokenRequest = await (
+    await fetch(finalUri, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json();
+
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+    const userData = await (
+      await fetch(`https://openapi.naver.com/v1/nid/me`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+    ).json();
+    // console.log(userData);
+
+    let user = await User.findOne({
+      email: userData.response.email,
+    });
+
+    if (!user) {
+      user = await User.create({
+        name: userData.response.name,
+        email: userData.response.email,
+        password: "",
+        socialOnly: true,
+        phone: userData.response.mobile,
+      });
+    }
+
+    req.session.loggedIn = true;
+    req.session.loggedInUser = user;
+    return res.redirect("/");
+    // return res.send(JSON.stringify(tokenRequest));
+  } else {
+    return res.status(400).render("users/login", {
+      pageTitle: "Login",
+      errorMessage: "로그인에 실패하였습니다.",
+    });
+  }
 };
 
 export const seeUser = (req, res) => {
