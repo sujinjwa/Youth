@@ -1,4 +1,5 @@
 import User from "../model/User";
+import fetch from "cross-fetch";
 import bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => {
@@ -47,7 +48,7 @@ export const postJoin = async (req, res) => {
     });
     return res.redirect("/login");
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(400).render("users/join", {
       pageTitle,
       errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. "${error._message}"`,
@@ -84,7 +85,7 @@ export const postLogin = async (req, res) => {
 
   // req.session 객체에 로그인한 유저 정보 추가
   req.session.loggedIn = true;
-  req.session.user = user;
+  req.session.loggedInUser = user;
 
   return res.redirect("/");
 };
@@ -92,6 +93,86 @@ export const postLogin = async (req, res) => {
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
+};
+
+export const startKakaoLogin = (req, res) => {
+  const baseUri = "https://kauth.kakao.com/oauth/authorize";
+
+  const config = {
+    client_id: process.env.KAKAO_CLIENT_ID,
+    redirect_uri: process.env.KAKAO_REDIRECT_URL,
+    response_type: "code",
+    scope: "account_email",
+  };
+
+  const params = new URLSearchParams(config).toString();
+  const finalUri = `${baseUri}?${params}`;
+
+  return res.redirect(finalUri);
+};
+
+export const finishKakaoLogin = async (req, res) => {
+  const baseUri = "https://kauth.kakao.com/oauth/token";
+
+  const config = {
+    client_id: process.env.KAKAO_CLIENT_ID,
+    redirect_uri: process.env.KAKAO_REDIRECT_URL,
+    grant_type: "authorization_code",
+    code: req.query.code,
+    client_secret: process.env.KAKAO_CLIENT_SECRET,
+  };
+
+  const params = new URLSearchParams(config).toString();
+  const finalUri = `${baseUri}?${params}`;
+
+  const tokenRequest = await (
+    await fetch(finalUri, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json();
+
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+    const userData = await (
+      await fetch(`https://kapi.kakao.com/v2/user/me`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+    ).json();
+    console.log(userData);
+
+    let user = await User.findOne({
+      email: userData.kakao_account.email,
+    });
+
+    if (!user) {
+      user = await User.create({
+        name: userData.properties.nickname,
+        email: userData.kakao_account.email,
+        password: "",
+        socialOnly: true,
+      });
+    }
+
+    // 카카오톡으로 회원가입 한 회원이든, 이메일로 회원가입 한 회원이든,
+    // 카카오톡으로 로그인 가능하도록 설정
+    req.session.loggedIn = true;
+    req.session.loggedInUser = user;
+    return res.redirect("/");
+    //return res.send(JSON.stringify(tokenRequest));
+  } else {
+    return res.status(400).render("users/login", {
+      pageTitle: "Login",
+      errorMessage: "로그인에 실패하였습니다.",
+    });
+  }
+
+  // console.log(json);
+  // res.send(JSON.stringify(json));
 };
 
 export const seeUser = (req, res) => {
