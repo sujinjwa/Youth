@@ -29,6 +29,24 @@ main#login {
         }
         .social-login__btns {
           display: flex;
+          align-items: center;
+          a {
+            i,
+            img {
+              margin: 0px 5px;
+            }
+            i {
+              font-size: 25px;
+              padding: 8px;
+              margin-bottom: 1px;
+              color: #000000;
+              background-color: #fee500;
+              border-radius: 10%;
+            }
+            img {
+              width: 40px;
+            }
+          }
         }
       }
       .border {
@@ -53,6 +71,7 @@ main#login {
       form {
         display: flex;
         flex-direction: column;
+        align-items: center;
         input {
           width: 470px;
           border: 1px solid $youthLightColor;
@@ -110,6 +129,7 @@ main#login {
         text-align: center;
         color: black;
         transition: 0.2s linear;
+        font-weight: 600;
         &:hover {
           color: white;
           background-color: $youthDarkColor;

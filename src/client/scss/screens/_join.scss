@@ -29,6 +29,24 @@ main#join {
       }
       .social-login__btns {
         display: flex;
+        align-items: center;
+        a {
+          i,
+          img {
+            margin: 0px 5px;
+          }
+          i {
+            font-size: 25px;
+            padding: 8px;
+            margin-bottom: 1px;
+            color: #000000;
+            background-color: #fee500;
+            border-radius: 10%;
+          }
+          img {
+            width: 40px;
+          }
+        }
       }
     }
     .border {

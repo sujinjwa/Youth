@@ -212,6 +212,80 @@
     }
   }
 
+  main#join {
+    height: 115vh;
+  }
+
+  main#login,
+  main#join {
+    .wrapper {
+      margin-top: 50px;
+      padding: 0px 20px;
+      .login__box,
+      .join__box {
+        width: 100%;
+        margin-top: 30px;
+        padding: 0px 15px;
+        h1 {
+          font-size: 30px;
+        }
+        .border {
+          width: 100%;
+          // width: 90vw;
+          padding: 0px;
+          hr {
+            width: 100%;
+          }
+          p {
+            width: 60px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+        form {
+          width: 100%;
+          // margin: 0 auto;
+          // padding: 0px 15px;
+          input {
+            width: 100%;
+            padding: 18px;
+            font-size: 14px;
+            &.login__btn,
+            &.join__btn {
+              font-size: 18px;
+            }
+          }
+        }
+        .login__link {
+          margin-top: 3px;
+          margin-bottom: 45px;
+          font-size: 13px;
+        }
+      }
+      .find__box {
+        font-size: 14px;
+        width: 100%;
+        padding: 0px 15px;
+      }
+      .border {
+        width: 100%;
+        padding: 0px 15px;
+        hr {
+          width: 100%;
+        }
+      }
+      .join__btn {
+        width: 100%;
+        padding: 0px 10px;
+        margin-bottom: 25px;
+        a {
+          width: 100%;
+          padding: 20px 30px;
+        }
+      }
+    }
+  }
+
   .blog {
     .blog__title {
       font-size: 27px;

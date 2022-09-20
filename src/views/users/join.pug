@@ -6,64 +6,66 @@ block content
       .join__box 
         h1 회원가입
 
-      .social-login__box 
-        h5 다른 서비스로 로그인
-        .social-login__btns 
-          a(href="/") 카톡(아이콘)
-          a(href="/") 네이버(아이콘)
+        .social-login__box 
+          h5 다른 서비스로 로그인
+          .social-login__btns 
+            a(href="/login/kakao/start")
+              i.fa-solid.fa-comment
+            a(href="/")
+              img(src="/uploads/naver_icon.png", alt="")
 
-      .border 
-        hr
-        p 또는
-        hr
-      // 이 부분을 경고창으로 대체하던지, form에 focus되면 errorMessage 사라지도록! 구현 (css)
-      if errorMessage
-        p#errorMessage #{ errorMessage }
+        .border 
+          hr
+          p 또는
+          hr
+        // 이 부분을 경고창으로 대체하던지, form에 focus되면 errorMessage 사라지도록! 구현 (css)
+        if errorMessage
+          p#errorMessage #{ errorMessage }
 
-      // 네이버처럼 form에 input 들어갈 때 그 value를 프론트엔드 js에서 가져와서 비교해서 바로 경고창 주는 건 가능하지 않을까?
-      form(method="POST")
-        input.input__email(
-          type="email",
-          required,
-          name="email",
-          placeholder="이메일"
-        )
-        input.input__pw(
-          type="password",
-          required,
-          name="password",
-          placeholder="비밀번호",
-          minlength="8",
-          maxlength="15"
-        )
-        input.input__pwConfirm(
-          type="password",
-          required,
-          name="passwordConfirm",
-          placeholder="비밀번호 확인"
-        )
-        input.input__name(
-          type="text",
-          required,
-          name="name",
-          placeholder="이름 (2-30자)",
-          minlength="2",
-          maxlength="30"
-        )
-        input.input__phone(
-          type="text",
-          required,
-          name="phone",
-          placeholder="- 없이 휴대폰 번호만 입력해주세요"
-        )
-        input.input__certification(
-          type="text",
-          required,
-          name="certification",
-          placeholder="전송된 인증번호 입력해주세요"
-        )
-        input.join__btn(type="submit", value="회원가입")
+        // 네이버처럼 form에 input 들어갈 때 그 value를 프론트엔드 js에서 가져와서 비교해서 바로 경고창 주는 건 가능하지 않을까?
+        form(method="POST")
+          input.input__email(
+            type="email",
+            required,
+            name="email",
+            placeholder="이메일"
+          )
+          input.input__pw(
+            type="password",
+            required,
+            name="password",
+            placeholder="비밀번호",
+            minlength="8",
+            maxlength="15"
+          )
+          input.input__pwConfirm(
+            type="password",
+            required,
+            name="passwordConfirm",
+            placeholder="비밀번호 확인"
+          )
+          input.input__name(
+            type="text",
+            required,
+            name="name",
+            placeholder="이름 (2-30자)",
+            minlength="2",
+            maxlength="30"
+          )
+          input.input__phone(
+            type="text",
+            required,
+            name="phone",
+            placeholder="- 없이 휴대폰 번호만 입력해주세요"
+          )
+          input.input__certification(
+            type="text",
+            required,
+            name="certification",
+            placeholder="전송된 인증번호 입력해주세요"
+          )
+          input.join__btn(type="submit", value="회원가입")
 
-      .login__link
-        span 이미 계정이 있으세요?
-        a(href="/login") 로그인
+        .login__link
+          span 이미 계정이 있으세요?
+          a(href="/login") 로그인
