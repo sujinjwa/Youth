@@ -1,13 +1,15 @@
 import User from "../model/User";
 import fetch from "cross-fetch";
 import bcrypt from "bcrypt";
+import nodemailer from "nodemailer";
+// import { smtpTransport } from "../../config/email";
 
 export const getJoin = (req, res) => {
   return res.render("users/join", { pageTitle: "Join" });
 };
 
 export const postJoin = async (req, res) => {
-  const { email, password, passwordConfirm, name, phone } = req.body;
+  const { name, password, passwordConfirm, email } = req.body;
   const pageTitle = "Join";
 
   // 비밀번호 조합 숫자 + 영어로!
@@ -18,26 +20,95 @@ export const postJoin = async (req, res) => {
     });
   }
 
-  const exists = await User.exists({ email });
-  if (exists) {
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    if (existingUser.socialOnly === true) {
+      // 해당 계정으로 카카오톡 혹은 네이버로 이미 회원가입한 유저라면
+      req.session.loggedIn = true;
+      req.session.loggedInUser = existingUser;
+      req.session.errorMessage =
+        "이미 카카오톡 혹은 네이버로 회원가입한 계정입니다.";
+      return res.redirect("/");
+    }
     return res.status(400).render("users/join", {
       pageTitle,
       errorMessage: "이미 사용중인 이메일입니다.",
     });
   }
 
-  if (phone.includes("-")) {
-    return res.status(400).render("users/join", {
-      pageTitle,
-      errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
-    });
-  }
+  // if (phone.includes("-")) {
+  //   return res.status(400).render("users/join", {
+  //     pageTitle,
+  //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
+  //   });
+  // }
   // if (typeof phone !== ) {
   //   return res.status(400).render("users/join", {
   //     pageTitle,
   //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
   //   });
   // }
+
+  // min ~ max 까지 랜덤으로 숫자 생성하는 함수
+  const generateRandom = (min, max) => {
+    let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    return ranNum;
+  };
+
+  async function main() {
+    const number = generateRandom(111111, 999999); // 인증번호
+    //let testAccount = await nodemailer.createTestAccount();
+    // nodemailer 전송기 생성
+    let transporter = nodemailer.createTransport({
+      server: "naver",
+      host: "smtp.naver.com", // SMTP 서버명
+      port: 465, // SMTP 포트
+      // secure: false,
+      auth: {
+        user: process.env.NODEMAILER_USER, // 보내는 사람의 이메일 계정 아이디
+        pass: process.env.NODEMAILER_PASS, // 보내는 사람의 이메일 계정 비밀번호
+      },
+    });
+
+    // 메시지 옵션 설정
+    const mailOptions = {
+      from: process.env.NODEMAILER_USER,
+      to: email, // 사용자의 아이디
+      subject: "[유언을쓰다]이메일 인증 안내입니다.", // 이메일 제목
+      text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
+    };
+
+    // sendMail() 메서드 사용하여 메시지 전송
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        return res.status(400).render("users/join", {
+          pageTitle,
+          errorMessage: `이메일 전송에 실패했습니다. 회원가입을 다시 시도해주세요. "${error._message}"`,
+        });
+      } else {
+        transporter.close();
+      }
+    });
+  }
+
+  // const auth = {
+  //   SendEmail: async (req, res) => {
+  //     const number = generateRandom(111111, 999999);
+
+  //     const mailOptions = {
+  //       from: "유언을쓰다",
+  //       to: email, // 사용자가 입력한 본인의 email
+  //       subject: "[유언을쓰다]이메일 인증 안내입니다.",
+  //       text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
+  //     };
+
+  //     const result = await smtpTransport.sendMail(mailOptions, (error, responses) => {
+  //       if (error){
+  //         return res.status(400).send()
+  //       }
+  //     })
+  //   },
+  // };
 
   try {
     await User.create({
