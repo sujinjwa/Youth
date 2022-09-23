@@ -58,11 +58,11 @@ export const postJoin = async (req, res) => {
   async function main() {
     const number = generateRandom(111111, 999999); // 인증번호
     //let testAccount = await nodemailer.createTestAccount();
-    // nodemailer 전송기 생성
+    // nodemailer 전송기 생성 (메일 발송 서비스에 대한 환경 설정)
     let transporter = nodemailer.createTransport({
       server: "naver",
       host: "smtp.naver.com", // SMTP 서버명
-      port: 465, // SMTP 포트
+      port: 587, // SMTP 포트
       // secure: false,
       auth: {
         user: process.env.NODEMAILER_USER, // 보내는 사람의 이메일 계정 아이디
@@ -79,52 +79,35 @@ export const postJoin = async (req, res) => {
     };
 
     // sendMail() 메서드 사용하여 메시지 전송
-    transporter.sendMail(mailOptions, function (err, info) {
-      if (err) {
-        return res.status(400).render("users/join", {
-          pageTitle,
-          errorMessage: `이메일 전송에 실패했습니다. 회원가입을 다시 시도해주세요. "${error._message}"`,
-        });
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        // return res.status(400).render("users/join", {
+        //   pageTitle,
+        //   errorMessage: `이메일 전송에 실패했습니다. 회원가입을 다시 시도해주세요. "${error._message}"`,
+        // });
       } else {
+        console.log("Successfully Send Email.", info.response);
         transporter.close();
       }
     });
   }
 
-  // const auth = {
-  //   SendEmail: async (req, res) => {
-  //     const number = generateRandom(111111, 999999);
-
-  //     const mailOptions = {
-  //       from: "유언을쓰다",
-  //       to: email, // 사용자가 입력한 본인의 email
-  //       subject: "[유언을쓰다]이메일 인증 안내입니다.",
-  //       text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
-  //     };
-
-  //     const result = await smtpTransport.sendMail(mailOptions, (error, responses) => {
-  //       if (error){
-  //         return res.status(400).send()
-  //       }
-  //     })
-  //   },
-  // };
+  main().catch(console.error);
 
   try {
     await User.create({
       name,
       email,
       password,
-      phone,
     });
     return res.redirect("/login");
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return res.status(400).render("users/join", {
       pageTitle,
       errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. "${error._message}"`,
     });
-  } finally {
   }
 };
 
