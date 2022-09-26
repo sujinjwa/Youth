@@ -7,6 +7,7 @@ import {
 } from "../controllers/contentControllers";
 import {
   getJoin,
+  sendMail,
   postJoin,
   getLogin,
   postLogin,

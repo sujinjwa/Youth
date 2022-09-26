@@ -5,21 +5,25 @@ import nodemailer from "nodemailer";
 // import { smtpTransport } from "../../config/email";
 
 export const getJoin = (req, res) => {
+  // let location;
+
+  // if (typeof document !== "undefined") {
+  //   location = document.location;
+  // }
+  // const emailBtn = location.querySelector(".send__email");
+
+  // emailBtn.addEventListener("click", main);
+
   return res.render("users/join", { pageTitle: "Join" });
 };
 
-export const postJoin = async (req, res) => {
-  const { name, password, passwordConfirm, email } = req.body;
+let sendingEmail, sentNumber;
+
+const sendMail = async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+
   const pageTitle = "Join";
-
-  // 비밀번호 조합 숫자 + 영어로!
-  if (password != passwordConfirm) {
-    return res.status(400).render("users/join", {
-      pageTitle,
-      errorMessage: "비밀번호가 일치하지 않습니다",
-    });
-  }
-
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     if (existingUser.socialOnly === true) {
@@ -36,19 +40,6 @@ export const postJoin = async (req, res) => {
     });
   }
 
-  // if (phone.includes("-")) {
-  //   return res.status(400).render("users/join", {
-  //     pageTitle,
-  //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
-  //   });
-  // }
-  // if (typeof phone !== ) {
-  //   return res.status(400).render("users/join", {
-  //     pageTitle,
-  //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
-  //   });
-  // }
-
   // min ~ max 까지 랜덤으로 숫자 생성하는 함수
   const generateRandom = (min, max) => {
     let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -56,7 +47,8 @@ export const postJoin = async (req, res) => {
   };
 
   async function main() {
-    const number = generateRandom(111111, 999999); // 인증번호
+    let number = generateRandom(111111, 999999); // 인증번호
+    sentNumber = number;
     //let testAccount = await nodemailer.createTestAccount();
     // nodemailer 전송기 생성 (메일 발송 서비스에 대한 환경 설정)
     let transporter = nodemailer.createTransport({
@@ -74,8 +66,26 @@ export const postJoin = async (req, res) => {
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
       to: email, // 사용자의 아이디
-      subject: "[유언을쓰다]이메일 인증 안내입니다.", // 이메일 제목
-      text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
+      subject: "[유언을쓰다] 이메일 인증 안내입니다.", // 이메일 제목
+      html: `<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
+                <div style="display:flex; align-items:center; margin: 20px">
+                  <img src="https://tumblbug-upi.imgix.net/330fc16f-de5c-4d76-bbeb-a477519c3f29.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=200&mask=ellipse&w=200&s=4a832561eefefc964968a6ea17e7fc24" style="width:60px" alt="" />
+                  <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
+                </div>
+                <hr style="width:100%; margin-bottom: 30px" />
+                <h3>안녕하세요. 유언을 쓰다에 가입해주셔서 감사합니다.</h3>
+                <p>유언을 쓰다에 등록한 메일주소가 올바른지 확인하기 위한 메일입니다.</p>
+              
+                <h1 style="font-size:50px">${number}</h1>
+              
+                <p>회원 가입 페이지로 돌아가 인증키를 직접 입력하시거나</p>
+                <p>인증키를 복사 후 붙여넣기하여 가입을 진행해주시기 바랍니다.</p>
+
+                <hr style="width:100%; margin-top: 30px" />
+                <p style="margin-top: 10px">이 메일은 발신 전용으로 회신이 되지 않습니다.</p>
+                <p>궁금하신 사항은 nasujin744@naver.com로 문의해 주시기 바랍니다.</p>
+            </div>`,
+      // text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
     };
 
     // sendMail() 메서드 사용하여 메시지 전송
@@ -87,18 +97,70 @@ export const postJoin = async (req, res) => {
         //   errorMessage: `이메일 전송에 실패했습니다. 회원가입을 다시 시도해주세요. "${error._message}"`,
         // });
       } else {
-        console.log("Successfully Send Email.", info.response);
+        console.log("성공적으로 이메일 전송했습니다.", info.response);
         transporter.close();
       }
     });
+    sendingEmail = email;
+    return res.render("users/join", { pageTitle: "Join", sendingEmail });
   }
 
-  main().catch(console.error);
+  main();
+
+  // return res.render("users/join", { pageTitle: "Join", email });
+};
+
+export const postJoin = async (req, res) => {
+  let { selfAuthenti, name, password, passwordConfirm, email } = req.body;
+
+  console.log(req.body);
+
+  //if ((!name && email) || (!password && email) || (!selfAuthenti && email)) {
+  //if (email || !(email === undefined)) {
+  if (email) {
+    sendMail(req, res);
+    return; // 이걸 해줘야 되구나...
+    // return res.render("users/join", { pageTitle: "Join", email });
+  }
+
+  // console.log("email:", email);
+  // console.log("글로벌 값 sendingEmail: ", sendingEmail);
+  // console.log("글로벌 값: ", sentNumber, typeof sentNumber);
+  // console.log("유저가 받아서 입력한 값: ", selfAuthenti, typeof selfAuthenti);
+  const pageTitle = "Join";
+
+  if (sentNumber != Number(selfAuthenti)) {
+    return res.status(400).render("users/join", {
+      pageTitle,
+      errorMessage: "인증번호가 일치하지 않습니다",
+    });
+  }
+
+  // 비밀번호 조합 숫자 + 영어로!
+  if (password != passwordConfirm) {
+    return res.status(400).render("users/join", {
+      pageTitle,
+      errorMessage: "비밀번호가 일치하지 않습니다",
+    });
+  }
+
+  // if (phone.includes("-")) {
+  //   return res.status(400).render("users/join", {
+  //     pageTitle,
+  //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
+  //   });
+  // }
+  // if (typeof phone !== ) {
+  //   return res.status(400).render("users/join", {
+  //     pageTitle,
+  //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
+  //   });
+  // }
 
   try {
     await User.create({
       name,
-      email,
+      email: sendingEmail,
       password,
     });
     return res.redirect("/login");

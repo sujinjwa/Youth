@@ -93,6 +93,23 @@ main#join {
           font-weight: 600;
         }
       }
+      div.email__wrapper {
+        display: flex;
+        width: 475px;
+        height: 100%;
+        button.send__email {
+          // border: 1px solid $youthDarkColor;
+          font-size: 14px;
+          margin: 6px 0px;
+          // padding: 6px;
+          background-color: $youthDarkColor;
+          border: none;
+          cursor: pointer;
+          // color: $medium--grey;
+          color: white;
+          // background-color: $youthDarkColor;
+        }
+      }
     }
     .login__link {
       margin-top: 15px;
