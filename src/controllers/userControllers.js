@@ -102,7 +102,7 @@ const sendMail = async (req, res) => {
       }
     });
     sendingEmail = email;
-    return res.render("users/join", { pageTitle: "Join", sendingEmail });
+    return res.render("users/join", { pageTitle: "Join", email });
   }
 
   main();
@@ -370,7 +370,7 @@ export const finishNaverLogin = async (req, res) => {
 
 export const seeUser = (req, res) => {
   console.log(req.params.id);
-  return res.render("users/seeUser");
+  return res.render("users/profile", { pageTitle: "Profile" });
 };
 
 export const editUser = (req, res) => {

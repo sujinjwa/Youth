@@ -39,6 +39,15 @@ header {
               font-weight: 600;
             }
           }
+          &.profile {
+            i {
+              padding: 8px;
+              text-align: center;
+              border-radius: 50%;
+              border: 1px solid;
+              // color: white;
+            }
+          }
         }
       }
     }
@@ -66,6 +75,12 @@ header {
     .bar {
       top: 19px;
     }
+    a.profile {
+      i {
+        color: black;
+        // border: 1px solid black;
+      }
+    }
   }
   &#contents {
     background-color: white;
@@ -79,7 +94,8 @@ header {
         }
       }
       a,
-      .bar {
+      .bar,
+      i {
         color: black;
         background-color: white;
       }

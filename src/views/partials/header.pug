@@ -17,10 +17,11 @@ if pageTitle === "Home"
           a(href="/login")
             li LOG IN
         else
-          a(href=`/users/${loggedInUser._id}`)
-            li #{ loggedInUser.name } 님의 PROFILE
           a(href="/logout")
             li LOG OUT
+          a.profile(href=`/users/${loggedInUser._id}`)
+            // li #{ loggedInUser.name } 님의 PROFILE
+            i.fa-solid.fa-user
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
@@ -64,10 +65,11 @@ else
           a(href="/login")
             li LOG IN
         else
-          a(href=`/users/${loggedInUser._id}`)
-            li #{ loggedInUser.name } 님의 PROFILE
           a(href="/logout")
             li LOG OUT
+          a.profile(href=`/users/${loggedInUser._id}`)
+            // li #{ loggedInUser.name } 님의 PROFILE
+            i.fa-solid.fa-user
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
