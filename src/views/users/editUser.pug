@@ -1,0 +1,38 @@
+extends ../base.pug
+
+block content
+  main#profile
+    .profile__wrapper
+      .menu
+        nav
+          a(href="/users/edit")
+            li.menu__1 정보 수정
+          a(href="/users/edit-pw")
+            li.menu__2 비밀번호 수정
+          a(href="/users/delete")
+            li.menu__3 회원 탈퇴
+
+      .body 
+        .user__photo 
+          img(src="/uploads/person.png", alt="")
+        .user__info 
+          form(method="POST")
+            .info 
+              label(for="name") 이름:
+              input#name(type="text", name="name", value=user.name)
+            .info 
+              label(for="email") 이메일:
+              input#email(type="text", name="email", value=user.email)
+            .info 
+              label(for="phone") 핸드폰 번호:
+              input#phone(type="text", name="phone", value=user.phone)
+            .info.birth
+              label(for="birth") 생년월일:
+              .birth__row 
+                input(type="text", name="year")
+                | 년
+                input(type="text", name="month")
+                | 월
+                input(type="text", name="day")
+                | 일
+            input#submit(type="submit", value="저장")

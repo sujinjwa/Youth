@@ -19,7 +19,7 @@ if pageTitle === "Home"
         else
           a(href="/logout")
             li LOG OUT
-          a.profile(href=`/users/${loggedInUser._id}`)
+          a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
             i.fa-solid.fa-user
       button.bar
@@ -41,7 +41,7 @@ if pageTitle === "Home"
         a(href="/login")
           li LOG IN
       else
-        a(href=`/users/${loggedInUser._id}`)
+        a(href="/users/edit")
           li #{ loggedInUser.name } 님의 PROFILE
         a(href="/logout")
           li LOG OUT
@@ -67,7 +67,7 @@ else
         else
           a(href="/logout")
             li LOG OUT
-          a.profile(href=`/users/${loggedInUser._id}`)
+          a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
             i.fa-solid.fa-user
       button.bar
@@ -89,7 +89,7 @@ else
         a(href="/login")
           li LOG IN
       else
-        a(href=`/users/${loggedInUser._id}`)
+        a(href="/users/edit")
           li #{ loggedInUser.name } 님의 PROFILE
         a(href="/logout")
           li LOG OUT

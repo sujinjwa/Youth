@@ -368,13 +368,13 @@ export const finishNaverLogin = async (req, res) => {
   }
 };
 
-export const seeUser = (req, res) => {
-  console.log(req.params.id);
-  return res.render("users/profile", { pageTitle: "Profile" });
+export const getEdit = async (req, res) => {
+  const user = await User.findOne({ email: req.session.loggedInUser.email });
+  return res.render("users/editUser", { pageTitle: "Profile", user });
 };
 
-export const editUser = (req, res) => {
-  return res.render("users/editUser");
+export const postEdit = (req, res) => {
+  return res.render("users/editUser", { pageTitle: "Profile" });
 };
 
 export const deleteUser = (req, res) => {

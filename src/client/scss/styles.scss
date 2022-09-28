@@ -1,6 +1,11 @@
 // reset
 @import "./reset.scss";
 
+// import fonts
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;300;400;500;600;700;800&display=swap");
+
 // variables & elements
 @import "./variables";
 @import "./elements";
@@ -16,7 +21,7 @@
 @import "./screens/contents";
 @import "./screens/login";
 @import "./screens/join";
-@import "./screens/profile";
+@import "./screens/editUser";
 @import "./screens/tablet";
 @import "./screens/mobile";
 
@@ -26,7 +31,7 @@
 
 body {
   // font-family: "Hahmlet", serif;
-  font-family: $kakao-regular;
+  font-family: $nanum;
 
   &.openModal {
     overflow: hidden;
