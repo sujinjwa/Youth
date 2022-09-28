@@ -162,6 +162,13 @@ export const postJoin = async (req, res) => {
       name,
       email: sendingEmail,
       password,
+      phone: "",
+      birth: {
+        year: "",
+        month: "",
+        day: "",
+      },
+      socialOnly: false,
     });
     return res.redirect("/login");
   } catch (error) {
@@ -272,6 +279,12 @@ export const finishKakaoLogin = async (req, res) => {
         email: userData.kakao_account.email,
         password: "",
         socialOnly: true,
+        phone: "",
+        birth: {
+          year: "",
+          month: "",
+          day: "",
+        },
       });
     }
 
@@ -353,6 +366,11 @@ export const finishNaverLogin = async (req, res) => {
         password: "",
         socialOnly: true,
         phone: userData.response.mobile,
+        birth: {
+          year: "",
+          month: "",
+          day: "",
+        },
       });
     }
 
@@ -369,12 +387,64 @@ export const finishNaverLogin = async (req, res) => {
 };
 
 export const getEdit = async (req, res) => {
-  const user = await User.findOne({ email: req.session.loggedInUser.email });
-  return res.render("users/editUser", { pageTitle: "Profile", user });
+  //const user = await User.findOne({ email: req.session.loggedInUser.email });
+  return res.render("users/editUser", {
+    pageTitle: "Profile",
+  });
 };
 
-export const postEdit = (req, res) => {
-  return res.render("users/editUser", { pageTitle: "Profile" });
+export const postEdit = async (req, res) => {
+  req.session.errorMessage = null;
+  const {
+    session: {
+      loggedInUser: { _id },
+    },
+    body: { name, email, phone, year, month, date },
+  } = req;
+  // console.log("id:", _id);
+  // console.log("req.body: ", req.body);
+
+  // req.session.loggedInUser.email 제외하고
+  // 다른 유저와 동일한 email 계정을 입력한 경우
+  const exists = await User.exists({ email });
+  const existingUser = await User.findOne({ email });
+  // console.log(exists);
+  // console.log(existingUser);
+  // console.log(req.session.loggedInUser._id);
+  // console.log(String(existingUser._id) === req.session.loggedInUser._id);
+
+  if (exists && String(existingUser._id) !== req.session.loggedInUser._id) {
+    req.session.errorMessage = "이미 존재하는 이메일 계정입니다.";
+    return res.redirect("/users/edit");
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      phone,
+      birth: {
+        year,
+        month,
+        date,
+      },
+    },
+    { new: true }
+  );
+
+  // console.log("updateUser: ", updatedUser);
+  // req.session.loggedIn = true;
+  req.session.loggedInUser = updatedUser;
+  return res.redirect("/users/edit");
+};
+
+export const getEditPW = (req, res) => {
+  return res.render("users/editPW");
+};
+
+export const postEditPW = (req, res) => {
+  return res.redirect("/users/editPW");
 };
 
 export const deleteUser = (req, res) => {

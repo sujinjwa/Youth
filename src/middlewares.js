@@ -11,3 +11,22 @@ export const localsMiddleware = (req, res, next) => {
   //console.log(req.session);
   next();
 };
+
+// 로그인되지 않은 유저 차단하는 미들웨어
+export const protectorMiddleware = (req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    // req.session.errorMessage1 = "로그인이 필요한 서비스입니다.";
+    return res.redirect("/login");
+  }
+};
+
+// 로그인된 유저 차단하는 미들웨어
+export const publicOnlyMiddleware = (req, res, next) => {
+  if (!req.session.loggedIn) {
+    next();
+  } else {
+    return res.redirect("/");
+  }
+};

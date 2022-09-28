@@ -19,20 +19,36 @@ block content
           form(method="POST")
             .info 
               label(for="name") 이름:
-              input#name(type="text", name="name", value=user.name)
-            .info 
+              input#name(type="text", name="name", value=loggedInUser.name)
+            .info.email 
               label(for="email") 이메일:
-              input#email(type="text", name="email", value=user.email)
+              input#email(type="text", name="email", value=loggedInUser.email)
+              if errorMessage
+                #error
+                  i.fa-solid.fa-circle-exclamation
+                  p= errorMessage
             .info 
               label(for="phone") 핸드폰 번호:
-              input#phone(type="text", name="phone", value=user.phone)
+              input#phone(type="text", name="phone", value=loggedInUser.phone)
             .info.birth
               label(for="birth") 생년월일:
               .birth__row 
-                input(type="text", name="year")
+                input(
+                  type="text",
+                  name="year",
+                  value=loggedInUser.birth.year ? loggedInUser.birth.year : ""
+                )
                 | 년
-                input(type="text", name="month")
+                input(
+                  type="text",
+                  name="month",
+                  value=loggedInUser.birth.month ? loggedInUser.birth.month : ""
+                )
                 | 월
-                input(type="text", name="day")
+                input(
+                  type="text",
+                  name="date",
+                  value=loggedInUser.birth.date ? loggedInUser.birth.date : ""
+                )
                 | 일
             input#submit(type="submit", value="저장")
