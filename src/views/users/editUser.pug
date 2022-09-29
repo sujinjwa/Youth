@@ -6,27 +6,28 @@ block content
       .menu
         nav
           a(href="/users/edit")
-            li.menu__1 정보 수정
-          a(href="/users/edit-pw")
-            li.menu__2 비밀번호 수정
+            li.menu.active 정보 수정
+          if loggedInUser.socialOnly === false
+            a(href="/users/editPW")
+              li.menu 비밀번호 수정
           a(href="/users/delete")
-            li.menu__3 회원 탈퇴
+            li.menu 회원 탈퇴
 
-      .body 
+      .body
         .user__photo 
           img(src="/uploads/person.png", alt="")
         .user__info 
-          form(method="POST")
+          form#editUser(method="POST")
             .info 
               label(for="name") 이름:
               input#name(type="text", name="name", value=loggedInUser.name)
             .info.email 
               label(for="email") 이메일:
               input#email(type="text", name="email", value=loggedInUser.email)
-              if errorMessage
+              if editAlert
                 #error
                   i.fa-solid.fa-circle-exclamation
-                  p= errorMessage
+                  p= editAlert
             .info 
               label(for="phone") 핸드폰 번호:
               input#phone(type="text", name="phone", value=loggedInUser.phone)

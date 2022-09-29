@@ -14,7 +14,7 @@ main#profile {
         align-items: flex-start;
         a {
           text-align: center;
-          li {
+          li.menu {
             margin: 15px 0px;
             font-size: 16px;
             font-family: $gothic;
@@ -22,7 +22,7 @@ main#profile {
             // font-weight: 600;
             list-style: none;
             color: black;
-            &.menu__1 {
+            &.active {
               position: relative;
               &::after {
                 content: "";
@@ -58,7 +58,7 @@ main#profile {
         padding: 0px 35px;
         display: flex;
         align-items: center;
-        form {
+        form#editUser {
           display: flex;
           flex-direction: column;
           align-items: flex-end;

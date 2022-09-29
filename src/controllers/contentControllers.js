@@ -1,7 +1,6 @@
 import express from "express";
 
 export const home = (req, res) => {
-  req.session.errorMessage = null;
   return res.render("home", { pageTitle: "Home" });
 };
 

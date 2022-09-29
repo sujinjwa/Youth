@@ -47,14 +47,50 @@ block content
             name="selfAuthenti",
             placeholder="인증번호 입력"
           )
-          input.input__name(
-            type="text",
-            required,
-            name="name",
-            placeholder="이름 (2-30자)",
-            minlength="2",
-            maxlength="30"
-          )
+          .name__wrapper
+            input.input__name(
+              type="text",
+              required,
+              name="name",
+              placeholder="이름 (2-30자)",
+              minlength="2",
+              maxlength="30"
+            )
+            .gender__wrapper
+              input.input__gender(
+                type="radio",
+                required,
+                name="gender",
+                value="man",
+                checked
+              )
+              span 남
+              input.input__gender(
+                type="radio",
+                required,
+                name="gender",
+                value="woman"
+              )
+              span 여
+          .birth__wrapper 
+            input.input__year(
+              type="text",
+              required,
+              name="year",
+              placeholder="생년"
+            )
+            input.input__month(
+              type="text",
+              required,
+              name="month",
+              placeholder="월"
+            )
+            input.input__date(
+              type="text",
+              required,
+              name="date",
+              placeholder="일"
+            )
           input.input__pw(
             type="password",
             required,

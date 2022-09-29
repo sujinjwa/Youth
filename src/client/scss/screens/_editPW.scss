@@ -1,0 +1,52 @@
+main#profile {
+  .body {
+    form#editPW {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 10px 0px;
+      font-family: $gothic;
+      font-size: 17px;
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 500px;
+        margin-bottom: 35px;
+        label {
+          margin-right: 8px;
+          font-weight: 600;
+        }
+        input {
+          width: 70%;
+          border: none;
+          // background-color: #f3f3f3;
+          background-color: $light--grey;
+          border-radius: 15px;
+          // height: 45px;
+          padding: 15px 21px;
+          font-size: 18px;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      input#submit {
+        width: 50%;
+        padding: 18px 40px;
+        font-family: $gothic;
+        font-weight: 600;
+        font-size: 17px;
+        border: 1px solid $youthDarkColor;
+        background-color: white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.1s linear;
+        &:hover {
+          background-color: $youthDarkColor;
+          color: white;
+        }
+      }
+    }
+  }
+}

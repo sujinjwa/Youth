@@ -110,6 +110,38 @@ main#join {
           // background-color: $youthDarkColor;
         }
       }
+      div.name__wrapper {
+        display: flex;
+        input.input__name {
+          width: 300px;
+        }
+        div.gender__wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 15px;
+          input.input__gender {
+            accent-color: $youthDarkColor;
+            width: 25px;
+          }
+          span {
+            margin-right: 15px;
+          }
+        }
+      }
+      div.birth__wrapper {
+        display: flex;
+        width: 482px;
+        input {
+          &.input__year {
+            width: 50%;
+          }
+          &.input__month,
+          &.input__date {
+            width: 25%;
+          }
+        }
+      }
     }
     .login__link {
       margin-top: 15px;

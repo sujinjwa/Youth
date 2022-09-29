@@ -19,6 +19,7 @@ export const getJoin = (req, res) => {
 
 let sendingEmail, sentNumber;
 
+// 이메일 전송 함수
 const sendMail = async (req, res) => {
   const { email } = req.body;
   console.log(email);
@@ -111,9 +112,19 @@ const sendMail = async (req, res) => {
 };
 
 export const postJoin = async (req, res) => {
-  let { selfAuthenti, name, password, passwordConfirm, email } = req.body;
+  let {
+    selfAuthenti,
+    name,
+    password,
+    passwordConfirm,
+    email,
+    gender,
+    year,
+    month,
+    date,
+  } = req.body;
 
-  console.log(req.body);
+  // console.log(req.body);
 
   //if ((!name && email) || (!password && email) || (!selfAuthenti && email)) {
   //if (email || !(email === undefined)) {
@@ -136,7 +147,8 @@ export const postJoin = async (req, res) => {
     });
   }
 
-  // 비밀번호 조합 숫자 + 영어로!
+  // +) 비밀번호 조합 숫자 + 영어로!
+
   if (password != passwordConfirm) {
     return res.status(400).render("users/join", {
       pageTitle,
@@ -163,10 +175,11 @@ export const postJoin = async (req, res) => {
       email: sendingEmail,
       password,
       phone: "",
+      gender,
       birth: {
-        year: "",
-        month: "",
-        day: "",
+        year,
+        month,
+        date,
       },
       socialOnly: false,
     });
@@ -267,7 +280,7 @@ export const finishKakaoLogin = async (req, res) => {
         },
       })
     ).json();
-    console.log(userData);
+    //console.log(userData);
 
     let user = await User.findOne({
       email: userData.kakao_account.email,
@@ -280,10 +293,11 @@ export const finishKakaoLogin = async (req, res) => {
         password: "",
         socialOnly: true,
         phone: "",
+        gender: "",
         birth: {
           year: "",
           month: "",
-          day: "",
+          date: "",
         },
       });
     }
@@ -366,10 +380,11 @@ export const finishNaverLogin = async (req, res) => {
         password: "",
         socialOnly: true,
         phone: userData.response.mobile,
+        gender: "",
         birth: {
           year: "",
           month: "",
-          day: "",
+          date: "",
         },
       });
     }
@@ -394,7 +409,7 @@ export const getEdit = async (req, res) => {
 };
 
 export const postEdit = async (req, res) => {
-  req.session.errorMessage = null;
+  req.session.editAlert = null;
   const {
     session: {
       loggedInUser: { _id },
@@ -414,8 +429,9 @@ export const postEdit = async (req, res) => {
   // console.log(String(existingUser._id) === req.session.loggedInUser._id);
 
   if (exists && String(existingUser._id) !== req.session.loggedInUser._id) {
-    req.session.errorMessage = "이미 존재하는 이메일 계정입니다.";
-    return res.redirect("/users/edit");
+    return res.status(404).render("users/editUser", {
+      editAlert: "이미 존재하는 이메일 계정입니다.",
+    });
   }
 
   const updatedUser = await User.findByIdAndUpdate(
@@ -440,11 +456,54 @@ export const postEdit = async (req, res) => {
 };
 
 export const getEditPW = (req, res) => {
-  return res.render("users/editPW");
+  // 소셜 로그인한 유저의 경우 비밀번호 설정하지 않았으므로 수정 기능 불필요
+  if (req.session.loggedInUser.socialOnly === true) {
+    return res.status(400).render("users/editUser");
+  }
+  return res.render("users/editPW", { pageTitle: "Profile" });
 };
 
-export const postEditPW = (req, res) => {
-  return res.redirect("/users/editPW");
+export const postEditPW = async (req, res) => {
+  const pageTitle = "Profile";
+  const {
+    session: {
+      loggedInUser: { _id, password },
+    },
+    body: { oldPassword, newPassword, newPasswordConfirm },
+  } = req;
+  // console.log(req.body);
+
+  // 현재 비밀번호 올바르게 입력했는지 확인
+  const match = await bcrypt.compare(oldPassword, password);
+  if (!match) {
+    return res.status(400).render("users/editPW", {
+      pageTitle,
+      uncorrectError:
+        "비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.",
+    });
+  }
+
+  // 새 비밀번호와 새 비밀번호 확인값이 동일한지 확인
+  if (newPassword !== newPasswordConfirm) {
+    return res.status(400).render("users/editPW", {
+      notMatchError:
+        "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요.",
+    });
+  }
+
+  const newPassword2 = await bcrypt.hash(newPassword, 5);
+  try {
+    await User.findByIdAndUpdate(_id, {
+      password: newPassword2,
+    });
+    // console.log();
+    return res.redirect("/users/editPW");
+  } catch (error) {
+    console.log(error);
+    return res.status(400).render("users/editPW", {
+      errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. ${error._message}`,
+    });
+  }
 };
 
 export const deleteUser = (req, res) => {

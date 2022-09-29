@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     month: String,
     date: String,
   },
+  gender: { type: String },
   socialOnly: { type: Boolean, default: false },
 });
 
