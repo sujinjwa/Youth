@@ -181,6 +181,7 @@ export const postJoin = async (req, res) => {
         month,
         date,
       },
+      //avatarUrl: 기본 설정해주기
       socialOnly: false,
     });
     return res.redirect("/login");
@@ -280,7 +281,7 @@ export const finishKakaoLogin = async (req, res) => {
         },
       })
     ).json();
-    //console.log(userData);
+    console.log(userData);
 
     let user = await User.findOne({
       email: userData.kakao_account.email,
@@ -299,6 +300,7 @@ export const finishKakaoLogin = async (req, res) => {
           month: "",
           date: "",
         },
+        avatarUrl: userData.properties.profile_image,
       });
     }
 
@@ -386,6 +388,7 @@ export const finishNaverLogin = async (req, res) => {
           month: "",
           date: "",
         },
+        avatarUrl: userData.response.profile_image,
       });
     }
 
@@ -412,12 +415,14 @@ export const postEdit = async (req, res) => {
   req.session.editAlert = null;
   const {
     session: {
-      loggedInUser: { _id },
+      loggedInUser: { _id, avatarUrl },
     },
     body: { name, email, phone, year, month, date },
+    file,
   } = req;
   // console.log("id:", _id);
   // console.log("req.body: ", req.body);
+  // console.log(file);
 
   // req.session.loggedInUser.email 제외하고
   // 다른 유저와 동일한 email 계정을 입력한 경우
@@ -445,10 +450,12 @@ export const postEdit = async (req, res) => {
         month,
         date,
       },
+      avatarUrl: file ? "/" + file.path : avatarUrl,
     },
     { new: true }
   );
 
+  // console.log(req.file.path);
   // console.log("updateUser: ", updatedUser);
   // req.session.loggedIn = true;
   req.session.loggedInUser = updatedUser;
@@ -497,7 +504,7 @@ export const postEditPW = async (req, res) => {
       password: newPassword2,
     });
     // console.log();
-    return res.redirect("/users/editPW");
+    return res.redirect("/logout");
   } catch (error) {
     console.log(error);
     return res.status(400).render("users/editPW", {

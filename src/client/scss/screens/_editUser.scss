@@ -3,18 +3,20 @@ main#profile {
   background-color: $light--grey;
   // height: 600px;
   .profile__wrapper {
-    padding: 0px 130px;
+    padding: 0px 160px;
     margin-bottom: 200px;
     display: flex;
     .menu {
       nav {
-        margin-right: 120px;
+        margin-right: 100px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         a {
           text-align: center;
+          // width: 100px;
           li.menu {
+            white-space: nowrap; // 줄바꿈 방지
             margin: 15px 0px;
             font-size: 16px;
             font-family: $gothic;
@@ -41,30 +43,33 @@ main#profile {
     }
     .body {
       background-color: white;
-      padding: 35px 60px;
-      display: flex;
-      .user__photo {
-        text-align: center;
-        img {
-          border: 1px solid black;
-          width: 290px;
-          padding: 20px;
-          margin: 15px;
-          margin-top: 18px;
-          cursor: pointer;
-        }
-      }
-      .user__info {
-        padding: 0px 35px;
+      padding: 35px 30px;
+      // display: flex;
+      form#editUser {
         display: flex;
-        align-items: center;
-        form#editUser {
+        // flex-direction: column;
+        // align-items: flex-end;
+        padding: 10px 0px;
+        font-family: $gothic;
+        font-size: 17px;
+        .user__photo {
+          text-align: center;
+          label {
+            img {
+              border: 1px solid black;
+              width: 290px;
+              padding: 20px;
+              margin: 15px;
+              margin-top: 18px;
+              cursor: pointer;
+            }
+          }
+        }
+        .user__info {
+          padding: 0px 35px;
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          padding: 10px 0px;
-          font-family: $gothic;
-          font-size: 17px;
           .info {
             display: flex;
             justify-content: space-between;

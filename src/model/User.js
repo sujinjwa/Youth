@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     date: String,
   },
   gender: { type: String },
+  avatarUrl: String,
   socialOnly: { type: Boolean, default: false },
 });
 

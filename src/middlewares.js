@@ -1,3 +1,7 @@
+import multer from "multer";
+
+export const upload = multer({ dest: "uploads/avatars/" });
+
 // 모든 템플릿에서 사용 가능한 전역 변수 선언
 export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -9,6 +13,7 @@ export const localsMiddleware = (req, res, next) => {
   //console.log(res.locals.loggedInUser);
   //console.log(res.locals.loggedIn);s
   //console.log(req.session);
+  // console.log(req.session.loggedInUser);
   next();
 };
 

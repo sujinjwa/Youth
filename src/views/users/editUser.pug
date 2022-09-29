@@ -14,10 +14,12 @@ block content
             li.menu 회원 탈퇴
 
       .body
-        .user__photo 
-          img(src="/uploads/person.png", alt="")
-        .user__info 
-          form#editUser(method="POST")
+        form#editUser(method="POST", enctype="multipart/form-data")
+          .user__photo 
+            label(for="avatar")
+              img(src=`${loggedInUser.avatarUrl}`, alt="")
+            input#avatar(type="file", name="avatar")
+          .user__info 
             .info 
               label(for="name") 이름:
               input#name(type="text", name="name", value=loggedInUser.name)
