@@ -40,13 +40,19 @@ header {
             }
           }
           &.profile {
-            i {
-              padding: 8px;
-              text-align: center;
+            img {
+              width: 36px;
+              height: 36px;
               border-radius: 50%;
-              border: 1px solid;
-              // color: white;
+              border: 1px solid black;
             }
+            // i {
+            //   padding: 8px;
+            //   text-align: center;
+            //   border-radius: 50%;
+            //   border: 1px solid;
+            //   // color: white;
+            // }
           }
         }
       }

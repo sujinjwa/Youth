@@ -21,7 +21,8 @@ if pageTitle === "Home"
             li LOG OUT
           a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
-            i.fa-solid.fa-user
+            // i.fa-solid.fa-user
+            img(src=`${loggedInUser.avatarUrl}`, alt="")
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
@@ -69,7 +70,8 @@ else
             li LOG OUT
           a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
-            i.fa-solid.fa-user
+            // i.fa-solid.fa-user
+            img(src=`${loggedInUser.avatarUrl}`, alt="")
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden

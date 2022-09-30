@@ -181,7 +181,7 @@ export const postJoin = async (req, res) => {
         month,
         date,
       },
-      //avatarUrl: 기본 설정해주기
+      avatarUrl: "/uploads/avatars/basic_profile.jpg",
       socialOnly: false,
     });
     return res.redirect("/login");
@@ -513,6 +513,13 @@ export const postEditPW = async (req, res) => {
   }
 };
 
-export const deleteUser = (req, res) => {
-  return res.render("users/deleteUser");
+export const deleteUser = async (req, res) => {
+  // 정말 삭제하시겠습니까? 모달 창 추가
+  const user = req.session.loggedInUser;
+
+  await User.findByIdAndRemove(user._id);
+
+  req.session.loggedIn = false;
+  req.session.loggedInUser = null;
+  return res.redirect("/");
 };
