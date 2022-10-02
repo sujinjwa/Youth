@@ -33,6 +33,19 @@ main#profile {
             outline: none;
           }
         }
+        #error {
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          color: $red;
+          i {
+            margin-top: 7px;
+            margin-right: 5px;
+          }
+          p {
+            margin-top: 7px;
+          }
+        }
       }
       input#submit {
         margin-top: 8px;

@@ -307,6 +307,49 @@
     }
   }
 
+  main#profile {
+    padding: 100px 0px;
+    .profile__wrapper {
+      width: 95%;
+      padding: 0px 10px;
+      .menu {
+        nav {
+          a {
+            li.menu {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .body {
+        padding: 20px;
+        form#editUser {
+          width: 100%;
+          padding: 0px;
+          flex-direction: column;
+          justify-content: center;
+          .user__photo {
+            margin: 0px;
+          }
+          .user__info {
+            width: 100%;
+            margin-top: 20px;
+            .info {
+              width: 100%;
+            }
+          }
+        }
+        form#editPW {
+          align-items: center;
+          margin: 15px 0px;
+          .info {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
   .blog {
     .blog__title {
       font-size: 27px;

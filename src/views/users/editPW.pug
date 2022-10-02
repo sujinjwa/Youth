@@ -21,9 +21,10 @@ block content
               name="oldPassword",
               placeholder="기존 비밀번호를 입력해주세요."
             )
-            if uncorrectError
-              i.fa-solid.fa-circle-exclamation
-              p= uncorrectError
+            #error
+              if uncorrectError
+                i.fa-solid.fa-circle-exclamation
+                p= uncorrectError
           .info
             label(for="newPassword") 새 비밀번호
             input#newPassword(
@@ -38,7 +39,8 @@ block content
               name="newPasswordConfirm",
               placeholder="변경할 비밀번호를 한번 더 입력해주세요."
             )
-            if notMatchError
-              i.fa-solid.fa-circle-exclamation
-              p= notMatchError
+            #error
+              if notMatchError
+                i.fa-solid.fa-circle-exclamation
+                p= notMatchError
           input#submit(type="submit", value="변경하기")

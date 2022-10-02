@@ -74,8 +74,55 @@
         }
       }
     }
+    &#profile {
+      // padding: 110px 0px;
+      .profile__wrapper {
+        padding: 0px 20px;
+        width: 750px;
+        // width: 100vw;
+        // justify-content: space-around;
+        flex-direction: column;
+        .menu {
+          width: 100%;
+          nav {
+            width: 100%;
+            margin-bottom: 8px;
+            flex-direction: row;
+            position: relative;
+            &::after {
+              content: "";
+              display: block;
+              width: 100%;
+              position: absolute;
+              height: 1px;
+              bottom: 0px;
+              left: 0px;
+              background: $input--border;
+            }
+            a {
+              margin-right: 25px;
+              li.menu {
+                font-size: 17px;
+                color: $input--placeholder;
+                &.active {
+                  color: $youthColor;
+                  &::after {
+                    bottom: -14px;
+                    background: $youthColor;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .body {
+          margin-top: 25px;
+          // width: 100%;
+        }
+      }
+    }
   }
-  footer {
-    padding: 50px;
-  }
+}
+footer {
+  padding: 50px;
 }
