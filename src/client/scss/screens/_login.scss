@@ -23,6 +23,7 @@ main#login {
         flex-direction: column;
         align-items: center;
         h5 {
+          font-family: $gothic;
           font-size: 15px;
           color: $grey;
           margin-bottom: 10px;
@@ -74,13 +75,15 @@ main#login {
         align-items: center;
         input {
           width: 470px;
-          border: 1px solid $youthLightColor;
+          border: 1px solid $input--border;
+          border-radius: 8px;
           margin: 6px;
-          padding: 22px 0px;
+          padding: 12px 14px;
           padding-left: 15px;
-          font-size: 18px;
+          font-family: $gothic;
+          font-size: 16px;
           &::placeholder {
-            color: $medium--grey;
+            color: $input--placeholder;
           }
           &:focus {
             outline: none;
@@ -91,7 +94,17 @@ main#login {
             color: white;
             cursor: pointer;
             font-weight: 600;
+            padding: 14px 14px;
           }
+        }
+        p {
+          margin: 5px 0px;
+          padding-right: 5px;
+          color: $red;
+          font-size: 14px;
+          width: 95%;
+          display: flex;
+          justify-content: flex-start;
         }
       }
     }
@@ -101,6 +114,7 @@ main#login {
       width: 470px;
       margin-top: 15px;
       a {
+        font-family: $gothic;
         color: $medium--grey;
       }
       p {
@@ -122,10 +136,12 @@ main#login {
       display: flex;
       justify-content: center;
       a {
-        border: 1px solid $youthLightColor;
+        border: 1px solid $input--border;
+        border-radius: 8px;
         margin: 6px;
-        padding: 22px 197px;
-        font-size: 18px;
+        padding: 14px 197px;
+        font-family: $gothic;
+        font-size: 16px;
         text-align: center;
         color: black;
         transition: 0.2s linear;

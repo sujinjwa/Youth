@@ -206,8 +206,7 @@ export const postLogin = async (req, res) => {
   if (!user) {
     return res.status(400).render("users/login", {
       pageTitle,
-      errorMessage:
-        "일치하는 이메일 계정을 찾을 수 없습니다. 입력하신 내용을 다시 확인해주세요.",
+      errorMessage: "가입되어 있지 않은 이메일 주소입니다.",
     });
   }
 

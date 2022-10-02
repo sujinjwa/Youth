@@ -1,5 +1,5 @@
 main#join {
-  height: 127vh;
+  height: 117vh;
   .wrapper {
     margin-top: 85px;
     height: 100%;
@@ -13,6 +13,7 @@ main#join {
       align-items: center;
       justify-content: center;
       h1 {
+        font-family: $nanum;
         font-size: 45px;
         font-weight: 500;
         margin-bottom: 38px;
@@ -23,6 +24,7 @@ main#join {
       flex-direction: column;
       align-items: center;
       h5 {
+        font-family: $gothic;
         font-size: 15px;
         color: $grey;
         margin-bottom: 10px;
@@ -73,19 +75,24 @@ main#join {
       display: flex;
       flex-direction: column;
       input {
+        font-family: $gothic;
         width: 470px;
-        border: 1px solid $youthLightColor;
+        border: 1px solid $input--border;
+        // background-color: $input--placeholder--bg;
         margin: 6px;
-        padding: 22px 0px;
-        padding-left: 15px;
-        font-size: 18px;
+        padding: 12px 14px;
+        border-radius: 8px;
+        // padding-left: 15px;
+        font-size: 15px;
         &::placeholder {
-          color: $medium--grey;
+          color: $input--placeholder;
         }
         &:focus {
           outline: none;
         }
         &.join__btn {
+          margin-top: 18px;
+          padding: 14px 14px;
           border: none;
           background-color: $youthDarkColor;
           color: white;
@@ -95,12 +102,16 @@ main#join {
       }
       div.email__wrapper {
         display: flex;
-        width: 475px;
-        height: 100%;
-        button.send__email {
+        width: 480px;
+        // height: 100%;
+        input.input__email {
+          width: 75%;
+        }
+        input.send__email {
+          width: 25%;
           // border: 1px solid $youthDarkColor;
           font-size: 14px;
-          margin: 6px 0px;
+          // margin: 6px 0px;
           // padding: 6px;
           background-color: $youthDarkColor;
           border: none;
@@ -144,6 +155,7 @@ main#join {
       }
     }
     .login__link {
+      font-family: $gothic;
       margin-top: 15px;
       display: flex;
       font-size: 15px;

@@ -45,7 +45,7 @@ block content
             type="text",
             required,
             name="selfAuthenti",
-            placeholder="인증번호 입력"
+            placeholder="위 이메일로 전송된 인증번호를 입력해주세요."
           )
           .name__wrapper
             input.input__name(
@@ -72,6 +72,20 @@ block content
                 value="woman"
               )
               span 여
+          input.input__pw(
+            type="password",
+            required,
+            name="password",
+            placeholder="비밀번호",
+            minlength="8",
+            maxlength="15"
+          )
+          input.input__pwConfirm(
+            type="password",
+            required,
+            name="passwordConfirm",
+            placeholder="비밀번호 확인"
+          )
           .birth__wrapper 
             input.input__year(
               type="text",
@@ -91,20 +105,6 @@ block content
               name="date",
               placeholder="일"
             )
-          input.input__pw(
-            type="password",
-            required,
-            name="password",
-            placeholder="비밀번호",
-            minlength="8",
-            maxlength="15"
-          )
-          input.input__pwConfirm(
-            type="password",
-            required,
-            name="passwordConfirm",
-            placeholder="비밀번호 확인"
-          )
           //- input.input__phone(
           //-   type="text",
           //-   required,

@@ -246,13 +246,34 @@
           width: 100%;
           // margin: 0 auto;
           // padding: 0px 15px;
+          div.email__wrapper {
+            width: 102%;
+            input.input__email {
+              width: 71%;
+            }
+            input.send__email {
+              width: 29%;
+            }
+          }
+          div.name__wrapper {
+            width: 100%;
+            input.input__name {
+              width: 70%;
+            }
+            div.gender__wrapper {
+              width: 30%;
+            }
+          }
+          div.birth__wrapper {
+            width: 102%;
+          }
           input {
             width: 100%;
-            padding: 18px;
+            padding: 12px 14px;
             font-size: 14px;
             &.login__btn,
             &.join__btn {
-              font-size: 18px;
+              font-size: 16px;
             }
           }
         }
