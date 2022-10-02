@@ -7,18 +7,29 @@ $english: "Montserrat", sans-serif;
 $nanum: "Nanum Gothic", sans-serif;
 $gothic: "Gothic A1", sans-serif;
 
+// main color
 $youthColor: #003d00;
 $youthLightColor: #ccd2c5;
 $youthDarkColor: #00251a;
 
-// main color
+// green color
+$dark---green: #546760;
+$green: #b6c3b4;
+
+// beige color
+$light--beige: #f4eae2;
+$beige: #c0b9a8;
+
+// grey color
 $light--grey: rgb(249, 249, 249);
 $medium--grey: #888888;
 $grey: #767676;
-$dark---green: #546760;
-$green: #b6c3b4;
-$light--beige: #f4eae2;
-$beige: #c0b9a8;
+
+// line color
+$input--border: #e5e5ed;
+$input--word: #55596a;
+$input--placeholder: #9a9ba7;
+$input--placeholder--bg: #fafafc;
 
 // alert color
 $red: #d32f2f;

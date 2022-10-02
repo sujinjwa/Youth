@@ -6,39 +6,39 @@ block content
       .menu
         nav
           a(href="/users/edit")
-            li.menu 정보 수정
+            li.menu 계정 설정
           a(href="/users/editPW")
-            li.menu.active 비밀번호 수정
+            li.menu.active 비밀번호 변경
           a(href="/users/delete")
             li.menu 회원 탈퇴
 
       .body
         form#editPW(method="POST")
           .info
-            label(for="oldPassword") 현재 비밀번호:
+            label(for="oldPassword") 현재 비밀번호
             input#oldPassword(
               type="password",
               name="oldPassword",
-              placeholder="현재 비밀번호"
+              placeholder="기존 비밀번호를 입력해주세요."
             )
             if uncorrectError
               i.fa-solid.fa-circle-exclamation
               p= uncorrectError
           .info
-            label(for="newPassword") 새 비밀번호:
+            label(for="newPassword") 새 비밀번호
             input#newPassword(
               type="password",
               name="newPassword",
-              placeholder="새 비밀번호"
+              placeholder="변경할 비밀번호를 입력해주세요."
             )
           .info 
-            label(for="newPasswordConfirm") 새 비밀번호 확인:
+            label(for="newPasswordConfirm") 새 비밀번호 확인
             input#newPasswordConfirm(
               type="password",
               name="newPasswordConfirm",
-              placeholder="새 비밀번호 확인"
+              placeholder="변경할 비밀번호를 한번 더 입력해주세요."
             )
             if notMatchError
               i.fa-solid.fa-circle-exclamation
               p= notMatchError
-          input#submit(type="submit", value="저장")
+          input#submit(type="submit", value="변경하기")
