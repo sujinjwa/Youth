@@ -3,7 +3,8 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "development",
+  // mode: "development",
+  // watch: true,
   entry: {
     main: "./src/client/js/main.js",
     changeHeader: "./src/client/js/changeHeader.js",
@@ -20,7 +21,6 @@ module.exports = {
       filename: "css/styles.css",
     }),
   ],
-  watch: true,
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
