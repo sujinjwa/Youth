@@ -247,12 +247,13 @@
           // margin: 0 auto;
           // padding: 0px 15px;
           div.email__wrapper {
-            width: 102%;
+            width: 104%;
             input.input__email {
               width: 71%;
             }
             input.send__email {
-              width: 29%;
+              width: 31%;
+              font-size: 12px;
             }
           }
           div.name__wrapper {
@@ -262,6 +263,12 @@
             }
             div.gender__wrapper {
               width: 30%;
+              input.input__gender {
+                width: 15px;
+              }
+              span {
+                font-size: 12px;
+              }
             }
           }
           div.birth__wrapper {
@@ -273,8 +280,12 @@
             font-size: 14px;
             &.login__btn,
             &.join__btn {
-              font-size: 16px;
+              // font-size: 15px;
+              padding: 14px 14px;
             }
+          }
+          p {
+            font-size: 11px;
           }
         }
         .login__link {
@@ -301,7 +312,8 @@
         margin-bottom: 25px;
         a {
           width: 100%;
-          padding: 20px 30px;
+          padding: 14px 30px;
+          font-size: 14px;
         }
       }
     }

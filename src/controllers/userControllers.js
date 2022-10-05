@@ -29,11 +29,10 @@ const sendMail = async (req, res) => {
   if (existingUser) {
     if (existingUser.socialOnly === true) {
       // 해당 계정으로 카카오톡 혹은 네이버로 이미 회원가입한 유저라면
-      req.session.loggedIn = true;
-      req.session.loggedInUser = existingUser;
-      req.session.errorMessage =
-        "이미 카카오톡 혹은 네이버로 회원가입한 계정입니다.";
-      return res.redirect("/");
+      return res.status(400).render("users/join", {
+        pageTitle,
+        errorMessage: `이미 카카오톡 혹은 네이버로 회원가입한 계정입니다. \n 해당 계정으로 로그인해주세요.`,
+      });
     }
     return res.status(400).render("users/join", {
       pageTitle,
@@ -147,7 +146,15 @@ export const postJoin = async (req, res) => {
     });
   }
 
-  // +) 비밀번호 조합 숫자 + 영어로!
+  // +) 비밀번호 조합 숫자 + 영어로! 8자리 이상!
+  // let regPass = /^(?=[a-zA-Z0-9]{8,20}$/;
+  let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+  if (!regPass.test(password)) {
+    return res.status(400).render("users/join", {
+      pageTitle,
+      errorMessage: "영문, 숫자 조합으로 8-20자리 입력해주세요",
+    });
+  }
 
   if (password != passwordConfirm) {
     return res.status(400).render("users/join", {

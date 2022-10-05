@@ -79,7 +79,7 @@ main#join {
         width: 470px;
         border: 1px solid $input--border;
         // background-color: $input--placeholder--bg;
-        margin: 6px;
+        margin: 8px;
         padding: 12px 14px;
         border-radius: 8px;
         // padding-left: 15px;
@@ -92,7 +92,7 @@ main#join {
         }
         &.join__btn {
           margin-top: 18px;
-          padding: 14px 14px;
+          padding: 16px 14px;
           border: none;
           background-color: $youthDarkColor;
           color: white;
@@ -100,9 +100,15 @@ main#join {
           font-weight: 600;
         }
       }
+      p {
+        font-size: 12px;
+        margin: 2px 11px;
+        margin-top: 0px;
+        color: $input--word;
+      }
       div.email__wrapper {
         display: flex;
-        width: 480px;
+        width: 485px;
         // height: 100%;
         input.input__email {
           width: 75%;
@@ -118,12 +124,14 @@ main#join {
           cursor: pointer;
           // color: $medium--grey;
           color: white;
+          text-align: center;
           // background-color: $youthDarkColor;
         }
       }
       div.name__wrapper {
         display: flex;
         input.input__name {
+          padding: 12px 14px;
           width: 300px;
         }
         div.gender__wrapper {
@@ -132,6 +140,7 @@ main#join {
           align-items: center;
           padding: 15px;
           input.input__gender {
+            cursor: pointer;
             accent-color: $youthDarkColor;
             width: 25px;
           }
@@ -157,6 +166,7 @@ main#join {
     .login__link {
       font-family: $gothic;
       margin-top: 15px;
+      padding: 16px 14px;
       display: flex;
       font-size: 15px;
       span {
