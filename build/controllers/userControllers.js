@@ -127,28 +127,27 @@ var sendMail = /*#__PURE__*/function () {
             existingUser = _context2.sent;
 
             if (!existingUser) {
-              _context2.next = 15;
+              _context2.next = 12;
               break;
             }
 
             if (!(existingUser.socialOnly === true)) {
-              _context2.next = 14;
+              _context2.next = 11;
               break;
             }
 
-            // 해당 계정으로 카카오톡 혹은 네이버로 이미 회원가입한 유저라면
-            req.session.loggedIn = true;
-            req.session.loggedInUser = existingUser;
-            req.session.errorMessage = "이미 카카오톡 혹은 네이버로 회원가입한 계정입니다.";
-            return _context2.abrupt("return", res.redirect("/"));
+            return _context2.abrupt("return", res.status(400).render("users/join", {
+              pageTitle: pageTitle,
+              errorMessage: "\uC774\uBBF8 \uCE74\uCE74\uC624\uD1A1 \uD639\uC740 \uB124\uC774\uBC84\uB85C \uD68C\uC6D0\uAC00\uC785\uD55C \uACC4\uC815\uC785\uB2C8\uB2E4. \n \uD574\uB2F9 \uACC4\uC815\uC73C\uB85C \uB85C\uADF8\uC778\uD574\uC8FC\uC138\uC694."
+            }));
 
-          case 14:
+          case 11:
             return _context2.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
               errorMessage: "이미 사용중인 이메일입니다."
             }));
 
-          case 15:
+          case 12:
             // min ~ max 까지 랜덤으로 숫자 생성하는 함수
             generateRandom = function generateRandom(min, max) {
               var ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -157,7 +156,7 @@ var sendMail = /*#__PURE__*/function () {
 
             main(); // return res.render("users/join", { pageTitle: "Join", email });
 
-          case 17:
+          case 14:
           case "end":
             return _context2.stop();
         }
@@ -172,7 +171,7 @@ var sendMail = /*#__PURE__*/function () {
 
 var postJoin = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res) {
-    var _req$body, selfAuthenti, name, password, passwordConfirm, email, gender, year, month, date, pageTitle;
+    var _req$body, selfAuthenti, name, password, passwordConfirm, email, gender, year, month, date, pageTitle, regPass;
 
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) {
@@ -208,8 +207,23 @@ var postJoin = /*#__PURE__*/function () {
             }));
 
           case 7:
+            // +) 비밀번호 조합 숫자 + 영어로! 8자리 이상!
+            // let regPass = /^(?=[a-zA-Z0-9]{8,20}$/;
+            regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+
+            if (regPass.test(password)) {
+              _context3.next = 10;
+              break;
+            }
+
+            return _context3.abrupt("return", res.status(400).render("users/join", {
+              pageTitle: pageTitle,
+              errorMessage: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+            }));
+
+          case 10:
             if (!(password != passwordConfirm)) {
-              _context3.next = 9;
+              _context3.next = 12;
               break;
             }
 
@@ -218,9 +232,9 @@ var postJoin = /*#__PURE__*/function () {
               errorMessage: "비밀번호가 일치하지 않습니다"
             }));
 
-          case 9:
-            _context3.prev = 9;
-            _context3.next = 12;
+          case 12:
+            _context3.prev = 12;
+            _context3.next = 15;
             return _User["default"].create({
               name: name,
               email: sendingEmail,
@@ -236,24 +250,24 @@ var postJoin = /*#__PURE__*/function () {
               socialOnly: false
             });
 
-          case 12:
+          case 15:
             return _context3.abrupt("return", res.redirect("/login"));
 
-          case 15:
-            _context3.prev = 15;
-            _context3.t0 = _context3["catch"](9);
+          case 18:
+            _context3.prev = 18;
+            _context3.t0 = _context3["catch"](12);
             console.log(_context3.t0);
             return _context3.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
               errorMessage: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. \"".concat(_context3.t0._message, "\"")
             }));
 
-          case 19:
+          case 22:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[9, 15]]);
+    }, _callee3, null, [[12, 18]]);
   }));
 
   return function postJoin(_x3, _x4) {
@@ -713,7 +727,7 @@ exports.getEditPW = getEditPW;
 
 var postEditPW = /*#__PURE__*/function () {
   var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(req, res) {
-    var pageTitle, _req$session$loggedIn2, _id, password, _req$body4, oldPassword, newPassword, newPasswordConfirm, match, newPassword2;
+    var pageTitle, _req$session$loggedIn2, _id, password, _req$body4, oldPassword, newPassword, newPasswordConfirm, match, regPass, newPassword2;
 
     return _regeneratorRuntime().wrap(function _callee9$(_context9) {
       while (1) {
@@ -750,34 +764,47 @@ var postEditPW = /*#__PURE__*/function () {
             }));
 
           case 9:
-            _context9.next = 11;
+            regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+
+            if (regPass.test(password)) {
+              _context9.next = 12;
+              break;
+            }
+
+            return _context9.abrupt("return", res.status(400).render("users/editPW", {
+              pageTitle: pageTitle,
+              newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+            }));
+
+          case 12:
+            _context9.next = 14;
             return _bcrypt["default"].hash(newPassword, 5);
 
-          case 11:
+          case 14:
             newPassword2 = _context9.sent;
-            _context9.prev = 12;
-            _context9.next = 15;
+            _context9.prev = 15;
+            _context9.next = 18;
             return _User["default"].findByIdAndUpdate(_id, {
               password: newPassword2
             });
 
-          case 15:
+          case 18:
             return _context9.abrupt("return", res.redirect("/logout"));
 
-          case 18:
-            _context9.prev = 18;
-            _context9.t0 = _context9["catch"](12);
+          case 21:
+            _context9.prev = 21;
+            _context9.t0 = _context9["catch"](15);
             console.log(_context9.t0);
             return _context9.abrupt("return", res.status(400).render("users/editPW", {
               errorMessage: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. ".concat(_context9.t0._message)
             }));
 
-          case 22:
+          case 25:
           case "end":
             return _context9.stop();
         }
       }
-    }, _callee9, null, [[12, 18]]);
+    }, _callee9, null, [[15, 21]]);
   }));
 
   return function postEditPW(_x15, _x16) {

@@ -14,6 +14,7 @@
 @import "./components/header";
 @import "./components/footer";
 @import "./components/qna";
+@import "./components/scroll";
 
 // screens
 @import "./screens/home";
@@ -41,4 +42,10 @@ body {
     // filter: blur(5px);
     // z-index: -4;
   }
+}
+
+// 모바일에서 style 깨지지 않도록
+button,
+html [type="button"] {
+  -webkit-appearance: none;
 }
