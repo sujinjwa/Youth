@@ -1,0 +1,45 @@
+main#welcome {
+  height: 80vh;
+  .wrapper {
+    height: 100%;
+    padding: 180px 230px;
+    .welcome-message {
+      margin-top: 30px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      i {
+        font-size: 65px;
+        margin-bottom: 30px;
+        color: $youthColor;
+      }
+      p {
+        font-size: 35px;
+        margin-bottom: 30px;
+        color: $grey-font;
+        span {
+          color: black;
+          font-weight: 600;
+        }
+      }
+      span {
+        color: $grey-font;
+        &.row1 {
+          margin-bottom: 5px;
+        }
+        &.row2 {
+          margin-bottom: 40px;
+        }
+      }
+      a {
+        padding: 13px 23px;
+        background-color: $youthColor;
+        border: none;
+        border-radius: 8px;
+        color: white;
+      }
+    }
+  }
+}

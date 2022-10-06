@@ -1,6 +1,8 @@
 extends ../base.pug
 
 block content
+  if popup 
+    p#popup=popup
   main#contents
     .contents__hero
       .hero__photo
@@ -14,7 +16,7 @@ block content
         li QnA
       a.menu2(href="/contents/detail")
         li QR코드 렌더링
-      a.menu3(href="#")
+      a.menu3(href="/contents/recommend")
         li 추천 콘텐츠
 
     .group_program

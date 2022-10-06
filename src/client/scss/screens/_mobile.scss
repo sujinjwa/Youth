@@ -404,6 +404,31 @@
     }
   }
 
+  main#welcome {
+    .wrapper {
+      padding: 100px 20px;
+      .welcome-message {
+        margin-top: 0px;
+        i {
+          font-size: 55px;
+        }
+        p {
+          font-size: 22px;
+          span {
+            font-size: 22px;
+          }
+        }
+        span {
+          font-size: 11px;
+        }
+        a {
+          padding: 11px 20px;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
   main#profile {
     padding: 100px 0px;
     .profile__wrapper {

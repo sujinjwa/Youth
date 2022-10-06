@@ -1,5 +1,8 @@
 main#login {
   height: 100vh;
+  p#alert {
+    display: none;
+  }
   .wrapper {
     margin-top: 85px;
     // background-color: white;

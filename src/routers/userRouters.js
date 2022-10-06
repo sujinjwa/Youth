@@ -6,7 +6,7 @@ import {
   postEditPW,
   deleteUser,
 } from "../controllers/userControllers";
-import { protectorMiddleware, upload } from "../middlewares";
+import { protectorMiddleware, upload, beforeDeleteUser } from "../middlewares";
 
 const userRouter = express.Router();
 
@@ -21,6 +21,7 @@ userRouter
   .all(protectorMiddleware)
   .get(getEditPW)
   .post(postEditPW);
+userRouter.get("/beforeDelete", beforeDeleteUser);
 userRouter.get("/delete", protectorMiddleware, deleteUser);
 
 export default userRouter;

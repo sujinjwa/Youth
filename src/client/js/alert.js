@@ -1,6 +1,6 @@
-const errorMessage = document.querySelector("#errorMessage");
+const popup = document.querySelector("#popup");
 
-if (errorMessage) {
-  let message = errorMessage.innerText;
+if (popup) {
+  let message = popup.innerText;
   alert(message);
 }

@@ -22,7 +22,7 @@ let sendingEmail, sentNumber;
 // 이메일 전송 함수
 const sendMail = async (req, res) => {
   const { email } = req.body;
-  console.log(email);
+  // console.log(email);
 
   const pageTitle = "Join";
   const existingUser = await User.findOne({ email });
@@ -31,12 +31,12 @@ const sendMail = async (req, res) => {
       // 해당 계정으로 카카오톡 혹은 네이버로 이미 회원가입한 유저라면
       return res.status(400).render("users/join", {
         pageTitle,
-        errorMessage: `이미 카카오톡 혹은 네이버로 회원가입한 계정입니다. \n 해당 계정으로 로그인해주세요.`,
+        popup: `이미 카카오톡 혹은 네이버로 회원가입한 계정입니다. \n 해당 계정으로 로그인해주세요.`,
       });
     }
     return res.status(400).render("users/join", {
       pageTitle,
-      errorMessage: "이미 사용중인 이메일입니다.",
+      popup: "이미 사용중인 이메일입니다.",
     });
   }
 
@@ -102,7 +102,11 @@ const sendMail = async (req, res) => {
       }
     });
     sendingEmail = email;
-    return res.render("users/join", { pageTitle: "Join", email });
+    return res.render("users/join", {
+      pageTitle: "Join",
+      email,
+      popup: `해당 이메일 계정으로 인증번호를 전송했습니다.`,
+    });
   }
 
   main();
@@ -142,7 +146,7 @@ export const postJoin = async (req, res) => {
   if (sentNumber != Number(selfAuthenti)) {
     return res.status(400).render("users/join", {
       pageTitle,
-      errorMessage: "인증번호가 일치하지 않습니다",
+      popup: "인증번호가 일치하지 않습니다",
     });
   }
 
@@ -152,14 +156,14 @@ export const postJoin = async (req, res) => {
   if (!regPass.test(password)) {
     return res.status(400).render("users/join", {
       pageTitle,
-      errorMessage: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+      popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
     });
   }
 
   if (password != passwordConfirm) {
     return res.status(400).render("users/join", {
       pageTitle,
-      errorMessage: "비밀번호가 일치하지 않습니다",
+      popup: "비밀번호가 일치하지 않습니다",
     });
   }
 
@@ -191,18 +195,26 @@ export const postJoin = async (req, res) => {
       avatarUrl: "/uploads/avatars/basic_profile.jpg",
       socialOnly: false,
     });
-    return res.redirect("/login");
+    return res.redirect("/welcome");
   } catch (error) {
     console.log(error);
     return res.status(400).render("users/join", {
       pageTitle,
-      errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. "${error._message}"`,
+      popup: `알 수 없는 에러가 발생했습니다. \n자세한 에러는 다음과 같습니다. "${error._message}"`,
     });
   }
 };
 
+export const welcome = (req, res) => {
+  return res.render("users/welcome", {
+    pageTitle: "Finish Join",
+  });
+};
+
 export const getLogin = (req, res) => {
-  return res.render("users/login", { pageTitle: "Login" });
+  return res.render("users/login", {
+    pageTitle: "Login",
+  });
 };
 
 export const postLogin = async (req, res) => {
@@ -235,8 +247,9 @@ export const postLogin = async (req, res) => {
 };
 
 export const logout = (req, res) => {
+  const popup = req.query.popup;
   req.session.destroy();
-  return res.redirect("/");
+  return res.redirect("/?popup=" + popup);
 };
 
 export const startKakaoLogin = (req, res) => {
@@ -496,6 +509,14 @@ export const postEditPW = async (req, res) => {
     });
   }
 
+  let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+  if (!regPass.test(newPassword)) {
+    return res.status(400).render("users/editPW", {
+      pageTitle,
+      newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+    });
+  }
+
   // 새 비밀번호와 새 비밀번호 확인값이 동일한지 확인
   if (newPassword !== newPasswordConfirm) {
     return res.status(400).render("users/editPW", {
@@ -504,21 +525,17 @@ export const postEditPW = async (req, res) => {
     });
   }
 
-  let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
-  if (!regPass.test(password)) {
-    return res.status(400).render("users/editPW", {
-      pageTitle,
-      newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
-    });
-  }
-
   const newPassword2 = await bcrypt.hash(newPassword, 5);
   try {
     await User.findByIdAndUpdate(_id, {
       password: newPassword2,
     });
+
+    const popup = encodeURIComponent(
+      "비밀번호를 변경했습니다. 다시 로그인해주세요."
+    );
     // console.log();
-    return res.redirect("/logout");
+    return res.redirect("/logout?popup=" + popup);
   } catch (error) {
     console.log(error);
     return res.status(400).render("users/editPW", {
@@ -528,12 +545,15 @@ export const postEditPW = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  // 정말 삭제하시겠습니까? 모달 창 추가
   const user = req.session.loggedInUser;
 
   await User.findByIdAndRemove(user._id);
 
   req.session.loggedIn = false;
   req.session.loggedInUser = null;
-  return res.redirect("/");
+
+  const popup = encodeURIComponent(
+    "유쓰계정 탈퇴가 완료되었습니다. \n그동안 유쓰 서비스를 이용해주셔서 감사합니다."
+  );
+  return res.redirect("/?popup=" + popup);
 };

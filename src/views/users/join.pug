@@ -19,8 +19,8 @@ block content
           p 또는
           hr
         // 이 부분을 경고창으로 대체하던지, form에 focus되면 errorMessage 사라지도록! 구현 (css)
-        if errorMessage
-          p#errorMessage #{ errorMessage }
+        if popup
+          p#popup #{ popup }
 
         form(method="POST")
           .email__wrapper

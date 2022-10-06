@@ -16,6 +16,7 @@ import {
   finishKakaoLogin,
   startNaverLogin,
   finishNaverLogin,
+  welcome,
 } from "../controllers/userControllers";
 import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
@@ -30,6 +31,7 @@ globalRouter
   .all(publicOnlyMiddleware)
   .get(getJoin)
   .post(postJoin);
+globalRouter.get("/welcome", welcome);
 globalRouter
   .route("/login")
   .all(publicOnlyMiddleware)
