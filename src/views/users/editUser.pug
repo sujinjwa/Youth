@@ -17,12 +17,12 @@ block content
         form#editUser(method="POST", enctype="multipart/form-data")
           .user__photo 
             input#avatar(type="file", name="avatar")
-            label(for="avatar")
+            label(for="avatar", onclick)
               img(src=`${loggedInUser.avatarUrl}`, alt="")
               span 프로필 변경
           .user__info 
             .info.name
-              label(for="name") 이름
+              label(for="name", onclick) 이름
                 span *
               input#name(
                 type="text",
@@ -31,7 +31,7 @@ block content
                 disabled
               )
             .info.email 
-              label(for="email") 이메일
+              label(for="email", onclick) 이메일
                 span *
               input#email(
                 type="text",
@@ -45,12 +45,12 @@ block content
                   i.fa-solid.fa-circle-exclamation
                   p= editAlert
             .info.phone
-              label(for="phone") 핸드폰 번호
+              label(for="phone", onclick) 핸드폰 번호
               input#phone(type="text", name="phone", value=loggedInUser.phone)
               p * 유쓰 서비스 이용에 필요한 안내를 알림톡으로 알려드립니다.
               p * 사용하고 계신 휴대전화 번호를 정확하게 입력해주세요.
             .info.birth
-              label(for="birth") 생년월일
+              label(for="birth", onclick) 생년월일
               .birth__row 
                 input(
                   type="text",

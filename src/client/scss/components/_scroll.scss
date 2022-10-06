@@ -1,0 +1,17 @@
+body {
+  &::-webkit-scrollbar {
+    // 스크롤바 전체
+    width: 7px;
+    height: 100vh;
+  }
+  &::-webkit-scrollbar-thumb {
+    // 스크롤 막대
+    height: 140px;
+    width: 6px;
+    background-color: $input--placeholder;
+  }
+  &::-webkit-scrollbar-track {
+    // 스크롤 막대 외부
+    width: 7px;
+  }
+}

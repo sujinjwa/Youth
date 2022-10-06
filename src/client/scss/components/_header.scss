@@ -57,10 +57,12 @@ header {
         }
       }
     }
-    .bar {
-      position: fixed;
+    button.bar {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      position: absolute;
       top: 33px;
-      right: 0;
+      right: 23px;
       background: none;
       border: none;
       font-size: 28px;
@@ -73,7 +75,7 @@ header {
   &.change {
     background-color: white;
     height: 70px;
-    border-bottom: solid 2px $youthLightColor;
+    border-bottom: solid 2px $input--border;
     a,
     .bar {
       color: black;

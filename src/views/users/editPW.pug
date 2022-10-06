@@ -15,7 +15,7 @@ block content
       .body
         form#editPW(method="POST")
           .info
-            label(for="oldPassword") 현재 비밀번호
+            label(for="oldPassword", onclick) 현재 비밀번호
             input#oldPassword(
               type="password",
               name="oldPassword",
@@ -26,14 +26,18 @@ block content
                 i.fa-solid.fa-circle-exclamation
                 p= uncorrectError
           .info
-            label(for="newPassword") 새 비밀번호
+            label(for="newPassword", onclick) 새 비밀번호
             input#newPassword(
               type="password",
               name="newPassword",
               placeholder="변경할 비밀번호를 입력해주세요."
             )
+            #error 
+              if newPassError
+                i.fa-solid.fa-circle-exclamation
+                p= newPassError
           .info 
-            label(for="newPasswordConfirm") 새 비밀번호 확인
+            label(for="newPasswordConfirm", onclick) 새 비밀번호 확인
             input#newPasswordConfirm(
               type="password",
               name="newPasswordConfirm",
