@@ -36,6 +36,10 @@
 body {
   // font-family: "Hahmlet", serif;
   font-family: $nanum;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth;
+  overflow: auto !important;
+  height: 100% !important;
 
   &.openModal {
     overflow: hidden;
