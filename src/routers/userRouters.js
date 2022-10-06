@@ -21,7 +21,7 @@ userRouter
   .all(protectorMiddleware)
   .get(getEditPW)
   .post(postEditPW);
-userRouter.get("/beforeDelete", beforeDeleteUser);
+userRouter.get("/beforeDelete", protectorMiddleware, beforeDeleteUser);
 userRouter.get("/delete", protectorMiddleware, deleteUser);
 
 export default userRouter;

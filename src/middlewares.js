@@ -37,7 +37,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
 // 회원 탈퇴 이전에 경고창 띄우는 미들웨어
-export const beforeDeleteUser = (req, res, next) => {
+export const beforeDeleteUser = (req, res) => {
   return res.render("users/beforeDeleteUser", { pageTitle: "DeleteUser" });
   // next();
 };

@@ -156,11 +156,7 @@ export const postJoin = async (req, res) => {
   if (!regPass.test(password)) {
     return res.status(400).render("users/join", {
       pageTitle,
-<<<<<<< HEAD
       popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
-=======
-      errorMessage: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
->>>>>>> 322695c427fff6e1720d0af1df8390c8031987ed
     });
   }
 
@@ -526,14 +522,6 @@ export const postEditPW = async (req, res) => {
     return res.status(400).render("users/editPW", {
       notMatchError:
         "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요.",
-    });
-  }
-
-  let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
-  if (!regPass.test(password)) {
-    return res.status(400).render("users/editPW", {
-      pageTitle,
-      newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
     });
   }
 

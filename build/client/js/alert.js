@@ -1,8 +1,8 @@
 "use strict";
 
-var errorMessage = document.querySelector("#errorMessage");
+var popup = document.querySelector("#popup");
 
-if (errorMessage) {
-  var message = errorMessage.innerText;
+if (popup) {
+  var message = popup.innerText;
   alert(message);
 }

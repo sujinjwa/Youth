@@ -10,8 +10,10 @@ var _express = _interopRequireDefault(require("express"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var home = function home(req, res) {
+  var popup = req.query.popup;
   return res.render("home", {
-    pageTitle: "Home"
+    pageTitle: "Home",
+    popup: popup
   });
 };
 
@@ -32,17 +34,18 @@ var youthkit = function youthkit(req, res) {
 exports.youthkit = youthkit;
 
 var community = function community(req, res) {
-  return res.render("contents/community", {
-    pageTitle: "Community"
-  });
+  var popup = encodeURIComponent("현재 커뮤니티 서비스 개발 중입니다. \n조금만 기다려주세요.");
+  return res.redirect("/?popup=" + popup);
 };
 
 exports.community = community;
 
 var qna = function qna(req, res) {
-  // console.log(req.params);
+  var popup = req.query.popup; // console.log(req.params);
+
   return res.render("contents/qna", {
-    pageTitle: "QnA"
+    pageTitle: "QnA",
+    popup: popup
   });
 };
 
@@ -57,7 +60,8 @@ var detail = function detail(req, res) {
 exports.detail = detail;
 
 var recommend = function recommend(req, res) {
-  return res.render("contents/recommend");
+  var popup = encodeURIComponent("현재 추천콘텐츠 서비스 개발 중입니다. \n조금만 기다려주세요.");
+  return res.redirect("/contents/qna/1?popup=" + popup);
 };
 
 exports.recommend = recommend;

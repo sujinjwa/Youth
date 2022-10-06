@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.upload = exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = void 0;
+exports.upload = exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = exports.beforeDeleteUser = void 0;
 
 var _multer = _interopRequireDefault(require("multer"));
 
@@ -50,6 +50,15 @@ var publicOnlyMiddleware = function publicOnlyMiddleware(req, res, next) {
   } else {
     return res.redirect("/");
   }
-};
+}; // 회원 탈퇴 이전에 경고창 띄우는 미들웨어
+
 
 exports.publicOnlyMiddleware = publicOnlyMiddleware;
+
+var beforeDeleteUser = function beforeDeleteUser(req, res) {
+  return res.render("users/beforeDeleteUser", {
+    pageTitle: "DeleteUser"
+  }); // next();
+};
+
+exports.beforeDeleteUser = beforeDeleteUser;

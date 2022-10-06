@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.startNaverLogin = exports.startKakaoLogin = exports.postLogin = exports.postJoin = exports.postEditPW = exports.postEdit = exports.logout = exports.getLogin = exports.getJoin = exports.getEditPW = exports.getEdit = exports.finishNaverLogin = exports.finishKakaoLogin = exports.deleteUser = void 0;
+exports.welcome = exports.startNaverLogin = exports.startKakaoLogin = exports.postLogin = exports.postJoin = exports.postEditPW = exports.postEdit = exports.logout = exports.getLogin = exports.getJoin = exports.getEditPW = exports.getEdit = exports.finishNaverLogin = exports.finishKakaoLogin = exports.deleteUser = void 0;
 
 var _User = _interopRequireDefault(require("../model/User"));
 
@@ -98,7 +98,8 @@ var sendMail = /*#__PURE__*/function () {
                         sendingEmail = email;
                         return _context.abrupt("return", res.render("users/join", {
                           pageTitle: "Join",
-                          email: email
+                          email: email,
+                          popup: "\uD574\uB2F9 \uC774\uBA54\uC77C \uACC4\uC815\uC73C\uB85C \uC778\uC99D\uBC88\uD638\uB97C \uC804\uC1A1\uD588\uC2B5\uB2C8\uB2E4."
                         }));
 
                       case 7:
@@ -115,39 +116,39 @@ var sendMail = /*#__PURE__*/function () {
               return _main.apply(this, arguments);
             };
 
-            email = req.body.email;
-            console.log(email);
+            email = req.body.email; // console.log(email);
+
             pageTitle = "Join";
-            _context2.next = 7;
+            _context2.next = 6;
             return _User["default"].findOne({
               email: email
             });
 
-          case 7:
+          case 6:
             existingUser = _context2.sent;
 
             if (!existingUser) {
-              _context2.next = 12;
-              break;
-            }
-
-            if (!(existingUser.socialOnly === true)) {
               _context2.next = 11;
               break;
             }
 
+            if (!(existingUser.socialOnly === true)) {
+              _context2.next = 10;
+              break;
+            }
+
             return _context2.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              errorMessage: "\uC774\uBBF8 \uCE74\uCE74\uC624\uD1A1 \uD639\uC740 \uB124\uC774\uBC84\uB85C \uD68C\uC6D0\uAC00\uC785\uD55C \uACC4\uC815\uC785\uB2C8\uB2E4. \n \uD574\uB2F9 \uACC4\uC815\uC73C\uB85C \uB85C\uADF8\uC778\uD574\uC8FC\uC138\uC694."
+              popup: "\uC774\uBBF8 \uCE74\uCE74\uC624\uD1A1 \uD639\uC740 \uB124\uC774\uBC84\uB85C \uD68C\uC6D0\uAC00\uC785\uD55C \uACC4\uC815\uC785\uB2C8\uB2E4. \n \uD574\uB2F9 \uACC4\uC815\uC73C\uB85C \uB85C\uADF8\uC778\uD574\uC8FC\uC138\uC694."
+            }));
+
+          case 10:
+            return _context2.abrupt("return", res.status(400).render("users/join", {
+              pageTitle: pageTitle,
+              popup: "이미 사용중인 이메일입니다."
             }));
 
           case 11:
-            return _context2.abrupt("return", res.status(400).render("users/join", {
-              pageTitle: pageTitle,
-              errorMessage: "이미 사용중인 이메일입니다."
-            }));
-
-          case 12:
             // min ~ max 까지 랜덤으로 숫자 생성하는 함수
             generateRandom = function generateRandom(min, max) {
               var ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -156,7 +157,7 @@ var sendMail = /*#__PURE__*/function () {
 
             main(); // return res.render("users/join", { pageTitle: "Join", email });
 
-          case 14:
+          case 13:
           case "end":
             return _context2.stop();
         }
@@ -203,7 +204,7 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context3.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              errorMessage: "인증번호가 일치하지 않습니다"
+              popup: "인증번호가 일치하지 않습니다"
             }));
 
           case 7:
@@ -218,7 +219,7 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context3.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              errorMessage: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+              popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
             }));
 
           case 10:
@@ -229,7 +230,7 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context3.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              errorMessage: "비밀번호가 일치하지 않습니다"
+              popup: "비밀번호가 일치하지 않습니다"
             }));
 
           case 12:
@@ -251,7 +252,7 @@ var postJoin = /*#__PURE__*/function () {
             });
 
           case 15:
-            return _context3.abrupt("return", res.redirect("/login"));
+            return _context3.abrupt("return", res.redirect("/welcome"));
 
           case 18:
             _context3.prev = 18;
@@ -259,7 +260,7 @@ var postJoin = /*#__PURE__*/function () {
             console.log(_context3.t0);
             return _context3.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              errorMessage: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. \"".concat(_context3.t0._message, "\"")
+              popup: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \n\uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. \"".concat(_context3.t0._message, "\"")
             }));
 
           case 22:
@@ -276,6 +277,14 @@ var postJoin = /*#__PURE__*/function () {
 }();
 
 exports.postJoin = postJoin;
+
+var welcome = function welcome(req, res) {
+  return res.render("users/welcome", {
+    pageTitle: "Finish Join"
+  });
+};
+
+exports.welcome = welcome;
 
 var getLogin = function getLogin(req, res) {
   return res.render("users/login", {
@@ -352,8 +361,9 @@ var postLogin = /*#__PURE__*/function () {
 exports.postLogin = postLogin;
 
 var logout = function logout(req, res) {
+  var popup = req.query.popup;
   req.session.destroy();
-  return res.redirect("/");
+  return res.redirect("/?popup=" + popup);
 };
 
 exports.logout = logout;
@@ -727,7 +737,7 @@ exports.getEditPW = getEditPW;
 
 var postEditPW = /*#__PURE__*/function () {
   var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(req, res) {
-    var pageTitle, _req$session$loggedIn2, _id, password, _req$body4, oldPassword, newPassword, newPasswordConfirm, match, regPass, newPassword2;
+    var pageTitle, _req$session$loggedIn2, _id, password, _req$body4, oldPassword, newPassword, newPasswordConfirm, match, regPass, newPassword2, popup;
 
     return _regeneratorRuntime().wrap(function _callee9$(_context9) {
       while (1) {
@@ -754,26 +764,26 @@ var postEditPW = /*#__PURE__*/function () {
             }));
 
           case 7:
-            if (!(newPassword !== newPasswordConfirm)) {
-              _context9.next = 9;
-              break;
-            }
-
-            return _context9.abrupt("return", res.status(400).render("users/editPW", {
-              notMatchError: "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
-            }));
-
-          case 9:
             regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
 
-            if (regPass.test(password)) {
-              _context9.next = 12;
+            if (regPass.test(newPassword)) {
+              _context9.next = 10;
               break;
             }
 
             return _context9.abrupt("return", res.status(400).render("users/editPW", {
               pageTitle: pageTitle,
               newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+            }));
+
+          case 10:
+            if (!(newPassword !== newPasswordConfirm)) {
+              _context9.next = 12;
+              break;
+            }
+
+            return _context9.abrupt("return", res.status(400).render("users/editPW", {
+              notMatchError: "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
             }));
 
           case 12:
@@ -789,22 +799,24 @@ var postEditPW = /*#__PURE__*/function () {
             });
 
           case 18:
-            return _context9.abrupt("return", res.redirect("/logout"));
+            popup = encodeURIComponent("비밀번호를 변경했습니다. 다시 로그인해주세요."); // console.log();
 
-          case 21:
-            _context9.prev = 21;
+            return _context9.abrupt("return", res.redirect("/logout?popup=" + popup));
+
+          case 22:
+            _context9.prev = 22;
             _context9.t0 = _context9["catch"](15);
             console.log(_context9.t0);
             return _context9.abrupt("return", res.status(400).render("users/editPW", {
               errorMessage: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. ".concat(_context9.t0._message)
             }));
 
-          case 25:
+          case 26:
           case "end":
             return _context9.stop();
         }
       }
-    }, _callee9, null, [[15, 21]]);
+    }, _callee9, null, [[15, 22]]);
   }));
 
   return function postEditPW(_x15, _x16) {
@@ -816,12 +828,11 @@ exports.postEditPW = postEditPW;
 
 var deleteUser = /*#__PURE__*/function () {
   var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(req, res) {
-    var user;
+    var user, popup;
     return _regeneratorRuntime().wrap(function _callee10$(_context10) {
       while (1) {
         switch (_context10.prev = _context10.next) {
           case 0:
-            // 정말 삭제하시겠습니까? 모달 창 추가
             user = req.session.loggedInUser;
             _context10.next = 3;
             return _User["default"].findByIdAndRemove(user._id);
@@ -829,9 +840,10 @@ var deleteUser = /*#__PURE__*/function () {
           case 3:
             req.session.loggedIn = false;
             req.session.loggedInUser = null;
-            return _context10.abrupt("return", res.redirect("/"));
+            popup = encodeURIComponent("유쓰계정 탈퇴가 완료되었습니다. \n그동안 유쓰 서비스를 이용해주셔서 감사합니다.");
+            return _context10.abrupt("return", res.redirect("/?popup=" + popup));
 
-          case 6:
+          case 7:
           case "end":
             return _context10.stop();
         }

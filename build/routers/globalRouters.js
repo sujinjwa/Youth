@@ -22,6 +22,7 @@ globalRouter.get("/about", _contentControllers.about);
 globalRouter.get("/youthkit", _contentControllers.youthkit);
 globalRouter.get("/community", _middlewares.protectorMiddleware, _contentControllers.community);
 globalRouter.route("/join").all(_middlewares.publicOnlyMiddleware).get(_userControllers.getJoin).post(_userControllers.postJoin);
+globalRouter.get("/welcome", _userControllers.welcome);
 globalRouter.route("/login").all(_middlewares.publicOnlyMiddleware).get(_userControllers.getLogin).post(_userControllers.postLogin);
 globalRouter.get("/login/kakao/start", _middlewares.publicOnlyMiddleware, _userControllers.startKakaoLogin);
 globalRouter.get("/login/kakao/finish", _middlewares.publicOnlyMiddleware, _userControllers.finishKakaoLogin);
