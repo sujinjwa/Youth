@@ -55,15 +55,19 @@
   }
 
   section.blog {
+<<<<<<< HEAD
     h2.blog__title {
       font-size: 25px;
     }
+=======
+>>>>>>> 322695c427fff6e1720d0af1df8390c8031987ed
     article.blog__post {
       width: 100%;
       display: flex;
       flex-direction: column;
       .post__content {
         order: 1;
+<<<<<<< HEAD
         padding: 20px;
         h2.post__title {
           margin-bottom: 12px;
@@ -84,6 +88,15 @@
         width: 100%;
         img {
           height: 60vh;
+=======
+        padding: 30px;
+        h2.post__title {
+          margin-bottom: 20px;
+          font-size: 25px;
+        }
+        span.post__desc {
+          margin-bottom: 20px;
+>>>>>>> 322695c427fff6e1720d0af1df8390c8031987ed
         }
       }
     }
