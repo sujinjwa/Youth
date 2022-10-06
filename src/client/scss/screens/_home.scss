@@ -18,7 +18,7 @@
   button {
     position: fixed;
     top: 33px;
-    right: 0;
+    right: 23px;
     background: none;
     border: none;
     font-size: 28px;
@@ -137,14 +137,14 @@ main {
       // visibility: hidden;
     }
     h1 {
-      font-family: $english;
+      // font-family: $english;
       color: $youthColor;
-      font-size: 37px;
+      font-size: 33px;
       font-weight: 600;
       margin-bottom: 50px;
     }
     img {
-      width: 40%;
+      width: 35%;
       object-fit: cover;
       margin-bottom: 50px;
     }
@@ -154,13 +154,13 @@ main {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 21px;
+      font-size: 18px;
       line-height: 1.7;
     }
   }
 }
 
-.blog {
+section.blog {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -179,7 +179,7 @@ main {
     font-family: $english;
     font-weight: 600;
   }
-  .blog__post {
+  article.blog__post {
     background-color: rgba(0, 0, 0, 0.3);
     width: 80%;
     margin: 0 auto;
