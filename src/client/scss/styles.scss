@@ -46,7 +46,14 @@ body {
 }
 
 // 모바일에서 style 깨지지 않도록
+<<<<<<< HEAD
 // button,
 // html [type="button"] {
 //   -webkit-appearance: none;
 // }
+=======
+button,
+html [type="button"] {
+  -webkit-appearance: none;
+}
+>>>>>>> 8fea5ec5918502aba45c553a67b7801b5cb36c2c
