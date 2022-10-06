@@ -14,6 +14,7 @@
 @import "./components/header";
 @import "./components/footer";
 @import "./components/qna";
+@import "./components/scroll";
 
 // screens
 @import "./screens/home";
@@ -34,11 +35,18 @@
 
 body {
   // font-family: "Hahmlet", serif;
-  font-family: $nanum;
-
+  font-family: $gothic;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth;
   &.openModal {
     overflow: hidden;
     // filter: blur(5px);
     // z-index: -4;
   }
 }
+
+// 모바일에서 style 깨지지 않도록
+// button,
+// html [type="button"] {
+//   -webkit-appearance: none;
+// }

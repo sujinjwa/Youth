@@ -18,6 +18,7 @@
       }
       .bar {
         top: 10px;
+        right: 10px;
         font-size: 27px;
       }
     }
@@ -27,6 +28,7 @@
     button,
     button.moveUp {
       top: 10px;
+      right: 10px;
       // right: 15px;
       font-size: 27px;
     }
@@ -52,6 +54,72 @@
     }
   }
 
+  section.blog {
+    article.blog__post {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .post__content {
+        order: 1;
+        padding: 30px;
+        h2.post__title {
+          margin-bottom: 20px;
+          font-size: 25px;
+        }
+        span.post__desc {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  // .blog {
+  //   .blog__title {
+  //     font-size: 27px;
+  //   }
+  //   .blog__post {
+  //     width: 100%;
+  //     margin-bottom: 30px;
+  //     display: grid;
+  //     grid-template-columns: 100%;
+  //     grid-template-rows: 3fr 1fr;
+  //     &:last-child {
+  //       margin-bottom: 0;
+  //     }
+  //     // &:nth-child(2) {
+  //     //   .post_content {
+  //     //     order: 1;
+  //     //   }
+  //     // }
+  //     .post__content {
+  //       // order: 1;
+  //       padding: 20px;
+  //       .post__title {
+  //         font-size: 14px;
+  //         margin-bottom: 1.4em;
+  //       }
+  //       h4 {
+  //         font-size: 20px;
+  //       }
+  //       .post__desc {
+  //         width: 100%;
+  //         font-size: 15px;
+  //         margin-bottom: 1.5em;
+  //       }
+  //       .more {
+  //         font-size: 15px;
+  //       }
+  //     }
+  //     a {
+  //       img {
+  //         width: 100%;
+  //         height: 100%;
+  //         object-fit: cover;
+  //       }
+  //     }
+  //   }
+  // }
+
   main {
     .coreMessage {
       h1 {
@@ -67,6 +135,7 @@
         font-size: 0.7em;
       }
     }
+    // qna 페이지
     &#contents {
       .contents__hero {
         margin-top: 50px;
@@ -357,53 +426,6 @@
           .info {
             width: 100%;
           }
-        }
-      }
-    }
-  }
-
-  .blog {
-    .blog__title {
-      font-size: 27px;
-    }
-    .blog__post {
-      width: 100%;
-      margin-bottom: 30px;
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: 3fr 1fr;
-      &:last-child {
-        margin-bottom: 0;
-      }
-      // &:nth-child(2) {
-      //   .post_content {
-      //     order: 1;
-      //   }
-      // }
-      .post__content {
-        // order: 1;
-        padding: 20px;
-        .post__title {
-          font-size: 14px;
-          margin-bottom: 1.4em;
-        }
-        h4 {
-          font-size: 20px;
-        }
-        .post__desc {
-          width: 100%;
-          font-size: 15px;
-          margin-bottom: 1.5em;
-        }
-        .more {
-          font-size: 15px;
-        }
-      }
-      a {
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
         }
       }
     }
