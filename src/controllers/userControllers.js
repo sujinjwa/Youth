@@ -2,6 +2,7 @@ import User from "../model/User";
 import fetch from "cross-fetch";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
+import querystring from "querystring";
 // import { smtpTransport } from "../../config/email";
 
 export const getJoin = (req, res) => {
@@ -246,6 +247,38 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
+export const getFindID = (req, res) => {
+  return res.render("users/findID", { pageTitle: "Find ID" });
+};
+
+export const postFindID = async (req, res) => {
+  const { name, year, month, date } = req.body;
+  //console.log(name, year, month, date);
+
+  const user = await User.findOne({ name, year, month, date });
+  // console.log(user);
+
+  const query = querystring.stringify({
+    name: user.name,
+    email: user.email,
+  });
+  return res.redirect("/login/showID?" + query);
+};
+
+export const showID = (req, res) => {
+  // const user = req.session.foundUser;
+  // req.session.foundUser = null;
+  const { name, email } = req.query;
+  return res.render("users/showID", { name, email, pageTitle: "Show ID" });
+};
+
+export const getFindPW = (req, res) => {
+  return res.render("users/findPW", { pageTitle: "Find Password" });
+};
+
+export const postFindPW = (req, res) => {
+  return res.redirect("/login/findPW");
+};
 export const logout = (req, res) => {
   const popup = req.query.popup;
   req.session.destroy();

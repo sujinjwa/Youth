@@ -1,0 +1,26 @@
+extends ../base.pug 
+
+block content 
+    main#findID 
+            .wrapper 
+                .box
+                    .find-box 
+                        h1 아이디 / 비밀번호 찾기
+
+                    .category-box 
+                        a(href="/login/findID")
+                            ul.find-id-btn
+                                span 아이디 찾기
+                        a(href="/login/findPW")
+                            ul.find-pw-btn
+                                span 비밀번호 찾기
+                    
+                    .guide-box 
+                        h4 입력한 정보로 조회된 #{name}님의 아이디입니다.
+                    
+                    .found-ID 
+                        h1 #{email}
+
+                    .links
+                        a#login(href="/login") 로그인 하러 가기
+                        a#findID(href="/login/findID") 다시 찾기                

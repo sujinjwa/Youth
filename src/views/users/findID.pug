@@ -1,0 +1,34 @@
+extends ../base.pug 
+
+block content 
+    main#findID 
+            .wrapper 
+                .box
+                    .find-box 
+                        h1 아이디 / 비밀번호 찾기
+
+                    .category-box 
+                        a(href="/login/findID")
+                            ul.find-id-btn
+                                span 아이디 찾기
+                        a(href="/login/findPW")
+                            ul.find-pw-btn
+                                span 비밀번호 찾기
+                    
+                    .guide-box 
+                        h4 등록된 이름/생년월일로 아이디 찾기
+                        p 아래 정보를 입력해주세요.
+                    
+                    .form-box 
+                        form(method="POST")
+                            .name-box
+                                label(for="name") 이름
+                                input#name(type="text", name="name", required, placeholder="이름", minlength="2", maxlength="30")
+                            .birth-box 
+                                label(for="year") 생년월일
+                                div 
+                                    input#year(type="text", name="year", required, placeholder="생년")
+                                    input#month(type="text", name="month", required, placeholder="월", minlength="2")
+                                    input#date(type="text", name="date", required, placeholder="일", minlength="2")
+                            .find-btn 
+                                input(type="submit", value="아이디 찾기")

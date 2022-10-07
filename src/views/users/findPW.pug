@@ -1,0 +1,36 @@
+extends ../base.pug 
+
+block content 
+    main#findID 
+            .wrapper 
+                .box
+                    .find-box 
+                        h1 아이디 / 비밀번호 찾기
+
+                    .category-box 
+                        a(href="/login/findID")
+                            ul.find-id-btn
+                                span 아이디 찾기
+                        a(href="/login/findPW")
+                            ul.find-pw-btn
+                                span 비밀번호 찾기
+                    
+                    .guide-box 
+                        h4 등록된 이메일로 비밀번호 찾기
+                        p 가입 당시 입력한 이메일을 통해 인증 후 새 비밀번호를 등록해주세요.
+                    
+                    .form-box 
+                        form(method="POST")
+                            .email-box
+                                label(for="email") 이메일
+                                input#email(type="text", name="email", required, placeholder="이메일")
+                            .certifi-number-box
+                                label(for="certification") 인증번호
+                                input#certification(type="text", name="certifi-number", place)
+                                input(type="submit", value="인증번호 전송")
+                        form(method="POST")
+                            .name-box
+                                label(for="name") 이름
+                                input#name(type="text", name="name", required, placeholder="이름", minlength="2", maxlength="30")
+                            .find-btn 
+                                input(type="submit", value="다음")

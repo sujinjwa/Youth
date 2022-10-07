@@ -7,10 +7,14 @@ import {
 } from "../controllers/contentControllers";
 import {
   getJoin,
-  sendMail,
   postJoin,
   getLogin,
   postLogin,
+  getFindID,
+  postFindID,
+  showID,
+  getFindPW,
+  postFindPW,
   logout,
   startKakaoLogin,
   finishKakaoLogin,
@@ -42,7 +46,17 @@ globalRouter.get("/login/kakao/finish", publicOnlyMiddleware, finishKakaoLogin);
 globalRouter.get("/login/naver/start", publicOnlyMiddleware, startNaverLogin);
 globalRouter.get("/login/naver/finish", publicOnlyMiddleware, finishNaverLogin);
 globalRouter.get("/logout", protectorMiddleware, logout);
-// globalRouter.get("/login/findID", findID);
+globalRouter
+  .route("/login/findID")
+  .all(publicOnlyMiddleware)
+  .get(getFindID)
+  .post(postFindID);
+globalRouter.get("/login/showID", publicOnlyMiddleware, showID);
+globalRouter
+  .route("/login/findPW")
+  .all(publicOnlyMiddleware)
+  .get(getFindPW)
+  .post(postFindPW);
 // globalRouter.get("/login/findPW", findPW);
 
 export default globalRouter;

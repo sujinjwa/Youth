@@ -1,0 +1,131 @@
+main#findID {
+  height: 100vh;
+  .wrapper {
+    margin-top: 85px;
+    height: 100%;
+    .box {
+      width: 600px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .find-box {
+        h1 {
+          font-size: 37px;
+          margin-bottom: 48px;
+        }
+      }
+      .category-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        a {
+          width: 50%;
+          ul {
+            text-align: center;
+            background-color: $input--placeholder--bg;
+            padding: 18px 0px;
+            font-weight: 600;
+            font-size: 17px;
+            &.find-id-btn {
+              background-color: $youthDarkColor;
+              border-bottom: 6px solid $youthDarkColor;
+              span {
+                color: white;
+              }
+            }
+            &.find-pw-btn {
+              border: 1px solid $input--placeholder;
+              border-bottom: 5px solid $youthDarkColor;
+              border-left: none;
+              span {
+                color: $input--placeholder;
+              }
+            }
+          }
+        }
+      }
+      .guide-box {
+        padding: 30px 0px;
+        margin-top: 8px;
+        text-align: center;
+        h4 {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 13px;
+        }
+        p {
+          font-size: 14px;
+        }
+      }
+      .form-box {
+        width: 100%;
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          input {
+            border: 1px solid $input--border;
+            // width: 80%;
+            margin: 8px 0px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            &::placeholder {
+              color: $input--placeholder;
+            }
+            &:focus {
+              outline: none;
+            }
+            &#name {
+              width: 70%;
+            }
+            &#year {
+              width: 40%;
+            }
+            &#month,
+            &#date {
+              margin-left: 8px;
+              width: 30%;
+            }
+          }
+          .name-box {
+            label {
+              width: 20%;
+            }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .birth-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // width: 100%;
+            margin-bottom: 23px;
+            label {
+              width: 20%;
+            }
+            div {
+              width: 70%;
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
+          .find-btn {
+            input {
+              width: 100%;
+              background-color: $youthDarkColor;
+              color: white;
+              font-weight: 600;
+              padding: 16px 14px;
+              cursor: pointer;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
