@@ -15,12 +15,17 @@ block content
                             ul.find-pw-btn
                                 span 비밀번호 찾기
                     
-                    .guide-box 
-                        h4 입력한 정보로 조회된 #{name}님의 아이디입니다.
+                    if !name
+                        .guide-box 
+                            h4 입력한 정보로 조회된 사용자가 없습니다. 
                     
-                    .found-ID 
-                        h1 #{email}
-
+                    else
+                        .guide-box 
+                            h4 입력한 정보로 조회된 #{name}님의 아이디입니다.
+                        
+                        .found-ID 
+                            h1 #{email}
+                    
                     .links
                         a#login(href="/login") 로그인 하러 가기
                         a#findID(href="/login/findID") 다시 찾기                

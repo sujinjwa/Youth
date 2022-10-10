@@ -256,9 +256,16 @@ export const postFindID = async (req, res) => {
   //console.log(name, year, month, date);
 
   const user = await User.findOne({ name, year, month, date });
-  // console.log(user);
+  console.log(user);
 
-  const query = querystring.stringify({
+  let query;
+  // 조회되는 유저가 없는 경우
+  if (user === null) {
+    query = querystring.stringify({ name: null, email: null });
+    return res.redirect("/login/showID?" + query);
+  }
+
+  query = querystring.stringify({
     name: user.name,
     email: user.email,
   });
