@@ -1,4 +1,4 @@
-main#findID {
+main#find-ID-or-PW {
   height: 100vh;
   .wrapper {
     margin-top: 85px;
@@ -29,14 +29,14 @@ main#findID {
             padding: 18px 0px;
             font-weight: 600;
             font-size: 17px;
-            &.find-id-btn {
+            &.find-id-btn.in-findID-page {
               background-color: $youthDarkColor;
               border-bottom: 6px solid $youthDarkColor;
               span {
                 color: white;
               }
             }
-            &.find-pw-btn {
+            &.find-pw-btn.in-findID-page {
               border: 1px solid $input--placeholder;
               border-bottom: 5px solid $youthDarkColor;
               border-left: none;
@@ -44,6 +44,36 @@ main#findID {
                 color: $input--placeholder;
               }
             }
+            &.find-id-btn.in-findPW-page {
+              border: 1px solid $input--placeholder;
+              border-bottom: 5px solid $youthDarkColor;
+              border-right: none;
+              span {
+                color: $input--placeholder;
+              }
+            }
+            &.find-pw-btn.in-findPW-page {
+              background-color: $youthDarkColor;
+              border-bottom: 6px solid $youthDarkColor;
+              span {
+                color: white;
+              }
+            }
+          }
+        }
+      }
+      .info {
+        #error {
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          color: $red;
+          i {
+            margin-top: 7px;
+            margin-right: 5px;
+          }
+          p {
+            margin-top: 7px;
           }
         }
       }

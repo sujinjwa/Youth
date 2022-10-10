@@ -5,25 +5,18 @@ import nodemailer from "nodemailer";
 import querystring from "querystring";
 // import { smtpTransport } from "../../config/email";
 
-export const getJoin = (req, res) => {
-  // let location;
-
-  // if (typeof document !== "undefined") {
-  //   location = document.location;
-  // }
-  // const emailBtn = location.querySelector(".send__email");
-
-  // emailBtn.addEventListener("click", main);
-
-  return res.render("users/join", { pageTitle: "Join" });
+// min ~ max 까지 랜덤으로 숫자 생성하는 함수
+const generateRandom = (min, max) => {
+  let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  return ranNum;
 };
 
+// 전송한 이메일과 인증번호 확인하기 위한 변수
 let sendingEmail, sentNumber;
 
 // 이메일 전송 함수
-const sendMail = async (req, res) => {
+const sendMailForJoin = async (req, res) => {
   const { email } = req.body;
-  // console.log(email);
 
   const pageTitle = "Join";
   const existingUser = await User.findOne({ email });
@@ -40,12 +33,6 @@ const sendMail = async (req, res) => {
       popup: "이미 사용중인 이메일입니다.",
     });
   }
-
-  // min ~ max 까지 랜덤으로 숫자 생성하는 함수
-  const generateRandom = (min, max) => {
-    let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    return ranNum;
-  };
 
   async function main() {
     let number = generateRandom(111111, 999999); // 인증번호
@@ -115,6 +102,86 @@ const sendMail = async (req, res) => {
   // return res.render("users/join", { pageTitle: "Join", email });
 };
 
+const sendMailForFindPW = async (req, res) => {
+  const { email } = req.body;
+
+  const existingUser = await User.exists({ email });
+  if (!existingUser) {
+    return res.status(400).render("users/findPW", {
+      pageTitle: "Find Password",
+      popup: "가입된 계정이 아닙니다.",
+    });
+  }
+
+  async function main() {
+    let number = generateRandom(111111, 999999);
+    sentNumber = number;
+
+    let transporter = nodemailer.createTransport({
+      server: "naver",
+      host: "smtp.naver.com",
+      port: 587,
+      auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.NODEMAILER_USER,
+      to: email,
+      subject: "[유언을쓰다] 이메일 인증 안내입니다.",
+      html: `<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
+                  <div style="display:flex; align-items:center; margin: 20px">
+                    <img src="https://tumblbug-upi.imgix.net/330fc16f-de5c-4d76-bbeb-a477519c3f29.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=200&mask=ellipse&w=200&s=4a832561eefefc964968a6ea17e7fc24" style="width:60px" alt="" />
+                    <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
+                  </div>
+                  <hr style="width:100%; margin-bottom: 30px" />
+                  <h3>비밀번호 재설정을 위해 사용자 확인을 진행합니다.</h3>
+                
+                  <h1 style="font-size:50px">${number}</h1>
+                
+                  <p>비밀번호 찾기 페이지로 돌아가 인증키를 직접 입력하시거나</p>
+                  <p>인증키를 복사 후 붙여넣기하여 비밀번호 재설정을 진행해주시기 바랍니다.</p>
+
+                  <hr style="width:100%; margin-top: 30px" />
+                  <p style="margin-top: 10px">이 메일은 발신 전용으로 회신이 되지 않습니다.</p>
+                  <p>궁금하신 사항은 nasujin744@naver.com로 문의해 주시기 바랍니다.</p>
+              </div>`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("성공적으로 이메일을 전송했습니다.", info.response);
+        transporter.close();
+      }
+    });
+    sendingEmail = email;
+    return res.render("users/findPW", {
+      pageTitle: "Find Password",
+      email,
+      popup: "해당 이메일 계정으로 인증번호를 전송했습니다.",
+    });
+  }
+
+  main();
+};
+
+export const getJoin = (req, res) => {
+  // let location;
+
+  // if (typeof document !== "undefined") {
+  //   location = document.location;
+  // }
+  // const emailBtn = location.querySelector(".send__email");
+
+  // emailBtn.addEventListener("click", main);
+
+  return res.render("users/join", { pageTitle: "Join" });
+};
+
 export const postJoin = async (req, res) => {
   let {
     selfAuthenti,
@@ -133,7 +200,7 @@ export const postJoin = async (req, res) => {
   //if ((!name && email) || (!password && email) || (!selfAuthenti && email)) {
   //if (email || !(email === undefined)) {
   if (email) {
-    sendMail(req, res);
+    sendMailForJoin(req, res);
     return; // 이걸 해줘야 되구나...
     // return res.render("users/join", { pageTitle: "Join", email });
   }
@@ -147,7 +214,7 @@ export const postJoin = async (req, res) => {
   if (sentNumber != Number(selfAuthenti)) {
     return res.status(400).render("users/join", {
       pageTitle,
-      popup: "인증번호가 일치하지 않습니다",
+      popup: "인증번호가 일치하지 않습니다.",
     });
   }
 
@@ -213,8 +280,10 @@ export const welcome = (req, res) => {
 };
 
 export const getLogin = (req, res) => {
+  const popup = req.query.popup;
   return res.render("users/login", {
     pageTitle: "Login",
+    popup,
   });
 };
 
@@ -256,9 +325,16 @@ export const postFindID = async (req, res) => {
   //console.log(name, year, month, date);
 
   const user = await User.findOne({ name, year, month, date });
-  // console.log(user);
+  console.log(user);
 
-  const query = querystring.stringify({
+  let query;
+  // 조회되는 유저가 없는 경우
+  if (user === null) {
+    query = querystring.stringify({ name: null, email: null });
+    return res.redirect("/login/showID?" + query);
+  }
+
+  query = querystring.stringify({
     name: user.name,
     email: user.email,
   });
@@ -276,11 +352,82 @@ export const getFindPW = (req, res) => {
   return res.render("users/findPW", { pageTitle: "Find Password" });
 };
 
-export const postFindPW = (req, res) => {
-  return res.redirect("/login/findPW");
+export const postFindPW = async (req, res) => {
+  let { email, selfAuthenti, name, newPassword, newPasswordConfirm } = req.body;
+
+  if (email) {
+    sendMailForFindPW(req, res);
+    return;
+  }
+
+  const pageTitle = "Find Password";
+
+  if (sentNumber != Number(selfAuthenti)) {
+    return res.status(400).render("users/findPW", {
+      pageTitle,
+      popup: "인증번호가 일치하지 않습니다.",
+      email: sendingEmail,
+    });
+  }
+
+  const existingUser = await User.findOne({ sendingEmail, name });
+  if (!existingUser) {
+    return res.status(400).render("users/findPW", {
+      pageTitle,
+      popup: "입력한 정보로 조회된 회원을 찾을 수 없습니다.",
+      email: sendingEmail,
+      selfAuthenti,
+      name,
+    });
+  }
+
+  let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+  if (!regPass.test(newPassword)) {
+    return res.status(400).render("users/findPW", {
+      pageTitle,
+      newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+      email: sendingEmail,
+      selfAuthenti,
+      name,
+    });
+  }
+
+  // 새 비밀번호와 새 비밀번호 확인값이 동일한지 확인
+  if (newPassword !== newPasswordConfirm) {
+    return res.status(400).render("users/findPW", {
+      notMatchError:
+        "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요.",
+      email: sendingEmail,
+      selfAuthenti,
+      name,
+    });
+  }
+
+  const newPassword2 = await bcrypt.hash(newPassword, 5);
+  try {
+    await User.findByIdAndUpdate(existingUser._id, {
+      password: newPassword2,
+    });
+
+    const popup = encodeURIComponent(
+      "비밀번호를 변경했습니다. 변경된 비밀번호로 로그인해주세요."
+    );
+
+    return res.redirect("/login?popup=" + popup);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).render("users/findPW", {
+      errorMessage: `알 수 없는 에러가 발생했습니다. 자세한 에러는 다음과 같습니다. ${error._message}`,
+    });
+  }
 };
+
 export const logout = (req, res) => {
-  const popup = req.query.popup;
+  let popup = req.query.popup; // 비밀번호 변경한 경우
+  if (!popup) {
+    // 그냥 로그아웃한 경우
+    popup = "로그아웃되었습니다.";
+  }
   req.session.destroy();
   return res.redirect("/?popup=" + popup);
 };
@@ -456,14 +603,14 @@ export const finishNaverLogin = async (req, res) => {
   }
 };
 
-export const getEdit = async (req, res) => {
+export const getEditUser = async (req, res) => {
   //const user = await User.findOne({ email: req.session.loggedInUser.email });
   return res.render("users/editUser", {
     pageTitle: "Profile",
   });
 };
 
-export const postEdit = async (req, res) => {
+export const postEditUser = async (req, res) => {
   req.session.editAlert = null;
   const {
     session: {

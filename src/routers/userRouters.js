@@ -1,7 +1,7 @@
 import express from "express";
 import {
-  getEdit,
-  postEdit,
+  getEditUser,
+  postEditUser,
   getEditPW,
   postEditPW,
   deleteUser,
@@ -14,8 +14,8 @@ const userRouter = express.Router();
 userRouter
   .route("/edit")
   .all(protectorMiddleware)
-  .get(getEdit)
-  .post(upload.single("avatar"), postEdit);
+  .get(getEditUser)
+  .post(upload.single("avatar"), postEditUser);
 userRouter
   .route("/editPW")
   .all(protectorMiddleware)

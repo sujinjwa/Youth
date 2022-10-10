@@ -3,6 +3,8 @@ extends ../base.pug
 block content
   main#login 
     .wrapper
+      if popup 
+        p#popup #{popup}
       .login__box 
         h1 로그인
 
