@@ -1,7 +1,7 @@
 extends ../base.pug 
 
 block content 
-    main#findID 
+    main#find-ID-or-PW.showID
             .wrapper 
                 .box
                     .find-box 
@@ -9,10 +9,10 @@ block content
 
                     .category-box 
                         a(href="/login/findID")
-                            ul.find-id-btn
+                            ul.find-id-btn.in-findID-page
                                 span 아이디 찾기
                         a(href="/login/findPW")
-                            ul.find-pw-btn
+                            ul.find-pw-btn.in-findID-page
                                 span 비밀번호 찾기
                     
                     if !name

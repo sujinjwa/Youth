@@ -28,8 +28,10 @@ globalRouter.get("/login/kakao/start", _middlewares.publicOnlyMiddleware, _userC
 globalRouter.get("/login/kakao/finish", _middlewares.publicOnlyMiddleware, _userControllers.finishKakaoLogin);
 globalRouter.get("/login/naver/start", _middlewares.publicOnlyMiddleware, _userControllers.startNaverLogin);
 globalRouter.get("/login/naver/finish", _middlewares.publicOnlyMiddleware, _userControllers.finishNaverLogin);
-globalRouter.get("/logout", _middlewares.protectorMiddleware, _userControllers.logout); // globalRouter.get("/login/findID", findID);
-// globalRouter.get("/login/findPW", findPW);
+globalRouter.get("/logout", _middlewares.protectorMiddleware, _userControllers.logout);
+globalRouter.route("/login/findID").all(_middlewares.publicOnlyMiddleware).get(_userControllers.getFindID).post(_userControllers.postFindID);
+globalRouter.get("/login/showID", _middlewares.publicOnlyMiddleware, _userControllers.showID);
+globalRouter.route("/login/findPW").all(_middlewares.publicOnlyMiddleware).get(_userControllers.getFindPW).post(_userControllers.postFindPW); // globalRouter.get("/login/findPW", findPW);
 
 var _default = globalRouter;
 exports["default"] = _default;
