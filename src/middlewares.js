@@ -11,7 +11,7 @@ export const localsMiddleware = (req, res, next) => {
 };
 
 const s3 = new S3Client({
-  region: "a-northeast-2",
+  region: "ap-northeast-2",
   credentials: {
     accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET,

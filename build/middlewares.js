@@ -23,7 +23,7 @@ var localsMiddleware = function localsMiddleware(req, res, next) {
 
 exports.localsMiddleware = localsMiddleware;
 var s3 = new _clientS.S3Client({
-  region: "a-northeast-2",
+  region: "ap-northeast-2",
   credentials: {
     accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET

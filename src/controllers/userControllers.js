@@ -248,8 +248,6 @@ export const postJoin = async (req, res) => {
   //   });
   // }
 
-  const isHeroku = process.env.NODE_ENV === "production";
-
   try {
     await User.create({
       name,
@@ -262,9 +260,7 @@ export const postJoin = async (req, res) => {
         month,
         date,
       },
-      avatarUrl: isHeroku
-        ? "uploads/avatars/basic_profile.jpg"
-        : "/uploads/avatars/basic_profile.jpg",
+      avatarUrl: "/uploads/avatars/basic_profile.jpg",
       socialOnly: false,
     });
     return res.redirect("/welcome");
@@ -662,7 +658,11 @@ export const postEditUser = async (req, res) => {
         month,
         date,
       },
-      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
+      avatarUrl: file
+        ? isHeroku
+          ? file.location
+          : "/" + file.path
+        : avatarUrl,
     },
     { new: true }
   );
