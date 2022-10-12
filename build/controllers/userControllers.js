@@ -346,7 +346,7 @@ var postJoin = /*#__PURE__*/function () {
                 month: month,
                 date: date
               },
-              avatarUrl: "/uploads/avatars/basic_profile.jpg",
+              avatarUrl: file ? file.location : "/uploads/avatars/basic_profile.jpg",
               socialOnly: false
             });
 
@@ -962,7 +962,7 @@ exports.getEditUser = getEditUser;
 
 var postEditUser = /*#__PURE__*/function () {
   var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(req, res) {
-    var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, updatedUser;
+    var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, isHeroku, updatedUser;
 
     return _regeneratorRuntime().wrap(function _callee12$(_context12) {
       while (1) {
@@ -1000,7 +1000,8 @@ var postEditUser = /*#__PURE__*/function () {
             }));
 
           case 10:
-            _context12.next = 12;
+            isHeroku = process.env.NODE_ENV === "production";
+            _context12.next = 13;
             return _User["default"].findByIdAndUpdate(_id, {
               name: name,
               email: email,
@@ -1010,12 +1011,12 @@ var postEditUser = /*#__PURE__*/function () {
                 month: month,
                 date: date
               },
-              avatarUrl: file ? "/" + file.path : avatarUrl
+              avatarUrl: file ? isHeroku ? file.location : file.path : avatarUrl
             }, {
               "new": true
             });
 
-          case 12:
+          case 13:
             updatedUser = _context12.sent;
             // console.log(req.file.path);
             // console.log("updateUser: ", updatedUser);
@@ -1023,7 +1024,7 @@ var postEditUser = /*#__PURE__*/function () {
             req.session.loggedInUser = updatedUser;
             return _context12.abrupt("return", res.redirect("/users/edit"));
 
-          case 15:
+          case 16:
           case "end":
             return _context12.stop();
         }

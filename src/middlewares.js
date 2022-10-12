@@ -1,21 +1,36 @@
+import { S3Client } from "@aws-sdk/client-s3";
 import multer from "multer";
-
-export const upload = multer({ dest: "uploads/avatars/" });
+import multerS3 from "multer-s3";
 
 // 모든 템플릿에서 사용 가능한 전역 변수 선언
 export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
-  // res.locals.loggedIn = false;
   res.locals.loggedInUser = req.session.loggedInUser;
-  // res.locals.errorMessage = req.session.errorMessage;
-  // req.session.errorMessage = null;
-  // res.locals.errorMessage = null;
-  //console.log(res.locals.loggedInUser);
-  //console.log(res.locals.loggedIn);s
-  //console.log(req.session);
-  // console.log(req.session.loggedInUser);
+  res.locals.isHeroku = isHeroku;
   next();
 };
+
+const s3 = new S3Client({
+  region: "a-northeast-2",
+  credentials: {
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET,
+  },
+});
+
+const s3ImageUploader = multerS3({
+  s3: s3,
+  bucket: "writeyouth",
+  Key: "images/",
+  acl: "public-read",
+});
+
+const isHeroku = process.env.NODE_ENV === "production";
+
+export const avatarUpload = multer({
+  dest: "uploads/avatars/",
+  storage: isHeroku ? s3ImageUploader : undefined,
+});
 
 // 로그인되지 않은 유저 차단하는 미들웨어
 export const protectorMiddleware = (req, res, next) => {

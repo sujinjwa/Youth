@@ -260,7 +260,7 @@ export const postJoin = async (req, res) => {
         month,
         date,
       },
-      avatarUrl: "/uploads/avatars/basic_profile.jpg",
+      avatarUrl: file ? file.location : "/uploads/avatars/basic_profile.jpg",
       socialOnly: false,
     });
     return res.redirect("/welcome");
@@ -637,6 +637,7 @@ export const postEditUser = async (req, res) => {
       editAlert: "이미 존재하는 이메일 계정입니다.",
     });
   }
+  const isHeroku = process.env.NODE_ENV === "production";
 
   const updatedUser = await User.findByIdAndUpdate(
     _id,
@@ -649,7 +650,7 @@ export const postEditUser = async (req, res) => {
         month,
         date,
       },
-      avatarUrl: file ? "/" + file.path : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
     },
     { new: true }
   );

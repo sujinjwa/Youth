@@ -3,34 +3,45 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.upload = exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = exports.beforeDeleteUser = void 0;
+exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = exports.beforeDeleteUser = exports.avatarUpload = void 0;
+
+var _clientS = require("@aws-sdk/client-s3");
 
 var _multer = _interopRequireDefault(require("multer"));
 
+var _multerS = _interopRequireDefault(require("multer-s3"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var upload = (0, _multer["default"])({
-  dest: "uploads/avatars/"
-}); // 모든 템플릿에서 사용 가능한 전역 변수 선언
-
-exports.upload = upload;
-
+// 모든 템플릿에서 사용 가능한 전역 변수 선언
 var localsMiddleware = function localsMiddleware(req, res, next) {
-  res.locals.loggedIn = Boolean(req.session.loggedIn); // res.locals.loggedIn = false;
-
-  res.locals.loggedInUser = req.session.loggedInUser; // res.locals.errorMessage = req.session.errorMessage;
-  // req.session.errorMessage = null;
-  // res.locals.errorMessage = null;
-  //console.log(res.locals.loggedInUser);
-  //console.log(res.locals.loggedIn);s
-  //console.log(req.session);
-  // console.log(req.session.loggedInUser);
-
+  res.locals.loggedIn = Boolean(req.session.loggedIn);
+  res.locals.loggedInUser = req.session.loggedInUser;
+  res.locals.isHeroku = isHeroku;
   next();
-}; // 로그인되지 않은 유저 차단하는 미들웨어
-
+};
 
 exports.localsMiddleware = localsMiddleware;
+var s3 = new _clientS.S3Client({
+  region: "a-northeast-2",
+  credentials: {
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET
+  }
+});
+var s3ImageUploader = (0, _multerS["default"])({
+  s3: s3,
+  bucket: "writeyouth",
+  Key: "images/",
+  acl: "public-read"
+});
+var isHeroku = process.env.NODE_ENV === "production";
+var avatarUpload = (0, _multer["default"])({
+  dest: "uploads/avatars/",
+  storage: isHeroku ? s3ImageUploader : undefined
+}); // 로그인되지 않은 유저 차단하는 미들웨어
+
+exports.avatarUpload = avatarUpload;
 
 var protectorMiddleware = function protectorMiddleware(req, res, next) {
   if (req.session.loggedIn) {
