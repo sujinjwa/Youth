@@ -260,7 +260,7 @@ export const postJoin = async (req, res) => {
         month,
         date,
       },
-      avatarUrl: file ? file.location : "/uploads/avatars/basic_profile.jpg",
+      avatarUrl: "/uploads/avatars/basic_profile.jpg",
       socialOnly: false,
     });
     return res.redirect("/welcome");
@@ -296,6 +296,14 @@ export const postLogin = async (req, res) => {
     return res.status(400).render("users/login", {
       pageTitle,
       errorMessage: "가입되어 있지 않은 이메일 주소입니다.",
+    });
+  }
+
+  if (user.socialOnly === true) {
+    return res.status(400).render("users/login", {
+      pageTitle,
+      errorMessage:
+        "카카오톡 혹은 네이버로 가입한 계정입니다. 해당 계정으로 로그인해주세요.",
     });
   }
 

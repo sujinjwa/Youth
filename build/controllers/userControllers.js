@@ -346,7 +346,7 @@ var postJoin = /*#__PURE__*/function () {
                 month: month,
                 date: date
               },
-              avatarUrl: file ? file.location : "/uploads/avatars/basic_profile.jpg",
+              avatarUrl: "/uploads/avatars/basic_profile.jpg",
               socialOnly: false
             });
 
@@ -424,14 +424,25 @@ var postLogin = /*#__PURE__*/function () {
             }));
 
           case 7:
-            _context6.next = 9;
-            return _bcrypt["default"].compare(password, user.password);
+            if (!(user.socialOnly === true)) {
+              _context6.next = 9;
+              break;
+            }
+
+            return _context6.abrupt("return", res.status(400).render("users/login", {
+              pageTitle: pageTitle,
+              errorMessage: "카카오톡 혹은 네이버로 가입한 계정입니다. 해당 계정으로 로그인해주세요."
+            }));
 
           case 9:
+            _context6.next = 11;
+            return _bcrypt["default"].compare(password, user.password);
+
+          case 11:
             match = _context6.sent;
 
             if (match) {
-              _context6.next = 12;
+              _context6.next = 14;
               break;
             }
 
@@ -440,13 +451,13 @@ var postLogin = /*#__PURE__*/function () {
               errorMessage: "비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
             }));
 
-          case 12:
+          case 14:
             // req.session 객체에 로그인한 유저 정보 추가
             req.session.loggedIn = true;
             req.session.loggedInUser = user;
             return _context6.abrupt("return", res.redirect("/"));
 
-          case 15:
+          case 17:
           case "end":
             return _context6.stop();
         }
@@ -962,11 +973,7 @@ exports.getEditUser = getEditUser;
 
 var postEditUser = /*#__PURE__*/function () {
   var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(req, res) {
-<<<<<<< HEAD
     var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, isHeroku, updatedUser;
-=======
-    var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, updatedUser;
->>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
 
     return _regeneratorRuntime().wrap(function _callee12$(_context12) {
       while (1) {
@@ -1004,12 +1011,8 @@ var postEditUser = /*#__PURE__*/function () {
             }));
 
           case 10:
-<<<<<<< HEAD
             isHeroku = process.env.NODE_ENV === "production";
             _context12.next = 13;
-=======
-            _context12.next = 12;
->>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
             return _User["default"].findByIdAndUpdate(_id, {
               name: name,
               email: email,
@@ -1024,11 +1027,7 @@ var postEditUser = /*#__PURE__*/function () {
               "new": true
             });
 
-<<<<<<< HEAD
           case 13:
-=======
-          case 12:
->>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
             updatedUser = _context12.sent;
             // console.log(req.file.path);
             // console.log("updateUser: ", updatedUser);
