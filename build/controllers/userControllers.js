@@ -271,7 +271,7 @@ exports.getJoin = getJoin;
 
 var postJoin = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(req, res) {
-    var _req$body, selfAuthenti, name, password, passwordConfirm, email, gender, year, month, date, pageTitle, regPass;
+    var _req$body, selfAuthenti, name, password, passwordConfirm, email, gender, year, month, date, pageTitle, regPass, isHeroku;
 
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) {
@@ -333,8 +333,21 @@ var postJoin = /*#__PURE__*/function () {
             }));
 
           case 12:
-            _context5.prev = 12;
-            _context5.next = 15;
+            // if (phone.includes("-")) {
+            //   return res.status(400).render("users/join", {
+            //     pageTitle,
+            //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
+            //   });
+            // }
+            // if (typeof phone !== ) {
+            //   return res.status(400).render("users/join", {
+            //     pageTitle,
+            //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
+            //   });
+            // }
+            isHeroku = process.env.NODE_ENV === "production";
+            _context5.prev = 13;
+            _context5.next = 16;
             return _User["default"].create({
               name: name,
               email: sendingEmail,
@@ -346,28 +359,28 @@ var postJoin = /*#__PURE__*/function () {
                 month: month,
                 date: date
               },
-              avatarUrl: "/uploads/avatars/basic_profile.jpg",
+              avatarUrl: isHeroku ? "uploads/avatars/basic_profile.jpg" : "/uploads/avatars/basic_profile.jpg",
               socialOnly: false
             });
 
-          case 15:
+          case 16:
             return _context5.abrupt("return", res.redirect("/welcome"));
 
-          case 18:
-            _context5.prev = 18;
-            _context5.t0 = _context5["catch"](12);
+          case 19:
+            _context5.prev = 19;
+            _context5.t0 = _context5["catch"](13);
             console.log(_context5.t0);
             return _context5.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
               popup: "\uC54C \uC218 \uC5C6\uB294 \uC5D0\uB7EC\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4. \n\uC790\uC138\uD55C \uC5D0\uB7EC\uB294 \uB2E4\uC74C\uACFC \uAC19\uC2B5\uB2C8\uB2E4. \"".concat(_context5.t0._message, "\"")
             }));
 
-          case 22:
+          case 23:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[12, 18]]);
+    }, _callee5, null, [[13, 19]]);
   }));
 
   return function postJoin(_x5, _x6) {
