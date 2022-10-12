@@ -962,7 +962,11 @@ exports.getEditUser = getEditUser;
 
 var postEditUser = /*#__PURE__*/function () {
   var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(req, res) {
+<<<<<<< HEAD
     var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, isHeroku, updatedUser;
+=======
+    var _req$session$loggedIn, _id, avatarUrl, _req$body5, name, email, phone, year, month, date, file, exists, existingUser, updatedUser;
+>>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
 
     return _regeneratorRuntime().wrap(function _callee12$(_context12) {
       while (1) {
@@ -1000,8 +1004,12 @@ var postEditUser = /*#__PURE__*/function () {
             }));
 
           case 10:
+<<<<<<< HEAD
             isHeroku = process.env.NODE_ENV === "production";
             _context12.next = 13;
+=======
+            _context12.next = 12;
+>>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
             return _User["default"].findByIdAndUpdate(_id, {
               name: name,
               email: email,
@@ -1016,7 +1024,11 @@ var postEditUser = /*#__PURE__*/function () {
               "new": true
             });
 
+<<<<<<< HEAD
           case 13:
+=======
+          case 12:
+>>>>>>> a4b28a7b0cd07c507ae2790e14ffc87fbc63e659
             updatedUser = _context12.sent;
             // console.log(req.file.path);
             // console.log("updateUser: ", updatedUser);
