@@ -14,6 +14,7 @@ app.use(logger);
 app.use("/assets", express.static("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
 app.use("/uploads", express.static("uploads"));
 
+<<<<<<< HEAD
 if (process.env.NODE_ENV === "production") {
   app.use(
     helmet({
@@ -21,6 +22,13 @@ if (process.env.NODE_ENV === "production") {
     })
   );
 }
+=======
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+>>>>>>> 10b6430775184422151a5175a5391eea0d0405c6
 
 app.set("views", "./src/views");
 app.set("view engine", "pug");
