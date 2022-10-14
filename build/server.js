@@ -23,6 +23,8 @@ var _userRouters = _interopRequireDefault(require("./routers/userRouters"));
 
 var _middlewares = require("./middlewares");
 
+var _clientS = require("@aws-sdk/client-s3");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
