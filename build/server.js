@@ -13,6 +13,8 @@ var _expressSession = _interopRequireDefault(require("express-session"));
 
 var _helmet = _interopRequireDefault(require("helmet"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _connectMongo = _interopRequireDefault(require("connect-mongo"));
 
 var _globalRouters = _interopRequireDefault(require("./routers/globalRouters"));
@@ -22,8 +24,6 @@ var _contentRouters = _interopRequireDefault(require("./routers/contentRouters")
 var _userRouters = _interopRequireDefault(require("./routers/userRouters"));
 
 var _middlewares = require("./middlewares");
-
-var _clientS = require("@aws-sdk/client-s3");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -40,8 +40,9 @@ if (process.env.NODE_ENV === "production") {
   }));
 }
 
-app.use((0, _helmet["default"])({
-  contentSecurityPolicy: false
+app.use((0, _cors["default"])({
+  origin: "*",
+  credentials: true
 }));
 app.set("views", "./src/views");
 app.set("view engine", "pug"); // session 미들웨어

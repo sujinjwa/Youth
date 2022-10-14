@@ -2,12 +2,12 @@ import express from "express";
 import morgan from "morgan";
 import session from "express-session";
 import helmet from "helmet";
+import cors from "cors";
 import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouters";
 import contentRouter from "./routers/contentRouters";
 import userRouter from "./routers/userRouters";
 import { localsMiddleware } from "./middlewares";
-import { AccessControlPolicyFilterSensitiveLog } from "@aws-sdk/client-s3";
 
 const app = express();
 const logger = morgan("dev");
@@ -24,8 +24,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(
-  helmet({
-    contentSecurityPolicy: false,
+  cors({
+    origin: "*",
+    credentials: true,
   })
 );
 
