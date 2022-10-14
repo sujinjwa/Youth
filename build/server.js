@@ -13,6 +13,8 @@ var _expressSession = _interopRequireDefault(require("express-session"));
 
 var _helmet = _interopRequireDefault(require("helmet"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _connectMongo = _interopRequireDefault(require("connect-mongo"));
 
 var _globalRouters = _interopRequireDefault(require("./routers/globalRouters"));
@@ -26,21 +28,19 @@ var _middlewares = require("./middlewares");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
+
+if (process.env.NODE_ENV === "production") {
+  app.use((0, _helmet["default"])({
+    contentSecurityPolicy: false
+  }));
+  app.use((0, _cors["default"])());
+}
+
 var logger = (0, _morgan["default"])("dev");
 app.use(logger);
 app.use("/assets", _express["default"]["static"]("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
 
 app.use("/uploads", _express["default"]["static"]("uploads"));
-
-if (process.env.NODE_ENV === "production") {
-  app.use((0, _helmet["default"])({
-    contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false,
-    crossOriginOpenerPolicy: false,
-    crossOriginEmbedderPolicy: false
-  }));
-}
-
 app.set("views", "./src/views");
 app.set("view engine", "pug"); // session 미들웨어
 
