@@ -45,7 +45,8 @@ block content
             type="text",
             required,
             name="selfAuthenti",
-            placeholder="위 이메일로 전송된 인증번호를 입력해주세요."
+            placeholder="위 이메일로 전송된 인증번호를 입력해주세요.",
+            value=selfAuthenti,
           )
           .name__wrapper
             input.input__name(
@@ -54,7 +55,8 @@ block content
               name="name",
               placeholder="이름 (2-30자)",
               minlength="2",
-              maxlength="30"
+              maxlength="30",
+              value=name,
             )
             .gender__wrapper
               input.input__gender(
@@ -78,35 +80,43 @@ block content
             name="password",
             placeholder="비밀번호",
             minlength="8",
-            maxlength="15"
+            maxlength="20",
+            value=password,
           )
           p * 비밀번호는 숫자와 영문자 조합으로 8~20자리를 입력해주세요.
           input.input__pwConfirm(
             type="password",
             required,
             name="passwordConfirm",
-            placeholder="비밀번호 확인"
+            placeholder="비밀번호 확인",
+            minlength="8",
+            maxlength="20",
+            value=passwordConfirm
           )
           .birth__wrapper 
             input.input__year(
               type="text",
               required,
               name="year",
-              placeholder="생년"
+              placeholder="생년",
+              minlength="4",
+              value=year
             )
             input.input__month(
               type="text",
               required,
               name="month",
               placeholder="월",
-              minlength="2"
+              minlength="2",
+              value=month
             )
             input.input__date(
               type="text",
               required,
               name="date",
               placeholder="일",
-              minlength="2"
+              minlength="2",
+              value=date
             )
           //- input.input__phone(
           //-   type="text",
