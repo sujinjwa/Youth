@@ -37,7 +37,7 @@ var sendingEmail, sentNumber; // 이메일 전송 함수
 
 var sendMailForJoin = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var email, pageTitle, existingUser, main, _main;
+    var email, pageTitle, regPass, existingUser, main, _main;
 
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
@@ -114,21 +114,34 @@ var sendMailForJoin = /*#__PURE__*/function () {
 
             email = req.body.email;
             pageTitle = "Join";
-            _context2.next = 6;
+            regPass = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+
+            if (regPass.test(email)) {
+              _context2.next = 7;
+              break;
+            }
+
+            return _context2.abrupt("return", res.status(400).render("users/join", {
+              pageTitle: pageTitle,
+              popup: "잘못된 이메일입니다. 다시 확인해주세요."
+            }));
+
+          case 7:
+            _context2.next = 9;
             return _User["default"].findOne({
               email: email
             });
 
-          case 6:
+          case 9:
             existingUser = _context2.sent;
 
             if (!existingUser) {
-              _context2.next = 11;
+              _context2.next = 14;
               break;
             }
 
             if (!(existingUser.socialOnly === true)) {
-              _context2.next = 10;
+              _context2.next = 13;
               break;
             }
 
@@ -137,16 +150,16 @@ var sendMailForJoin = /*#__PURE__*/function () {
               popup: "\uC774\uBBF8 \uCE74\uCE74\uC624\uD1A1 \uD639\uC740 \uB124\uC774\uBC84\uB85C \uD68C\uC6D0\uAC00\uC785\uD55C \uACC4\uC815\uC785\uB2C8\uB2E4. \n \uD574\uB2F9 \uACC4\uC815\uC73C\uB85C \uB85C\uADF8\uC778\uD574\uC8FC\uC138\uC694."
             }));
 
-          case 10:
+          case 13:
             return _context2.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
               popup: "이미 사용중인 이메일입니다."
             }));
 
-          case 11:
+          case 14:
             main(); // return res.render("users/join", { pageTitle: "Join", email });
 
-          case 12:
+          case 15:
           case "end":
             return _context2.stop();
         }

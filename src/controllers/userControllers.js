@@ -19,6 +19,16 @@ const sendMailForJoin = async (req, res) => {
   const { email } = req.body;
 
   const pageTitle = "Join";
+
+  let regPass =
+    /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+  if (!regPass.test(email)) {
+    return res.status(400).render("users/join", {
+      pageTitle,
+      popup: "잘못된 이메일입니다. 다시 확인해주세요.",
+    });
+  }
+
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     if (existingUser.socialOnly === true) {
