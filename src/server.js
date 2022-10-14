@@ -2,7 +2,6 @@ import express from "express";
 import morgan from "morgan";
 import session from "express-session";
 import helmet from "helmet";
-import cors from "cors";
 import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouters";
 import contentRouter from "./routers/contentRouters";
@@ -19,16 +18,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(
     helmet({
       contentSecurityPolicy: false,
+      crossOriginResourcePolicy: false,
     })
   );
 }
-
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
 
 app.set("views", "./src/views");
 app.set("view engine", "pug");
