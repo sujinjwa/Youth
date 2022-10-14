@@ -7,6 +7,7 @@ import globalRouter from "./routers/globalRouters";
 import contentRouter from "./routers/contentRouters";
 import userRouter from "./routers/userRouters";
 import { localsMiddleware } from "./middlewares";
+import { AccessControlPolicyFilterSensitiveLog } from "@aws-sdk/client-s3";
 
 const app = express();
 const logger = morgan("dev");
