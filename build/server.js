@@ -35,7 +35,9 @@ app.use("/uploads", _express["default"]["static"]("uploads"));
 if (process.env.NODE_ENV === "production") {
   app.use((0, _helmet["default"])({
     contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
+    crossOriginOpenerPolicy: false,
+    crossOriginEmbedderPolicy: false
   }));
 }
 

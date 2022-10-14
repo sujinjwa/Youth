@@ -19,6 +19,8 @@ if (process.env.NODE_ENV === "production") {
     helmet({
       contentSecurityPolicy: false,
       crossOriginResourcePolicy: false,
+      crossOriginOpenerPolicy: false,
+      crossOriginEmbedderPolicy: false,
     })
   );
 }
