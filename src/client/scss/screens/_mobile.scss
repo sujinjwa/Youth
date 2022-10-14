@@ -480,6 +480,21 @@
     }
   }
 
+  main#beforeDelete {
+    .wrapper {
+      margin-top: 50px;
+      padding: 100px 50px;
+      p {
+        &.row1 {
+          font-size: 15px;
+        }
+        &.row2 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
   footer {
     padding: 40px 20px;
     .footer__col1 {

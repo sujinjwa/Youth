@@ -122,6 +122,20 @@
         }
       }
     }
+    &#beforeDelete {
+      .wrapper {
+        margin-top: 50px;
+        padding: 100px 100px;
+        p {
+          &.row1 {
+            font-size: 15px;
+          }
+          &.row2 {
+            font-size: 22px;
+          }
+        }
+      }
+    }
   }
   // 홈 화면의 section.blog
   section.blog {

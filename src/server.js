@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import helmet from "helmet";
 import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouters";
 import contentRouter from "./routers/contentRouters";
@@ -12,6 +13,14 @@ const logger = morgan("dev");
 app.use(logger);
 app.use("/assets", express.static("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
 app.use("/uploads", express.static("uploads"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
+}
 
 app.set("views", "./src/views");
 app.set("view engine", "pug");

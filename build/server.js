@@ -11,6 +11,8 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _expressSession = _interopRequireDefault(require("express-session"));
 
+var _helmet = _interopRequireDefault(require("helmet"));
+
 var _connectMongo = _interopRequireDefault(require("connect-mongo"));
 
 var _globalRouters = _interopRequireDefault(require("./routers/globalRouters"));
@@ -29,6 +31,9 @@ app.use(logger);
 app.use("/assets", _express["default"]["static"]("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
 
 app.use("/uploads", _express["default"]["static"]("uploads"));
+app.use((0, _helmet["default"])({
+  contentSecurityPolicy: false
+}));
 app.set("views", "./src/views");
 app.set("view engine", "pug"); // session 미들웨어
 
