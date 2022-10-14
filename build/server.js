@@ -38,6 +38,9 @@ if (process.env.NODE_ENV === "production") {
   }));
 }
 
+app.use((0, _helmet["default"])({
+  contentSecurityPolicy: false
+}));
 app.set("views", "./src/views");
 app.set("view engine", "pug"); // session 미들웨어
 

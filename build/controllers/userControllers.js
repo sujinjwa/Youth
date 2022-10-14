@@ -37,7 +37,7 @@ var sendingEmail, sentNumber; // 이메일 전송 함수
 
 var sendMailForJoin = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var email, pageTitle, existingUser, main, _main;
+    var email, pageTitle, regPass, existingUser, main, _main;
 
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
@@ -95,7 +95,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
                         return _context.abrupt("return", res.render("users/join", {
                           pageTitle: "Join",
                           email: email,
-                          popup: "\uD574\uB2F9 \uC774\uBA54\uC77C \uACC4\uC815\uC73C\uB85C \uC778\uC99D\uBC88\uD638\uB97C \uC804\uC1A1\uD588\uC2B5\uB2C8\uB2E4."
+                          popup: "\uD574\uB2F9 \uC774\uBA54\uC77C \uACC4\uC815\uC73C\uB85C \uC778\uC99D\uBC88\uD638\uB97C \uC804\uC1A1\uD588\uC2B5\uB2C8\uB2E4. \n5\uBD84 \uC774\uC0C1 \uC778\uC99D \uC774\uBA54\uC77C\uC774 \uB3C4\uCC29\uD558\uC9C0 \uC54A\uC740 \uACBD\uC6B0, \uC785\uB825\uD55C \uC774\uBA54\uC77C \uBC1C\uC1A1 \uC8FC\uC18C\uB97C \uB2E4\uC2DC \uD55C \uBC88 \uD655\uC778\uD574\uC8FC\uC138\uC694."
                         }));
 
                       case 7:
@@ -114,21 +114,34 @@ var sendMailForJoin = /*#__PURE__*/function () {
 
             email = req.body.email;
             pageTitle = "Join";
-            _context2.next = 6;
+            regPass = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+
+            if (regPass.test(email)) {
+              _context2.next = 7;
+              break;
+            }
+
+            return _context2.abrupt("return", res.status(400).render("users/join", {
+              pageTitle: pageTitle,
+              popup: "잘못된 이메일입니다. 다시 확인해주세요."
+            }));
+
+          case 7:
+            _context2.next = 9;
             return _User["default"].findOne({
               email: email
             });
 
-          case 6:
+          case 9:
             existingUser = _context2.sent;
 
             if (!existingUser) {
-              _context2.next = 11;
+              _context2.next = 14;
               break;
             }
 
             if (!(existingUser.socialOnly === true)) {
-              _context2.next = 10;
+              _context2.next = 13;
               break;
             }
 
@@ -137,16 +150,16 @@ var sendMailForJoin = /*#__PURE__*/function () {
               popup: "\uC774\uBBF8 \uCE74\uCE74\uC624\uD1A1 \uD639\uC740 \uB124\uC774\uBC84\uB85C \uD68C\uC6D0\uAC00\uC785\uD55C \uACC4\uC815\uC785\uB2C8\uB2E4. \n \uD574\uB2F9 \uACC4\uC815\uC73C\uB85C \uB85C\uADF8\uC778\uD574\uC8FC\uC138\uC694."
             }));
 
-          case 10:
+          case 13:
             return _context2.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
               popup: "이미 사용중인 이메일입니다."
             }));
 
-          case 11:
+          case 14:
             main(); // return res.render("users/join", { pageTitle: "Join", email });
 
-          case 12:
+          case 15:
           case "end":
             return _context2.stop();
         }
@@ -303,7 +316,14 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context5.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              popup: "인증번호가 일치하지 않습니다."
+              popup: "인증번호가 일치하지 않습니다.",
+              email: sendingEmail,
+              name: name,
+              password: password,
+              passwordConfirm: passwordConfirm,
+              year: year,
+              month: month,
+              date: date
             }));
 
           case 7:
@@ -318,7 +338,13 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context5.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+              popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+              email: sendingEmail,
+              selfAuthenti: selfAuthenti,
+              name: name,
+              year: year,
+              month: month,
+              date: date
             }));
 
           case 10:
@@ -329,7 +355,14 @@ var postJoin = /*#__PURE__*/function () {
 
             return _context5.abrupt("return", res.status(400).render("users/join", {
               pageTitle: pageTitle,
-              popup: "비밀번호가 일치하지 않습니다"
+              popup: "비밀번호가 일치하지 않습니다",
+              email: sendingEmail,
+              selfAuthenti: selfAuthenti,
+              name: name,
+              password: password,
+              year: year,
+              month: month,
+              date: date
             }));
 
           case 12:

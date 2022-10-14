@@ -22,7 +22,7 @@ if pageTitle === "Home"
           a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
             // i.fa-solid.fa-user
-            img(src=`${loggedInUser.avatarUrl}`, alt="")
+            img(crossorigin="anonymous", src=`${loggedInUser.avatarUrl}`, alt="")
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden
@@ -71,7 +71,7 @@ else
           a.profile(href="/users/edit")
             // li #{ loggedInUser.name } 님의 PROFILE
             // i.fa-solid.fa-user
-            img(src=`${loggedInUser.avatarUrl}`, alt="")
+            img(crossorigin="anonymous", src=`${loggedInUser.avatarUrl}`, alt="")
       button.bar
         i.fa-solid.fa-bars
   .modal.hidden

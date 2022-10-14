@@ -19,6 +19,16 @@ const sendMailForJoin = async (req, res) => {
   const { email } = req.body;
 
   const pageTitle = "Join";
+
+  let regPass =
+    /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+  if (!regPass.test(email)) {
+    return res.status(400).render("users/join", {
+      pageTitle,
+      popup: "잘못된 이메일입니다. 다시 확인해주세요.",
+    });
+  }
+
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     if (existingUser.socialOnly === true) {
@@ -93,7 +103,7 @@ const sendMailForJoin = async (req, res) => {
     return res.render("users/join", {
       pageTitle: "Join",
       email,
-      popup: `해당 이메일 계정으로 인증번호를 전송했습니다.`,
+      popup: `해당 이메일 계정으로 인증번호를 전송했습니다. \n5분 이상 인증 이메일이 도착하지 않은 경우, 입력한 이메일 발송 주소를 다시 한 번 확인해주세요.`,
     });
   }
 
@@ -215,6 +225,13 @@ export const postJoin = async (req, res) => {
     return res.status(400).render("users/join", {
       pageTitle,
       popup: "인증번호가 일치하지 않습니다.",
+      email: sendingEmail,
+      name,
+      password,
+      passwordConfirm,
+      year,
+      month,
+      date,
     });
   }
 
@@ -225,6 +242,12 @@ export const postJoin = async (req, res) => {
     return res.status(400).render("users/join", {
       pageTitle,
       popup: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+      email: sendingEmail,
+      selfAuthenti,
+      name,
+      year,
+      month,
+      date,
     });
   }
 
@@ -232,6 +255,13 @@ export const postJoin = async (req, res) => {
     return res.status(400).render("users/join", {
       pageTitle,
       popup: "비밀번호가 일치하지 않습니다",
+      email: sendingEmail,
+      selfAuthenti,
+      name,
+      password,
+      year,
+      month,
+      date,
     });
   }
 
