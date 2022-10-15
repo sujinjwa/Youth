@@ -18,7 +18,6 @@ block content
           hr
           p 또는
           hr
-        // 이 부분을 경고창으로 대체하던지, form에 focus되면 errorMessage 사라지도록! 구현 (css)
         if popup
           p#popup #{ popup }
 
@@ -32,14 +31,7 @@ block content
               value=email
             )
             input.send__email(type="submit", value="인증번호 전송")
-          //- input.input__certification(
-          //-   type="text",
-          //-   required,
-          //-   name="certification",
-          //-   placeholder="전송된 인증번호 입력해주세요"
-          //- )
 
-        // 네이버처럼 form에 input 들어갈 때 그 value를 프론트엔드 js에서 가져와서 비교해서 바로 경고창 주는 건 가능하지 않을까?
         form(method="POST")
           input.input__self-authenti(
             type="text",
@@ -118,12 +110,6 @@ block content
               minlength="2",
               value=date
             )
-          //- input.input__phone(
-          //-   type="text",
-          //-   required,
-          //-   name="phone",
-          //-   placeholder="- 없이 휴대폰 번호만 입력해주세요"
-          //- )
           input.join__btn(type="submit", value="회원가입")
 
         .login__link
