@@ -37,7 +37,8 @@ if (process.env.NODE_ENV === "production") {
 
 var corsOptions = {
   origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com",
-  crendentials: true
+  crendentials: true,
+  optionsSuccessStatus: 200
 };
 app.use((0, _cors["default"])(corsOptions));
 var logger = (0, _morgan["default"])("dev");

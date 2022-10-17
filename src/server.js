@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
 const corsOptions = {
   origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com",
   crendentials: true,
+  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 const logger = morgan("dev");
