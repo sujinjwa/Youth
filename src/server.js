@@ -16,8 +16,14 @@ if (process.env.NODE_ENV === "production") {
       contentSecurityPolicy: false,
     })
   );
-  app.use(cors({ origin: "*" }));
 }
+
+const corsOptions = {
+  origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com",
+  crendentials: true,
+};
+
+app.use(cors(corsOptions));
 const logger = morgan("dev");
 app.use(logger);
 app.use("/assets", express.static("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
