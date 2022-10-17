@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 var corsOptions = {
-  origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com",
+  origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com/b47570143d8d8c1ca467298a5d0a691b",
   crendentials: true,
   optionsSuccessStatus: 200
 };
