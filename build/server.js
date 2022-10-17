@@ -33,9 +33,14 @@ if (process.env.NODE_ENV === "production") {
   app.use((0, _helmet["default"])({
     contentSecurityPolicy: false
   }));
-  app.use((0, _cors["default"])());
 }
 
+var corsOptions = {
+  origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com/b47570143d8d8c1ca467298a5d0a691b",
+  crendentials: true,
+  optionsSuccessStatus: 200
+};
+app.use((0, _cors["default"])(corsOptions));
 var logger = (0, _morgan["default"])("dev");
 app.use(logger);
 app.use("/assets", _express["default"]["static"]("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
