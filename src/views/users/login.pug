@@ -21,13 +21,15 @@ block content
           hr
 
         form(method="POST")
-          input.input__email(
+          label#email(for="email") 이메일
+          input.input__email#email(
             type="email",
             required,
             name="email",
             placeholder="이메일"
           )
-          input.input__pw(
+          label#pw(for="pw") 비밀번호
+          input.input__pw#pw(
             type="password",
             required,
             name="password",
