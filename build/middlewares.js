@@ -19,6 +19,7 @@ var localsMiddleware = function localsMiddleware(req, res, next) {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.loggedInUser = req.session.loggedInUser;
   res.locals.isHeroku = isHeroku;
+  res.header("Access-Control-Allow-Origin", "https://writeyouth.s3.ap-northeast-2.amazonaws.com");
   next();
 };
 
