@@ -22,7 +22,6 @@ const corsOptions = {
   origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com",
   crendentials: true,
 };
-
 app.use(cors(corsOptions));
 const logger = morgan("dev");
 app.use(logger);
