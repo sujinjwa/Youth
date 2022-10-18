@@ -75,7 +75,14 @@ main#login {
       form {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        label {
+          color: $grey;
+          margin-left: 12px;
+          &#pw {
+            margin-top: 8px;
+          }
+        }
         input {
           width: 470px;
           border: 1px solid $input--border;
