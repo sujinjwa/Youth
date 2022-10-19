@@ -777,7 +777,10 @@ var finishKakaoLogin = /*#__PURE__*/function () {
             return (0, _crossFetch["default"])(finalUri, {
               method: "POST",
               headers: {
-                Accept: "application/json"
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
               }
             });
 

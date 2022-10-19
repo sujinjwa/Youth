@@ -18,7 +18,7 @@ block content
           .user__photo 
             input#avatar(type="file", name="avatar")
             label(for="avatar", onclick)
-              img(src=`${loggedInUser.avatarUrl}`, alt="")
+              img(crossorigin="anonymous", src=`${loggedInUser.avatarUrl}`, alt="")
               span 프로필 변경
           .user__info 
             .info.name
