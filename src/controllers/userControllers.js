@@ -509,6 +509,10 @@ export const finishKakaoLogin = async (req, res) => {
       method: "POST",
       headers: {
         Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
       },
     })
   ).json();

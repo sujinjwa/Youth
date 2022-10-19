@@ -4,14 +4,14 @@ import multerS3 from "multer-s3";
 
 // 모든 템플릿에서 사용 가능한 전역 변수 선언
 export const localsMiddleware = (req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://writeyouth.s3.ap-northeast-2.amazonaws.com"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  // res.header(
+  //   "Access-Control-Allow-Origin",
+  //   "https://writeyouth.s3.ap-northeast-2.amazonaws.com"
+  // );
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.loggedInUser = req.session.loggedInUser;
   res.locals.isHeroku = isHeroku;
