@@ -1137,7 +1137,9 @@ var postEditPW = /*#__PURE__*/function () {
 
             return _context13.abrupt("return", res.status(400).render("users/editPW", {
               pageTitle: pageTitle,
-              uncorrectError: "비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+              uncorrectError: "비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.",
+              newPassword: newPassword,
+              newPasswordConfirm: newPasswordConfirm
             }));
 
           case 7:
@@ -1150,7 +1152,8 @@ var postEditPW = /*#__PURE__*/function () {
 
             return _context13.abrupt("return", res.status(400).render("users/editPW", {
               pageTitle: pageTitle,
-              newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요"
+              newPassError: "비밀번호는 영문, 숫자 조합으로 8-20자리 입력해주세요",
+              oldPassword: oldPassword
             }));
 
           case 10:
@@ -1160,7 +1163,10 @@ var postEditPW = /*#__PURE__*/function () {
             }
 
             return _context13.abrupt("return", res.status(400).render("users/editPW", {
-              notMatchError: "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
+              pageTitle: pageTitle,
+              notMatchError: "비밀번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요.",
+              oldPassword: oldPassword,
+              newPassword: newPassword
             }));
 
           case 12:

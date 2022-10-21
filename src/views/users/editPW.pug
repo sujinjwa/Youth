@@ -20,6 +20,7 @@ block content
               type="password",
               name="oldPassword",
               placeholder="기존 비밀번호를 입력해주세요."
+              value=oldPassword
             )
             #error
               if uncorrectError
@@ -31,6 +32,7 @@ block content
               type="password",
               name="newPassword",
               placeholder="변경할 비밀번호를 입력해주세요."
+              value=newPassword
             )
             #error 
               if newPassError
@@ -42,6 +44,7 @@ block content
               type="password",
               name="newPasswordConfirm",
               placeholder="변경할 비밀번호를 한 번 더 입력해주세요."
+              value=newPasswordConfirm
             )
             #error
               if notMatchError
