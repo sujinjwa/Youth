@@ -7,6 +7,7 @@ import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouters";
 import contentRouter from "./routers/contentRouters";
 import userRouter from "./routers/userRouters";
+import policyRouter from "./routers/policyRouters";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
@@ -52,4 +53,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/contents", contentRouter);
+app.use("/policy", policyRouter);
 export default app;
