@@ -85,7 +85,7 @@
         line-height: 1.5;
         &.clicked {
           .panel-heading {
-            border-bottom: 1px solid;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           }
           .panel-body {
             display: block;
@@ -95,33 +95,36 @@
         }
         &:last-child {
           .panel-heading {
-            border-bottom: 1px solid;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           }
           .panel-body {
-            border-bottom: 1px solid;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           }
         }
         .panel-heading {
-          padding: 25px;
+          padding: 32px 25px;
           display: flex;
           align-items: center;
           cursor: pointer;
           border-top: 1px solid;
+          border-color: rgba(0, 0, 0, 0.2);
           & > i {
             margin-right: 30px;
+            color: $youthColor;
           }
           h3 {
             width: 100%;
             display: flex;
             justify-content: space-between;
             i {
-              margin: 0 30px;
+              margin-left: 35px;
               padding-top: 5px;
+              color: $youthColor;
             }
           }
         }
         .panel-body {
-          padding: 25px;
+          padding: 32px 25px;
           padding-left: 0;
           background-color: $light--grey;
           display: none;

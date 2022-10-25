@@ -23,6 +23,8 @@ var _contentRouters = _interopRequireDefault(require("./routers/contentRouters")
 
 var _userRouters = _interopRequireDefault(require("./routers/userRouters"));
 
+var _policyRouters = _interopRequireDefault(require("./routers/policyRouters"));
+
 var _middlewares = require("./middlewares");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -68,5 +70,6 @@ app.use(_express["default"].urlencoded({
 app.use("/", _globalRouters["default"]);
 app.use("/users", _userRouters["default"]);
 app.use("/contents", _contentRouters["default"]);
+app.use("/policy", _policyRouters["default"]);
 var _default = app;
 exports["default"] = _default;

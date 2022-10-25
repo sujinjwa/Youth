@@ -26,7 +26,8 @@ export const community = (req, res) => {
 export const qna = (req, res) => {
   const popup = req.query.popup;
   // console.log(req.params);
-  return res.render("contents/qna", { pageTitle: "QnA", popup });
+  let id = req.params.id;
+  return res.render(`contents/qna_${id}`, { pageTitle: "QnA", popup });
 };
 
 export const detail = (req, res) => {
