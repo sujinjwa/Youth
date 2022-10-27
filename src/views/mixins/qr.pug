@@ -1,7 +1,10 @@
 mixin qr(img, title, keyword, minutes, index) 
     a#qr-link(href=`detail/${index}`)
-        img(src=`${img}`)
-        h1=title 
-        div
-            h4=keyword 
-            h4 #{minutes}분 분량
+        div.inner_of_link
+            .wrapper_of_img
+                img(src=`${img}`)
+            .info
+                .info__div
+                    p=keyword 
+                    p #{minutes}분 분량
+                h1=title 
