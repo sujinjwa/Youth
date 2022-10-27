@@ -34,6 +34,11 @@ export const detail = (req, res) => {
   return res.render("contents/detail", { pageTitle: "QR코드 렌더링" });
 };
 
+export const qrPage = (req, res) => {
+  const id = req.params.id;
+  return res.send(`page ${id}`);
+};
+
 export const recommend = (req, res) => {
   const popup = encodeURIComponent(
     "현재 추천콘텐츠 서비스 개발 중입니다. \n조금만 기다려주세요."
