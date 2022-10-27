@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.youthkit = exports.recommend = exports.qna = exports.home = exports.detail = exports.community = exports.about = void 0;
+exports.youthkit = exports.recommend = exports.qrPage = exports.qna = exports.home = exports.detail = exports.community = exports.about = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
@@ -59,6 +59,13 @@ var detail = function detail(req, res) {
 };
 
 exports.detail = detail;
+
+var qrPage = function qrPage(req, res) {
+  var id = req.params.id;
+  return res.send("page ".concat(id));
+};
+
+exports.qrPage = qrPage;
 
 var recommend = function recommend(req, res) {
   var popup = encodeURIComponent("현재 추천콘텐츠 서비스 개발 중입니다. \n조금만 기다려주세요.");
