@@ -366,18 +366,6 @@ var postJoin = /*#__PURE__*/function () {
             }));
 
           case 12:
-            // if (phone.includes("-")) {
-            //   return res.status(400).render("users/join", {
-            //     pageTitle,
-            //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
-            //   });
-            // }
-            // if (typeof phone !== ) {
-            //   return res.status(400).render("users/join", {
-            //     pageTitle,
-            //     errorMessage: "휴대폰 번호가 형식에 맞지 않습니다.",
-            //   });
-            // }
             isHeroku = process.env.NODE_ENV === "production";
             _context5.prev = 13;
             _context5.next = 16;
@@ -392,7 +380,10 @@ var postJoin = /*#__PURE__*/function () {
                 month: month,
                 date: date
               },
-              avatarUrl: isHeroku ? "https://writeyouth.s3.ap-northeast-2.amazonaws.com/bb145753680b848117370a59aeec13a7" : "/uploads/avatars/basic_profile.jpg",
+              avatarUrl: "/uploads/avatars/basic_profile.jpg",
+              // avatarUrl: isHeroku
+              //   ? "https://writeyouth.s3.ap-northeast-2.amazonaws.com/bb145753680b848117370a59aeec13a7"
+              //   : "/uploads/avatars/basic_profile.jpg",
               socialOnly: false
             });
 
