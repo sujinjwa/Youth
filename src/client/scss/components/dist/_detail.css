@@ -1,6 +1,0 @@
-.group_program#detail .inner_program div.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 13px;
-  row-gap: 35px;
-}
