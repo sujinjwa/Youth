@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
-import helmet from "helmet";
+// import helmet from "helmet";
 import cors from "cors";
 import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouters";
@@ -11,13 +11,13 @@ import policyRouter from "./routers/policyRouters";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
-if (process.env.NODE_ENV === "production") {
-  app.use(
-    helmet({
-      contentSecurityPolicy: false,
-    })
-  );
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(
+//     helmet({
+//       contentSecurityPolicy: false,
+//     })
+//   );
+// }
 
 const corsOptions = {
   origin:
