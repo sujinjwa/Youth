@@ -495,6 +495,14 @@
     }
   }
 
+  .group_program#detail {
+    .inner_program {
+      div.grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+
   footer {
     padding: 40px 20px;
     .footer__col1 {
