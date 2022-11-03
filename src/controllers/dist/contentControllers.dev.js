@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< HEAD
 exports.recommend = exports.qrPage = exports.detail = exports.qna = exports.community = exports.youthkit = exports.about = exports.home = void 0;
+=======
+exports.recommend = exports.detail = exports.qna = exports.community = exports.youthkit = exports.about = exports.home = void 0;
+>>>>>>> 331ceee78c8436d22dfe25367e7a229c14be9045
 
 var _express = _interopRequireDefault(require("express"));
 
@@ -59,6 +63,7 @@ var detail = function detail(req, res) {
 };
 
 exports.detail = detail;
+<<<<<<< HEAD
 var qrContents = [{
   title: "유골을 뿌리는 장례 방식(산분장) 더 알아보기",
   hashtags: "장례",
@@ -95,6 +100,8 @@ var qrPage = function qrPage(req, res) {
 };
 
 exports.qrPage = qrPage;
+=======
+>>>>>>> 331ceee78c8436d22dfe25367e7a229c14be9045
 
 var recommend = function recommend(req, res) {
   var popup = encodeURIComponent("현재 추천콘텐츠 서비스 개발 중입니다. \n조금만 기다려주세요.");
