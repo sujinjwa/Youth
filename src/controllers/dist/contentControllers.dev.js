@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.youthkit = exports.recommend = exports.qrPage = exports.qna = exports.home = exports.detail = exports.community = exports.about = void 0;
+exports.recommend = exports.qrPage = exports.detail = exports.qna = exports.community = exports.youthkit = exports.about = exports.home = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
