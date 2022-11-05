@@ -59,10 +59,39 @@ var detail = function detail(req, res) {
 };
 
 exports.detail = detail;
+var qrContents = [{
+  title: "유골을 뿌리는 장례 방식(산분장) 더 알아보기",
+  hashtags: "장례",
+  minutes: 3
+}, {
+  title: "장기기증 더 알아보기",
+  hashtags: "장례 • 장기기증",
+  minutes: 2
+}, {
+  title: "상속포기와 한정승인 더 알아보기",
+  hashtags: "상속 • 재산",
+  minutes: 2
+}, {
+  title: "SNS 기념(추모)계정 더 알아보기",
+  hashtags: "장례",
+  minutes: 4
+}, {
+  title: "유품 소각 관련 사항 더 알아보기",
+  hashtags: "재산",
+  minutes: 3
+}, {
+  title: "반려동물 신탁제도 더 알아보기",
+  hashtags: "장례 • 재산",
+  minutes: 2
+}];
 
 var qrPage = function qrPage(req, res) {
   var id = req.params.id;
-  return res.send("page ".concat(id));
+  return res.render("contents/qrpage", {
+    pageTitle: "Contents",
+    title: qrContents[id - 1].title,
+    imgUrl: "/uploads/contents/".concat(id, ".jpg")
+  });
 };
 
 exports.qrPage = qrPage;
