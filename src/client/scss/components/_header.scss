@@ -66,12 +66,16 @@ header {
       // top: 33px;
       // right: 23px;
       background: none;
+      margin: 0;
+      padding: 0;
       border: none;
-      font-size: 28px;
       color: white;
       cursor: pointer;
       transition: color 0.1s linear;
       display: none;
+      i {
+        font-size: 1.5em;
+      }
     }
   }
   &.change {
