@@ -115,6 +115,15 @@
         font-size: 0.7em;
       }
     }
+    #qr-link {
+      div.inner_of_link {
+        .info {
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid $input--border;
+        }
+      }
+    }
     // qna 페이지
     &#contents {
       .contents__hero {
@@ -125,6 +134,13 @@
             // margin: 0;
             h3 {
               font-size: 18px;
+            }
+          }
+        }
+        .qrpage__photo {
+          .img__text {
+            p {
+              font-size: 20px;
             }
           }
         }

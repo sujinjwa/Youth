@@ -17,12 +17,13 @@ main#contents {
       }
       .img__text {
         position: absolute;
-        top: 50%;
+        top: 47%;
         width: 100%;
         display: flex;
         justify-content: center;
         p {
-          font-size: 35px;
+          font-weight: 600;
+          font-size: 40px;
           color: white;
         }
       }
