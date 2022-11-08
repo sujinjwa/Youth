@@ -26,9 +26,17 @@ header {
         color: $light--grey;
       }
       &.logo {
-        li {
-          font-size: 25px;
-          font-weight: 600;
+        a {
+          display: flex;
+          align-items: center;
+          img {
+            width: 28px;
+            margin-right: 10px;
+          }
+          li {
+            font-size: 25px;
+            font-weight: 600;
+          }
         }
       }
       &.navbar {
