@@ -19,8 +19,14 @@ footer {
     font-size: 23px;
     .col1__row1 {
       .footer__logo {
-        li {
-          margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        img {
+          width: 23px;
+          margin-right: 10px;
+        }
+        p {
           font-weight: 600;
         }
       }
