@@ -1,29 +1,30 @@
 // const { NONAME } = require("dns");
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   // mode: "development",
   // watch: true,
   entry: {
-    main: "./src/client/js/main.js",
-    changeHeader: "./src/client/js/changeHeader.js",
-    clickBar: "./src/client/js/clickBar.js",
-    blogScrollAni: "./src/client/js/blogScrollAni.js",
-    messageScrollAni: "./src/client/js/messageScrollAni.js",
-    widthResize: "./src/client/js/widthResize.js",
-    openAnswer: "./src/client/js/openAnswer",
-    toggleBtn: "./src/client/js/toggleBtn",
-    alert: "./src/client/js/alert",
+    main: './src/client/js/main.js',
+    changeHeader: './src/client/js/changeHeader.js',
+    clickBar: './src/client/js/clickBar.js',
+    blogScrollAni: './src/client/js/blogScrollAni.js',
+    messageScrollAni: './src/client/js/messageScrollAni.js',
+    widthResize: './src/client/js/widthResize.js',
+    openAnswer: './src/client/js/openAnswer',
+    toggleBtn: './src/client/js/toggleBtn',
+    alert: './src/client/js/alert',
+    qrContents: './src/client/js/qrContents',
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/styles.css",
+      filename: 'css/styles.css',
     }),
   ],
   output: {
-    filename: "js/[name].js",
-    path: path.resolve(__dirname, "assets"),
+    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'assets'),
     clean: true,
   },
   module: {
@@ -31,9 +32,9 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
           },
         },
       },
@@ -43,9 +44,9 @@ module.exports = {
           // JS파일에서 CSS 추출
           MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
     ],
