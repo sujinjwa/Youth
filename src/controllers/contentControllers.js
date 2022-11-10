@@ -36,7 +36,7 @@ export const detail = (req, res) => {
 
 export const qrPage = (req, res) => {
   const id = req.params.id;
-  return res.render('contents/qrpage', {
+  return res.render(`contents/qrpage${id}`, {
     pageTitle: 'Contents',
     title: qrContents[id - 1].title,
     imgUrl: `/uploads/contents/${id}.jpg`,
