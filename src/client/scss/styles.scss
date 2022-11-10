@@ -1,40 +1,41 @@
 // reset
-@import "./reset.scss";
+@import './reset.scss';
 
 // import fonts
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;300;400;500;600;700;800&display=swap');
 
 // variables & elements
-@import "./variables";
-@import "./elements";
+@import './variables';
+@import './elements';
 
 // components
-@import "./components/header";
-@import "./components/footer";
-@import "./components/qna";
-@import "./components/scroll";
-@import "./components/qr-mixins";
-@import "./components/detail";
+@import './components/header';
+@import './components/footer';
+@import './components/qna';
+@import './components/scroll';
+@import './components/qr-mixins';
+@import './components/detail';
+@import './components/qrHero';
 
 // screens
-@import "./screens/home";
-@import "./screens/about";
-@import "./screens/contents";
-@import "./screens/qrpage";
-@import "./screens/login";
-@import "./screens/find-ID-or-PW";
-@import "./screens/showID";
-@import "./screens/join";
-@import "./screens/welcome";
-@import "./screens/editUser";
-@import "./screens/editPW";
-@import "./screens/beforeDeleteUser";
+@import './screens/home';
+@import './screens/about';
+@import './screens/contents';
+@import './screens/qrpage';
+@import './screens/login';
+@import './screens/find-ID-or-PW';
+@import './screens/showID';
+@import './screens/join';
+@import './screens/welcome';
+@import './screens/editUser';
+@import './screens/editPW';
+@import './screens/beforeDeleteUser';
 
 // size별 styles
-@import "./screens/tablet";
-@import "./screens/mobile";
+@import './screens/tablet';
+@import './screens/mobile';
 
 * {
   box-sizing: border-box;
