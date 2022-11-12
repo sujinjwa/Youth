@@ -1,2 +1,60 @@
 main#contents {
+  .group_program {
+    .inner_program {
+      article.paragraph {
+        div.article__title {
+          h1 {
+            font-weight: 600;
+            font-size: 25px;
+            margin-top: 100px;
+            margin-bottom: 38px;
+            &.first-title {
+              margin-top: 0;
+            }
+          }
+        }
+        div.contents {
+          div.paragraph-of-paragraph {
+            margin: 20px 0px;
+            line-height: 2;
+            span.bold {
+              font-weight: 600;
+            }
+            span.underline {
+              text-decoration: underline;
+              text-underline-position: under;
+            }
+          }
+          div {
+            h3.contents__title {
+              margin-top: 45px;
+              font-size: 20px;
+              font-weight: 600;
+              &.margin-bottom {
+                margin-bottom: 20px;
+              }
+            }
+            ul {
+              line-height: 1.5;
+              li {
+                i {
+                  margin-right: 8px;
+                }
+                font-weight: 600;
+                font-size: 17px;
+                margin: 10px 0px;
+                margin-left: 15px;
+              }
+            }
+          }
+          a {
+            i {
+              margin-right: 3px;
+            }
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
 }
