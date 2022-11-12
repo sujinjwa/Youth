@@ -4,6 +4,7 @@ main#contents {
       p#before-title {
         margin-bottom: 30px;
       }
+
       article.paragraph {
         div.article__title {
           h1 {
@@ -56,6 +57,10 @@ main#contents {
                 &#li-of-li {
                   padding-left: 12px;
                 }
+                font-weight: 600;
+                font-size: 17px;
+                margin: 10px 0px;
+                margin-left: 15px;
               }
             }
           }
