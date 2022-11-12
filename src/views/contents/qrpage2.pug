@@ -1,0 +1,76 @@
+extends ../base.pug
+
+block content 
+    main#contents
+        include ../partials/qrHero.pug 
+        
+        .group_program 
+            .inner_program
+                p#before-title 상황별 기능 가능 장기의 종류는 아래의 세 가지로 나뉩니다.
+                article#article1.paragraph
+                    div.article__title
+                        h1.first-title 1. 뇌사기증
+                    div.contents
+                        div 
+                            ul 
+                                li • 뇌혈관질환이나 시고 등으로 뇌사 상태에 이르렀을 때 진행하는 기증
+                                li • 기능 가능한 장기 
+                                li#li-of-li : 심장, 폐장, 간장, 췌장/췌도, 신장, 소장, 안구, 손/팔, 발/다리
+                                li • 기능 가능한 인체조직
+                                li#li-of-li : 뼈, 연골, 근막, 피부, 양막, 인대, 건, 혈관, 심장판막
+
+                article#article2.paragraph
+                    div.article__title
+                        h1 2. 사후기증(만 14세 ~ 80세까지 기증 가능)
+                    div.contents
+                        div
+                            ul 
+                                li • 심장박동이 멎어 사망한 이후 기증
+                                li • 기증 가능한 장기(사망 후 6시간 이내 기증)
+                                li#li-of-li : 안구
+                                li • 기증 가능한 인체조직(사망 후 24시간 이내 기증)
+                                li#li-of-li : 뼈, 연골, 근막, 피부, 양막, 인대, 건, 현관, 심장판막
+
+                article#article3.paragraph
+                    div.article__title
+                        h1 3. 생존시 기증
+                    
+                    div.contents
+                        div
+                            ul 
+                                li • 살아있는 사람으로서 장기기증자가 부부 · 직계존비속 · 형제자매 또는 4촌 이내의 친족 간(만 16세 이상), 타인 간(만 19세 이상)을 이식대상자로 선정하여 기증
+                                li • 기증 가능한 장기
+                                li#li-of-li : 폐, 간장, 신장, 췌장, 소장, 골수, 말초혈
+
+                article#article4.paragraph
+                    div.article__title
+                        h1
+                    div.contents
+                        div.paragraph-of-paragraph
+                            | 이렇게 세 가지 형태의 기증 중 본인이 원하는 형태를 선택해서 장기기증 희망 등록을 진행할 수 있습니다.
+                            | 예를 들어, 사후 기증만 신청을 할 수도 있을 것이고, 모든 형태의 기증을 전부 신청할 수도 있습니다. 
+                            | 각각의 상황별로 어떤 장기와 인체조직을 기증하는 것인지 파악한 후, 본인의 의사에 따라 장기기증 희망 등록을 진행하시면 됩니다.
+
+                        div.paragraph-of-paragraph
+                            | 추가로 장기와 인체조직은 일상에서는 큰 구분 없이 사용하지만, 아래와 같은 차이가 있습니다.
+                        
+                        div.grid-wrapper
+                            div.grid
+                                div.row#category 구분
+                                div#category 인체조직
+                                div#category 장기
+                                div.row 종류
+                                div  뼈, 연골, 근막, 피부, 양막, 인대 및 건, 심장판막, 혈관, 신경, 심장막
+                                div 신장, 간장, 췌장, 췌도, 소장, 심장, 폐, 안구, 손•팔, 발•다리 등
+                                div.row 기증시기
+                                div 뇌사 또는 사망 후 15시간 이내, 살아있을 때
+                                div  살아있을 때 혹은 뇌사 시
+                                div.row 이식시기
+                                div 가공 및 보관 거쳐 이식 (최장 5년 보관)
+                                div 즉시 이식
+                                div.row 특징
+                                div 한 사람의 기증으로 최대 백여명이 수혜 가능
+                                div 한 사람의 기증으로 최대 9명이 수혜 가능
+                        
+                        div.paragraph-of-paragraph#justify-content-center
+                            | 출처: 국립 장기조직 혈액 관리원

@@ -1,6 +1,9 @@
 main#contents {
   .group_program {
     .inner_program {
+      p#before-title {
+        margin-bottom: 30px;
+      }
       article.paragraph {
         div.article__title {
           h1 {
@@ -24,6 +27,10 @@ main#contents {
               text-decoration: underline;
               text-underline-position: under;
             }
+            &#justify-content-center {
+              display: flex;
+              justify-content: center;
+            }
           }
           div {
             h3.contents__title {
@@ -40,10 +47,15 @@ main#contents {
                 i {
                   margin-right: 8px;
                 }
-                font-weight: 600;
                 font-size: 17px;
                 margin: 10px 0px;
                 margin-left: 15px;
+                &.bold {
+                  font-weight: 600;
+                }
+                &#li-of-li {
+                  padding-left: 12px;
+                }
               }
             }
           }
@@ -52,6 +64,31 @@ main#contents {
               margin-right: 3px;
             }
             font-weight: 600;
+          }
+          div.grid-wrapper {
+            margin-top: 50px;
+            div.grid {
+              border: 1px solid $input--placeholder;
+              background-color: $input--placeholder;
+              display: grid;
+              grid-template-columns: 1fr 3fr 3fr;
+              grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
+              height: 60vh;
+              width: 100%;
+              gap: 1px;
+              div {
+                padding: 13px;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &#category {
+                  font-weight: 600;
+                  font-size: 18px;
+                  background-color: $input--border;
+                }
+              }
+            }
           }
         }
       }
