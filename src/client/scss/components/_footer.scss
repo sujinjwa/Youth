@@ -1,9 +1,9 @@
 footer {
   width: 100%;
   // height: 35vh;
-  background-color: $dark---green;
+  background-color: #dcd5cc;
   padding: 40px 150px;
-  color: white;
+  color: $input--word;
   display: flex;
   justify-content: space-between;
   .footer__col1,
@@ -11,7 +11,7 @@ footer {
     list-style: none;
     a {
       text-decoration: none;
-      color: white;
+      color: $input--word;
     }
   }
   .footer__col1 {
