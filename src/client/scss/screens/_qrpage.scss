@@ -18,6 +18,20 @@ main#contents {
           }
         }
         div.contents {
+          h1.title-of-contents {
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 10px;
+            &#second {
+              padding-top: 28px;
+            }
+            span {
+              &.underline {
+                text-decoration: underline;
+                text-underline-position: under;
+              }
+            }
+          }
           div.paragraph-of-paragraph {
             margin: 20px 0px;
             line-height: 2;
@@ -57,7 +71,7 @@ main#contents {
                 &#li-of-li {
                   padding-left: 12px;
                 }
-                font-weight: 600;
+                // font-weight: 600;
                 font-size: 17px;
                 margin: 10px 0px;
                 margin-left: 15px;
