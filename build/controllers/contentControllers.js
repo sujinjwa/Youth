@@ -30,7 +30,8 @@ var about = function about(req, res) {
 exports.about = about;
 
 var youthkit = function youthkit(req, res) {
-  return res.render('contents/youthkit');
+  // return res.render('contents/youthkit');
+  return res.render('https://tumblbug.com/writeyouth?ref=%EA%B2%80%EC%83%89%2F%ED%82%A4%EC%9B%8C%EB%93%9C');
 };
 
 exports.youthkit = youthkit;
