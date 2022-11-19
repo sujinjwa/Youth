@@ -1,7 +1,7 @@
 footer {
   width: 100%;
   // height: 35vh;
-  background-color: #dcd5cc;
+  background-color: #f1ece8e3;
   padding: 40px 150px;
   color: $input--word;
   display: flex;
@@ -55,6 +55,7 @@ footer {
       }
     }
     .col2__row2 {
+      text-align: end;
       a {
         li {
           padding: 7px;
