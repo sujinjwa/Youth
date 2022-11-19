@@ -14,7 +14,10 @@ export const about = (req, res) => {
 };
 
 export const youthkit = (req, res) => {
-  return res.render('contents/youthkit');
+  // return res.render('contents/youthkit');
+  return res.render(
+    'https://tumblbug.com/writeyouth?ref=%EA%B2%80%EC%83%89%2F%ED%82%A4%EC%9B%8C%EB%93%9C'
+  );
 };
 
 export const community = (req, res) => {
