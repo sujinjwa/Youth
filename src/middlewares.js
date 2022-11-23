@@ -1,6 +1,6 @@
-import { S3Client } from "@aws-sdk/client-s3";
-import multer from "multer";
-import multerS3 from "multer-s3";
+import { S3Client } from '@aws-sdk/client-s3';
+import multer from 'multer';
+import multerS3 from 'multer-s3';
 
 // 모든 템플릿에서 사용 가능한 전역 변수 선언
 export const localsMiddleware = (req, res, next) => {
@@ -19,7 +19,7 @@ export const localsMiddleware = (req, res, next) => {
 };
 
 const s3 = new S3Client({
-  region: "ap-northeast-2",
+  region: 'ap-northeast-2',
   credentials: {
     accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET,
@@ -28,15 +28,15 @@ const s3 = new S3Client({
 
 const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "writeyouth",
-  Key: "images/",
-  acl: "public-read",
+  bucket: 'writeyouth',
+  Key: 'images/',
+  acl: 'public-read',
 });
 
-const isHeroku = process.env.NODE_ENV === "production";
+const isHeroku = process.env.NODE_ENV === 'production';
 
 export const avatarUpload = multer({
-  dest: "uploads/avatars/",
+  dest: 'uploads/avatars/',
   storage: isHeroku ? s3ImageUploader : undefined,
 });
 
@@ -46,7 +46,7 @@ export const protectorMiddleware = (req, res, next) => {
     next();
   } else {
     // req.session.errorMessage1 = "로그인이 필요한 서비스입니다.";
-    return res.redirect("/login");
+    return res.redirect('/login');
   }
 };
 
@@ -55,12 +55,12 @@ export const publicOnlyMiddleware = (req, res, next) => {
   if (!req.session.loggedIn) {
     next();
   } else {
-    return res.redirect("/");
+    return res.redirect('/');
   }
 };
 
 // 회원 탈퇴 이전에 경고창 띄우는 미들웨어
 export const beforeDeleteUser = (req, res) => {
-  return res.render("users/beforeDeleteUser", { pageTitle: "DeleteUser" });
+  return res.render('users/beforeDeleteUser', { pageTitle: 'DeleteUser' });
   // next();
 };

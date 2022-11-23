@@ -31,7 +31,7 @@ var localsMiddleware = function localsMiddleware(req, res, next) {
 
 exports.localsMiddleware = localsMiddleware;
 var s3 = new _clientS.S3Client({
-  region: "ap-northeast-2",
+  region: 'ap-northeast-2',
   credentials: {
     accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET
@@ -39,13 +39,13 @@ var s3 = new _clientS.S3Client({
 });
 var s3ImageUploader = (0, _multerS["default"])({
   s3: s3,
-  bucket: "writeyouth",
-  Key: "images/",
-  acl: "public-read"
+  bucket: 'writeyouth',
+  Key: 'images/',
+  acl: 'public-read'
 });
-var isHeroku = process.env.NODE_ENV === "production";
+var isHeroku = process.env.NODE_ENV === 'production';
 var avatarUpload = (0, _multer["default"])({
-  dest: "uploads/avatars/",
+  dest: 'uploads/avatars/',
   storage: isHeroku ? s3ImageUploader : undefined
 }); // 로그인되지 않은 유저 차단하는 미들웨어
 
@@ -56,7 +56,7 @@ var protectorMiddleware = function protectorMiddleware(req, res, next) {
     next();
   } else {
     // req.session.errorMessage1 = "로그인이 필요한 서비스입니다.";
-    return res.redirect("/login");
+    return res.redirect('/login');
   }
 }; // 로그인된 유저 차단하는 미들웨어
 
@@ -67,7 +67,7 @@ var publicOnlyMiddleware = function publicOnlyMiddleware(req, res, next) {
   if (!req.session.loggedIn) {
     next();
   } else {
-    return res.redirect("/");
+    return res.redirect('/');
   }
 }; // 회원 탈퇴 이전에 경고창 띄우는 미들웨어
 
@@ -75,8 +75,8 @@ var publicOnlyMiddleware = function publicOnlyMiddleware(req, res, next) {
 exports.publicOnlyMiddleware = publicOnlyMiddleware;
 
 var beforeDeleteUser = function beforeDeleteUser(req, res) {
-  return res.render("users/beforeDeleteUser", {
-    pageTitle: "DeleteUser"
+  return res.render('users/beforeDeleteUser', {
+    pageTitle: 'DeleteUser'
   }); // next();
 };
 
