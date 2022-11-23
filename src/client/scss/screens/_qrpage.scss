@@ -71,11 +71,32 @@ main#contents {
                 &#li-of-li {
                   padding-left: 12px;
                 }
+                span.underline {
+                  text-decoration: underline;
+                  text-underline-position: under;
+                }
                 // font-weight: 600;
                 font-size: 17px;
                 margin: 10px 0px;
                 margin-left: 15px;
               }
+            }
+          }
+          div.box {
+            width: 80%;
+            padding: 35px;
+            border: 1px solid $grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h1.title {
+              margin-bottom: 12px;
+              font-size: 20px;
+              font-weight: 600;
+            }
+            p {
+              margin-top: 10px;
             }
           }
           a {
