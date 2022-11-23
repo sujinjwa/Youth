@@ -1,52 +1,87 @@
-.group_program.about {
-  padding-bottom: 0px !important;
-}
-
-.wrapper {
-  width: 100%;
-  padding: 110px 0;
-  background-color: $light--grey;
-  .about__people {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background-color: $light--grey;
-    .people__title {
-      font-size: 30px;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-    .people__members {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      .member {
-        padding: 50px;
-        width: 100%;
-        img {
-          width: 250px;
-          margin-bottom: 10px;
-        }
-        .introduce {
-          .name {
-            font-size: 21px;
-            font-weight: 600;
-            // margin-bottom: 15px;
+main#contents {
+  .group_program#about {
+    padding-bottom: 0px !important;
+    .inner_program {
+      section.box_program.menu1__program {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .title.menu1__column1 {
+          h1.menu1__title {
+            margin-bottom: 30px;
           }
-          p {
-            margin: 20px 0px;
-            &.txt_position {
-              font-size: 14px;
-              font-weight: 550;
-            }
-            &.txt_desc {
-              font-size: 17px;
-            }
+        }
+        .contents.menu1__column2 {
+          display: flex;
+          margin-bottom: 20px;
+          h3 {
+            margin: 0px;
+            padding: 20px;
+            font-size: 17px;
+            color: $medium--grey;
+            font-weight: 500;
+          }
+        }
+        .image__wrapper {
+          width: 100%;
+          padding: 20px;
+          img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
           }
         }
       }
     }
   }
 }
+
+// .wrapper {
+//   width: 100%;
+//   padding: 110px 0;
+//   background-color: $light--grey;
+//   .about__people {
+//     width: 100%;
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 0 20px;
+//     background-color: $light--grey;
+//     .people__title {
+//       font-size: 30px;
+//       font-weight: 600;
+//       line-height: 1.5;
+//     }
+//     .people__members {
+//       width: 100%;
+//       display: grid;
+//       grid-template-columns: repeat(3, 1fr);
+//       grid-template-rows: repeat(2, 1fr);
+//       .member {
+//         padding: 50px;
+//         width: 100%;
+//         img {
+//           width: 250px;
+//           margin-bottom: 10px;
+//         }
+//         .introduce {
+//           .name {
+//             font-size: 21px;
+//             font-weight: 600;
+//             // margin-bottom: 15px;
+//           }
+//           p {
+//             margin: 20px 0px;
+//             &.txt_position {
+//               font-size: 14px;
+//               font-weight: 550;
+//             }
+//             &.txt_desc {
+//               font-size: 17px;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

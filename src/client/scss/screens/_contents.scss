@@ -23,8 +23,21 @@ main#contents {
         line-height: 1.5;
         h3 {
           font-size: 35px;
+          animation-duration: 1s;
+          animation-name: showText;
         }
       }
+    }
+  }
+
+  @keyframes showText {
+    from {
+      opacity: 0;
+      padding-top: 10px;
+    }
+    to {
+      opacity: 1;
+      padding-top: 0px;
     }
   }
 
@@ -73,7 +86,6 @@ main#contents {
 main#contents {
   .group_program {
     width: 100%;
-    // height: 500vh;
     padding: 110px 0px;
     .inner_program {
       max-width: 1200px;
