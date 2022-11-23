@@ -1,6 +1,4 @@
 header {
-  //-webkit-transform: translate3d(0, 0, 0);
-  //transform: translate3d(0, 0, 0);
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +9,6 @@ header {
   align-items: center;
   background: rgba(0, 0, 0, 0);
   nav {
-    // position: relative;
     width: 100%;
     margin: 0 80px;
     display: flex;
