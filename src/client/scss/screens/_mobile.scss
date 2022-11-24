@@ -159,8 +159,6 @@
           }
         }
       }
-
-      // about 페이지
       .group_program {
         padding: 50px 0px;
         .inner_program {
@@ -178,14 +176,6 @@
                 font-size: 14px;
                 // font-family: $kakao-regular;
                 margin-bottom: 50px;
-              }
-            }
-            .contents.menu1__column2 {
-              flex-direction: column;
-              margin-bottom: 10px;
-              h3 {
-                padding: 0px;
-                font-size: 14px;
               }
             }
           }
@@ -246,6 +236,36 @@
               }
               p {
                 font-size: 15px;
+              }
+            }
+          }
+        }
+        // about 페이지
+        &#about {
+          .inner_program {
+            section.box_program.menu1__program {
+              .title.menu1__column1 {
+                margin-bottom: 0px;
+                h1.menu1__title {
+                  margin-bottom: 8px;
+                }
+              }
+              .contents.menu1__column2 {
+                flex-direction: column;
+                margin-bottom: 5px;
+                h3 {
+                  padding: 0px;
+                  font-size: 14px;
+                  p {
+                    margin: 13px 0px;
+                  }
+                }
+              }
+              .image__wrapper {
+                padding: 0px;
+                img {
+                  height: 35vh;
+                }
               }
             }
           }
