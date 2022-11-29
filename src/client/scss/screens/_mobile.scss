@@ -247,7 +247,7 @@
             section.box_program {
               .title {
                 h1 {
-                  font-size: 14px;
+                  font-size: 20px;
                 }
               }
               .contents {
@@ -278,6 +278,46 @@
                   padding: 0px;
                   img {
                     height: 35vh;
+                  }
+                }
+              }
+              &.menu3__program {
+                padding-top: 0px;
+                padding-bottom: 90px;
+                .title {
+                  h1 {
+                    padding-left: 20px;
+                    font-size: 20px;
+                  }
+                }
+                .contents.menu3__column2 {
+                  // padding-left: 50px;
+                  height: 60vh;
+                  margin: 10px 0px;
+                  div.root-circle {
+                    width: 200px;
+                    height: 200px;
+                    div.circle {
+                      width: 130px;
+                      height: 130px;
+                      margin: 0px;
+                      &.first {
+                        top: -25%;
+                        left: -25%;
+                      }
+                      &.second {
+                        top: 20%;
+                        right: -45%;
+                        // right: 130px;
+                      }
+                      &.third {
+                        bottom: -30%;
+                        left: -20%;
+                      }
+                      h1.subtitle {
+                        font-size: 13px;
+                      }
+                    }
                   }
                 }
               }
