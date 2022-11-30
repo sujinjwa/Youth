@@ -79,7 +79,7 @@
   .container {
     width: 95%;
     margin: 0 auto;
-    #fag {
+    section#fag {
       .panel-question {
         font-size: 20px;
         line-height: 1.5;
@@ -133,9 +133,14 @@
             margin-right: 30px;
             margin-top: 5px;
           }
-          p {
+          div.answer {
             font-size: 17px;
             // line-height: 1.5;
+            p {
+              &.blank {
+                margin: 18px 0px;
+              }
+            }
             span {
               &.original {
                 &.toggle {
@@ -147,6 +152,13 @@
                 &.toggle {
                   display: inline-block;
                 }
+              }
+              &.underline {
+                text-decoration: underline;
+                text-underline-position: under;
+              }
+              &.bold {
+                font-weight: 600;
               }
             }
           }
