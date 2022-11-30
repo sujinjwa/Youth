@@ -297,6 +297,7 @@
                   div.root-circle {
                     width: 200px;
                     height: 200px;
+                    border: 1px solid $medium--grey;
                     div.circle {
                       width: 130px;
                       height: 130px;
@@ -345,7 +346,8 @@
                   img {
                     display: flex;
                     align-items: center;
-                    border-top-left-radius: 0%;
+                    border-top-left-radius: 40%;
+                    border-top-right-radius: 40%;
                   }
                 }
                 .wrapper-of-writing {
