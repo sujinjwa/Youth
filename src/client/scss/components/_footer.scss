@@ -2,8 +2,11 @@ footer {
   width: 100%;
   // height: 35vh;
   background-color: $beige--bg;
+  //background-color: #186853;
+  //background-color: #23755c;
   padding: 40px 150px;
   color: $input--word;
+  // color: white;
   display: flex;
   justify-content: space-between;
   .footer__col1,
@@ -12,6 +15,7 @@ footer {
     a {
       text-decoration: none;
       color: $input--word;
+      // color: white;
     }
   }
   .footer__col1 {
