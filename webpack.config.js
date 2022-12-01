@@ -3,7 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  // mode: "development",
+  // mode: 'development',
   // watch: true,
   entry: {
     main: './src/client/js/main.js',
@@ -11,6 +11,7 @@ module.exports = {
     clickBar: './src/client/js/clickBar.js',
     blogScrollAni: './src/client/js/blogScrollAni.js',
     messageScrollAni: './src/client/js/messageScrollAni.js',
+    aboutScrollAni: './src/client/js/aboutScrollAni.js',
     widthResize: './src/client/js/widthResize.js',
     openAnswer: './src/client/js/openAnswer',
     toggleBtn: './src/client/js/toggleBtn',

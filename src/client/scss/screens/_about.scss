@@ -68,6 +68,15 @@ main#contents {
                 // background-color: #dcc5c3;
                 // background-color: rgb(182, 175, 157);
                 background-color: #ccd1c9;
+                opacity: 0;
+                transform: translateY(70px);
+                transition: 1s all ease;
+                &.show {
+                  opacity: 1;
+                }
+                &.slide-top {
+                  transform: translateY(0);
+                }
                 &.first {
                   top: -40%;
                   left: -40%;
@@ -75,6 +84,7 @@ main#contents {
                 &.second {
                   top: 10%;
                   right: -60%;
+
                   // right: 130px;
                 }
                 &.third {
