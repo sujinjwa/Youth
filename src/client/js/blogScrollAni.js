@@ -2,7 +2,7 @@ const blogPosts = document.querySelectorAll('.blog__post');
 
 const blogAni = () => {
   for (var i = 0; i < blogPosts.length; i++) {
-    let eheight = blogPosts[i].getBoundingClientRect().top;
+    let height = blogPosts[i].getBoundingClientRect().top;
     if (height <= 675) {
       blogPosts[i].classList.add('show');
       blogPosts[i].classList.add('slide-top');
