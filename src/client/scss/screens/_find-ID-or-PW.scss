@@ -1,10 +1,11 @@
 main#find-ID-or-PW {
   height: 100vh;
   &.find-pw {
-    height: 110vh;
+    height: 120vh;
   }
   .wrapper {
     margin-top: 85px;
+    padding-top: 120px;
     height: 100%;
     .box {
       width: 600px;
