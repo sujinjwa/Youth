@@ -42,6 +42,7 @@ export const qrPage = (req, res) => {
   return res.render(`contents/qrpage${id}`, {
     pageTitle: 'Contents',
     title: qrContents[id - 1].title,
+    index: id,
     imgUrl: `/uploads/contents/${id}.jpg`,
   });
 };

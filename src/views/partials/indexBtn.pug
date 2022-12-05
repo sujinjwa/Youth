@@ -1,0 +1,27 @@
+.wrapper-of-btns
+    div.border
+    .btns-of-contents__index
+        if index > 1
+            a(href=`${parseInt(index) - 1}`)
+                div.btn.before
+                    i.fa-solid.fa-less-than
+                    p 이전글
+        else
+            div.btn.before.disabled
+                    i.fa-solid.fa-less-than
+                    p 이전글
+
+
+        a(href='/contents/detail')
+            div.btn.list
+                p 목록
+
+        if index < 6
+            a(href=`${parseInt(index) + 1}`)
+                div.btn.next
+                    p 다음글
+                    i.fa-solid.fa-greater-than
+        else
+            div.btn.next.disabled
+                p 다음글
+                i.fa-solid.fa-greater-than
