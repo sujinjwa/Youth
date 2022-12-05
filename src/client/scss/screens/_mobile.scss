@@ -730,20 +730,19 @@
       }
     }
   }
-}
-
-// 가이드북 플러스 세부 페이지 내 버튼 리스트
-.wrapper-of-btns {
-  div.border {
-    height: 1px;
-    margin-top: 80px;
-    margin-bottom: 30px;
-  }
-  .btns-of-contents__index {
-    div.btn {
-      i,
-      p {
-        font-size: 14px;
+  // 가이드북 플러스 세부 페이지 내 버튼 리스트
+  .wrapper-of-btns {
+    div.border {
+      height: 1px;
+      margin-top: 80px;
+      margin-bottom: 30px;
+    }
+    .btns-of-contents__index {
+      div.btn {
+        i,
+        p {
+          font-size: 14px;
+        }
       }
     }
   }
