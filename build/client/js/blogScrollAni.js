@@ -4,7 +4,7 @@ var blogPosts = document.querySelectorAll('.blog__post');
 
 var blogAni = function blogAni() {
   for (var i = 0; i < blogPosts.length; i++) {
-    var eheight = blogPosts[i].getBoundingClientRect().top;
+    var height = blogPosts[i].getBoundingClientRect().top;
 
     if (height <= 675) {
       blogPosts[i].classList.add('show');
