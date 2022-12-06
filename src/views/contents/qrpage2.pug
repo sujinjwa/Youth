@@ -6,12 +6,17 @@ block content
         
         .group_program 
             .inner_program
-                p#before-title 상황별 기능 가능 장기의 종류는 아래의 세 가지로 나뉩니다.
+                // p#before-title 상황별 기능 가능 장기의 종류는 아래의 세 가지로 나뉩니다.
                 article#article1.paragraph
                     div.article__title
-                        h1.first-title 1. 뇌사기증
+                        h1.first-title 상황별 기능 가능 장기의 종류
                     div.contents
-                        div 
+                        div.paragraph-of-paragraph
+                            | 상황별 기능 가능 장기의 종류는 아래의 세 가지로 나뉩니다.
+                        div
+                            h3.contents__title 1. 뇌사기증
+                            div.paragraph-of-paragraph
+                        div
                             ul 
                                 li • 뇌혈관질환이나 시고 등으로 뇌사 상태에 이르렀을 때 진행하는 기증
                                 li • 기능 가능한 장기 
@@ -21,8 +26,11 @@ block content
 
                 article#article2.paragraph
                     div.article__title
-                        h1 2. 사후기증(만 14세 ~ 80세까지 기증 가능)
+                        h1 
                     div.contents
+                        div
+                            h3.contents__title 2. 사후기증(만 14세 ~ 80세까지 기증 가능)
+                            div.paragraph-of-paragraph
                         div
                             ul 
                                 li • 심장박동이 멎어 사망한 이후 기증
@@ -33,9 +41,11 @@ block content
 
                 article#article3.paragraph
                     div.article__title
-                        h1 3. 생존시 기증
-                    
+                        h1 
                     div.contents
+                        div
+                            h3.contents__title 3. 생존시 기증
+                            div.paragraph-of-paragraph
                         div
                             ul 
                                 li • 살아있는 사람으로서 장기기증자가 부부 · 직계존비속 · 형제자매 또는 4촌 이내의 친족 간(만 16세 이상), 타인 간(만 19세 이상)을 이식대상자로 선정하여 기증
@@ -73,6 +83,6 @@ block content
                                 div 한 사람의 기증으로 최대 9명이 수혜 가능
                         
                         div.paragraph-of-paragraph#justify-content-center
-                            | 출처: 국립 장기조직 혈액 관리원
+                            | ※ 출처: 국립 장기조직 혈액 관리원
                 
             include ../partials/indexBtn.pug
