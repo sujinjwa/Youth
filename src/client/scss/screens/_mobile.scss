@@ -417,10 +417,12 @@
           font-size: 14px;
         }
         article.paragraph {
+          flex-direction: column;
           div.article__title {
             h1 {
-              margin-top: 65px;
-              margin-bottom: 20px;
+              width: 100%;
+              margin-top: 15px;
+              margin-bottom: 3px;
               font-size: 17px;
             }
           }
@@ -446,6 +448,19 @@
               padding: 10px;
               h1.title {
                 font-size: 15px;
+              }
+            }
+            div.paragraph-of-paragraph {
+              div.steps {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+              }
+            }
+            div.grid-wrapper {
+              div.grid {
+                border-top: 1px solid $guidebook--green;
+                border-bottom: 1px solid $guidebook--green;
+                row-gap: 1px;
               }
             }
           }
