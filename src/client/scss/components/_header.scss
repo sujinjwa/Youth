@@ -19,8 +19,8 @@ header {
       a {
         transition: color 0.1s linear;
         text-decoration: none;
-        font-family: $english;
         color: $light--grey;
+        word-spacing: 6px;
       }
       &.logo {
         a {
@@ -33,16 +33,26 @@ header {
           li {
             font-size: 25px;
             font-weight: 600;
-            font-family: $gothic;
+            padding-bottom: 4px;
           }
         }
       }
       &.navbar {
         a {
           li {
-            margin: 0px 30px;
+            width: 138px;
+            text-align: center;
             font-weight: 500;
             font-size: 18px;
+            &#second-list {
+              width: 140px;
+            }
+            &#third-list {
+              width: 158px;
+            }
+            &#fourth-list {
+              width: 168px;
+            }
             &:hover {
               font-weight: 600;
             }
@@ -54,23 +64,11 @@ header {
               border-radius: 50%;
               border: 1px solid $input--border;
             }
-            // i {
-            //   padding: 8px;
-            //   text-align: center;
-            //   border-radius: 50%;
-            //   border: 1px solid;
-            //   // color: white;
-            // }
           }
         }
       }
     }
     button.bar {
-      //-webkit-transform: translate3d(0, 0, 0);
-      //transform: translate3d(0, 0, 0);
-      // position: fixed;
-      // top: 33px;
-      // right: 23px;
       background: none;
       margin: 0;
       padding: 0;
@@ -98,7 +96,6 @@ header {
     a.profile {
       i {
         color: black;
-        // border: 1px solid black;
       }
     }
   }
