@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 // variables & elements
 @import './variables';
@@ -44,7 +45,8 @@
 
 body {
   // font-family: "Hahmlet", serif;
-  font-family: $gothic;
+  // font-family: $gothic;
+  font-family: $noto;
   -webkit-overflow-scrolling: touch !important;
   scroll-behavior: smooth;
   &.openModal {

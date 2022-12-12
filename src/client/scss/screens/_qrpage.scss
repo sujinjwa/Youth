@@ -18,8 +18,6 @@ main#contents {
             font-weight: 700;
             font-size: 25px;
             color: $guidebook--green;
-            // margin-top: 100px;
-            // margin-bottom: 38px;
             &.first-title {
               margin-top: 0;
             }
@@ -30,10 +28,6 @@ main#contents {
           h1.title-of-contents {
             font-size: 20px;
             font-weight: 600;
-            // padding-top: 10px;
-            // &#second {
-            //   padding-top: 28px;
-            // }
             span {
               &.underline {
                 text-decoration: underline;
@@ -105,7 +99,6 @@ main#contents {
                   text-decoration: underline;
                   text-underline-position: under;
                 }
-                // font-weight: 600;
                 font-size: 17px;
                 margin: 10px 0px;
                 margin-left: 15px;
@@ -149,9 +142,7 @@ main#contents {
           }
           div.box {
             background-color: $background2;
-            // width: 80%;
             padding: 35px;
-            // border: 1px solid $grey;
             display: flex;
             flex-direction: column;
             justify-content: center;

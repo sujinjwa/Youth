@@ -46,7 +46,6 @@
         padding: 20px 0px;
         width: 100vw;
         text-align: center;
-        font-family: $english;
         font-size: 22px;
         font-weight: 600;
         cursor: pointer;
@@ -87,7 +86,6 @@ main {
         width: 650px;
         color: $light--grey;
         h1 {
-          font-family: $english;
           font-size: 45px;
           font-weight: 600;
           margin-bottom: 40px;
@@ -136,10 +134,8 @@ main {
     &.show {
       opacity: 1;
       transform: none;
-      // visibility: hidden;
     }
     h1 {
-      // font-family: $english;
       color: $youthColor;
       font-size: 33px;
       font-weight: 600;
@@ -178,7 +174,6 @@ section.blog {
     height: 110px;
     padding: 50px 0px;
     font-size: 35px;
-    font-family: $english;
     font-weight: 600;
   }
   article.blog__post {
@@ -213,7 +208,6 @@ section.blog {
       display: flex;
       flex-direction: column;
       .post__title {
-        font-family: $english;
         font-size: 30px;
         font-weight: 600;
         margin-bottom: 4em;
@@ -236,9 +230,6 @@ section.blog {
         font-size: 25px;
         font-weight: 600;
         margin-bottom: 1em;
-        span {
-          font-family: $english;
-        }
       }
       .post__desc {
         width: 80%;
@@ -246,9 +237,6 @@ section.blog {
         font-size: 21px;
         line-height: 1.5;
         letter-spacing: 1.1;
-        span {
-          font-family: $english;
-        }
       }
       .more {
         font-size: 20px;
