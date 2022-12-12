@@ -1,8 +1,6 @@
 extends base.pug
 
 block content
-  // 캐쉬 슬라이드
-  // 펀딩 이미지 및 링크로 연결
   main
     if popup
       p#popup= popup
@@ -38,7 +36,8 @@ block content
         h4
           span 유쓰를 소개합니다
         span.post__desc 
-          p 유쓰는 “모두가 준비된 죽음을 맞이하는 사회”를 꿈꿉니다
+          p 유쓰는 “모두가 준비된 
+          p 죽음을 맞이하는 사회”를 꿈꿉니다
         span.more
           a(href="/about")
             | 자세히 보기
@@ -56,7 +55,10 @@ block content
           span 유쓰 KIT
         h4
           span 유쓰 유언장 키트를 만나보세요
-        span.post__desc 법적효력이 있는 자필 유언장을 포함한 다양한 구성품으로 나의 마지막을 스스로 준비해보세요
+        span.post__desc 
+          p 법적효력이 있는 자필 유언장을 포함한 
+          p 다양한 구성품으로 나의 마지막을 
+          p 스스로 준비해보세요
         span.more
           a(href="/youthkit")
             | 자세히 보기
@@ -72,7 +74,9 @@ block content
         h2.post__title
           span 유쓰 콘텐츠
         h4 죽음 준비에 대해 더 자세히 알아보세요
-        span.post__desc 죽음 준비와 관련된 다양한 콘텐츠를 소개해드립니다.
+        span.post__desc
+          p 죽음 준비와 관련된 
+          p 다양한 콘텐츠를 소개해드립니다.
         span.more
           a(href="/contents/qna/1")
             | 자세히 보기
