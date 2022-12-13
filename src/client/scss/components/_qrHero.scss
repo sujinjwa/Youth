@@ -29,4 +29,9 @@ main#contents {
       }
     }
   }
+  &.qrPage {
+    .contents__hero {
+      height: 35vh;
+    }
+  }
 }
