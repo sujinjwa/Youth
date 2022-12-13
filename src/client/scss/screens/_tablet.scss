@@ -193,10 +193,13 @@
       padding: 180px 80px;
     }
   }
-  .group_program#detail {
-    .inner_program {
-      div.grid {
-        grid-template-columns: repeat(2, 1fr);
+  main#contents {
+    .group_program#detail {
+      .inner_program {
+        width: 100%;
+        div.grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
   }
@@ -204,7 +207,7 @@
   #qr-link {
     div.inner_of_link {
       .wrapper_of_img {
-        height: 280px;
+        height: 200px;
       }
     }
   }
