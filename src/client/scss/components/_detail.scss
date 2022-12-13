@@ -1,10 +1,17 @@
-.group_program#detail {
-  .inner_program {
-    div.grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 13px;
-      row-gap: 35px;
+main#contents {
+  .group_program#detail {
+    .inner_program {
+      max-width: none;
+      width: 90%;
+      margin: 0 auto;
+      div.grid {
+        width: 95%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 13px;
+        row-gap: 35px;
+      }
     }
   }
 }
