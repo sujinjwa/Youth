@@ -722,37 +722,23 @@
   }
 
   footer {
-    padding: 40px 20px;
+    padding: 30px 0px;
     .footer__col1 {
-      font-size: 15px;
-      .col__row1 {
-        .footer__logo {
-          li {
-            margin-bottom: 5px;
+      .col1__row1 {
+        font-size: 18px;
+        a.footer__logo {
+          img {
+            width: 20px;
+            padding-top: 3px;
           }
         }
       }
       .col1__row2 {
-        p {
-          font-size: 10px;
-          padding: 5px 0;
-        }
+        font-size: 11px;
       }
     }
     .footer__col2 {
-      font-size: 10px;
-      .col2__row1 {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-      .col2__row2 {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        p {
-          margin-top: 15px;
-        }
-      }
+      font-size: 11px;
     }
   }
   // 가이드북 플러스 세부 페이지 내 버튼 리스트
