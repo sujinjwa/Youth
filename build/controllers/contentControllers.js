@@ -7,7 +7,7 @@ exports.youthkit = exports.recommend = exports.qrPage = exports.qna = exports.ho
 
 var _express = _interopRequireDefault(require("express"));
 
-var _qrContents = require("./qrContents");
+var _qrContents = require("../data/qrContents");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
