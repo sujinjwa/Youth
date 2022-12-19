@@ -545,7 +545,11 @@
             &.login__btn,
             &.join__btn {
               // font-size: 15px;
+
               padding: 14px 14px;
+            }
+            &.login__btn {
+              padding: 20px 14px;
             }
           }
           p {
@@ -787,12 +791,17 @@
         .agreement-allCheck,
         .check-group {
           margin: 10px 0px;
+          input {
+            width: 12px;
+            height: 12px;
+          }
         }
         .buttons {
           a,
           input {
             font-size: 14px;
             padding: 12px 25px;
+            border-radius: 0px;
           }
         }
       }
