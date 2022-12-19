@@ -1,8 +1,8 @@
 import express from 'express';
-import { policy } from '../controllers/policyController';
+import { getPolicy, postPolicy } from '../controllers/policyController';
 
 const policyRouter = express.Router();
 
-policyRouter.get('/', policy);
+policyRouter.route('/').get(getPolicy).post(postPolicy);
 
 export default policyRouter;
