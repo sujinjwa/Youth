@@ -37,18 +37,18 @@ var app = (0, _express["default"])(); // if (process.env.NODE_ENV === "productio
 // }
 
 var corsOptions = {
-  origin: "https://writeyouth.s3.ap-northeast-2.amazonaws.com/b47570143d8d8c1ca467298a5d0a691b",
+  origin: 'https://writeyouth.s3.ap-northeast-2.amazonaws.com/b47570143d8d8c1ca467298a5d0a691b',
   crendentials: true,
   optionsSuccessStatus: 200
 };
 app.use((0, _cors["default"])(corsOptions));
-var logger = (0, _morgan["default"])("dev");
+var logger = (0, _morgan["default"])('dev');
 app.use(logger);
-app.use("/assets", _express["default"]["static"]("assets")); // 정적 파일인 "assets" 폴더 서버에 로드
+app.use('/assets', _express["default"]["static"]('assets')); // 정적 파일인 "assets" 폴더 서버에 로드
 
-app.use("/uploads", _express["default"]["static"]("uploads"));
-app.set("views", "./src/views");
-app.set("view engine", "pug"); // session 미들웨어
+app.use('/uploads', _express["default"]["static"]('uploads'));
+app.set('views', './src/views');
+app.set('view engine', 'pug'); // session 미들웨어
 
 app.use((0, _expressSession["default"])({
   secret: process.env.COOKIE_SECRET,
@@ -66,9 +66,9 @@ app.use(_middlewares.localsMiddleware); // 전역 변수 선언 미들웨어
 app.use(_express["default"].urlencoded({
   extended: true
 }));
-app.use("/", _globalRouters["default"]);
-app.use("/users", _userRouters["default"]);
-app.use("/contents", _contentRouters["default"]);
-app.use("/policy", _policyRouters["default"]);
+app.use('/', _globalRouters["default"]);
+app.use('/users', _userRouters["default"]);
+app.use('/contents', _contentRouters["default"]);
+app.use('/policy', _policyRouters["default"]);
 var _default = app;
 exports["default"] = _default;
