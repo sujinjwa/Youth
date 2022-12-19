@@ -21,7 +21,8 @@ block content
                             label(for="check-1") 이용약관 동의 
                                 span.red (필수)
                         article.agreement-content 
-                            p 세부내용...
+                            for elem in contents
+                                p=elem
                     
                     .check-group 
                         div

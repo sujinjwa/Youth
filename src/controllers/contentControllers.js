@@ -1,5 +1,5 @@
 import express from 'express';
-import { qrContents } from './qrContents';
+import { qrContents } from '../data/qrContents';
 
 export const home = (req, res) => {
   const popup = req.query.popup;
