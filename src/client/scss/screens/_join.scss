@@ -143,6 +143,15 @@ main#join {
             cursor: pointer;
             accent-color: $youthDarkColor;
             width: 25px;
+            border: 1px solid $input--border;
+            border-radius: 5px;
+            &:checked {
+              //background-color: $guidebook--green;
+              background-image: url('/uploads/icons/check.png');
+              background-size: 80%;
+              background-position: center;
+              background-repeat: no-repeat;
+            }
           }
           span {
             margin-right: 15px;
