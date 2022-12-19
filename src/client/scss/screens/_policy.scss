@@ -1,5 +1,5 @@
 .policy-wrapper {
-  height: 170vh;
+  height: 190vh;
   padding: 170px 10px;
   #policy-box {
     display: flex;
@@ -46,9 +46,19 @@
         input {
           margin-right: 7px;
           margin-top: 13px;
-          width: 17px;
-          height: 17px;
+          width: 5px;
+          height: 5px;
           cursor: pointer;
+          // background-color: $;
+          border: 1px solid $input--border;
+          border-radius: 5px;
+          &:checked {
+            //background-color: $guidebook--green;
+            background-image: url('/uploads/icons/check.png');
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
         }
         div {
           display: flex;

@@ -62,3 +62,9 @@ body {
 // html [type="button"] {
 //   -webkit-appearance: none;
 // }
+
+// IOS에서 input 태그에 기본으로 적용되는 CSS 초기화
+input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
