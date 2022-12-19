@@ -1,1 +1,43 @@
-h1=contents
+extends ../base.pug
+
+block content
+    .policy-wrapper
+        #policy-box
+            h1 이용 약관
+            div.policy-introduce
+                h3 환영합니다.
+                h3 원활한 서비스 제공을 위해 유쓰 이용약관에 동의해주세요.
+            
+            form(method="POST").agreement-container 
+                .agreement-allCheck
+                    div 
+                        input(type="checkbox" id="allCheck" class='input-text')
+                        label(for="allCheck") 약관 전체동의
+                
+                .check-group 
+                    div
+                        input(type="checkbox" id="check-1" class='input-text' required)
+                        label(for="check-1") 이용약관 동의 
+                            span.red (필수)
+                    article.agreement-content 
+                        p 세부내용...
+                
+                .check-group 
+                    div
+                        input(type="checkbox" id="check-2" class='input-text' required)
+                        label(for="check-2") 개인정보 수집 및 이용 동의 
+                            span.red (필수)
+                    article.agreement-content 
+                        p 세부내용...
+                
+                .check-group 
+                    div 
+                        input(type="checkbox" id="check-3" class='input-text' name="marketing-agreement")
+                        label(for="check-3") 마케팅 활용 및 서비스 관련 정보 수신 동의 (선택)
+
+                    h5 신규 서비스 소식, 이벤트 안내, 뉴스레터 등 다양한 정보를 SMS와 이메일을 통해 제공합니다.
+                    h5 해당 항목에 동의하시고, 유쓰의 특별한 소식을 놓치지 않고 받아 보세요.
+
+                .buttons
+                    a(href="/login") 취소
+                    input(type="submit" id="join-btn" value='가입하기')

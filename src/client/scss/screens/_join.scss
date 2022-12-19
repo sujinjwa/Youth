@@ -13,7 +13,7 @@ main#join {
       align-items: center;
       justify-content: center;
       h1 {
-        font-family: $nanum;
+        // font-family: $nanum;
         font-size: 45px;
         font-weight: 500;
         margin-bottom: 38px;
@@ -24,7 +24,7 @@ main#join {
       flex-direction: column;
       align-items: center;
       h5 {
-        font-family: $gothic;
+        // font-family: $gothic;
         font-size: 15px;
         color: $grey;
         margin-bottom: 10px;
@@ -75,7 +75,7 @@ main#join {
       display: flex;
       flex-direction: column;
       input {
-        font-family: $gothic;
+        // font-family: $gothic;
         width: 470px;
         border: 1px solid $input--border;
         // background-color: $input--placeholder--bg;
@@ -164,7 +164,7 @@ main#join {
       }
     }
     .login__link {
-      font-family: $gothic;
+      // font-family: $gothic;
       margin-top: 15px;
       padding: 16px 14px;
       display: flex;

@@ -1,8 +1,8 @@
-import express from "express";
-import { policy } from "../controllers/policyController";
+import express from 'express';
+import { policy } from '../controllers/policyController';
 
-const serviceRouter = express.Router();
+const policyRouter = express.Router();
 
-serviceRouter.get("/", policy);
+policyRouter.get('/', policy);
 
-export default serviceRouter;
+export default policyRouter;

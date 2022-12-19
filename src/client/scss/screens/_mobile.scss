@@ -757,4 +757,44 @@
       }
     }
   }
+
+  .policy-wrapper {
+    height: 160vh;
+    padding: 120px 20px;
+    #policy-box {
+      h1 {
+        font-size: 30px;
+        margin-bottom: 25px;
+      }
+      div.policy-introduce {
+        h3 {
+          font-size: 14px;
+        }
+      }
+      form.agreement-container {
+        font-size: 12px;
+        margin: 25px 0px;
+        width: 100%;
+        label {
+          font-size: 14px;
+        }
+        .check-group {
+          h5 {
+            font-size: 13px;
+            line-height: 1.2;
+          }
+        }
+        .agreement-allCheck,
+        .check-group {
+          margin: 10px 0px;
+        }
+        .buttons {
+          a,
+          input {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }

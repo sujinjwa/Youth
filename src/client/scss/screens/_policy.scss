@@ -1,0 +1,99 @@
+.policy-wrapper {
+  height: 170vh;
+  padding: 170px 10px;
+  #policy-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      margin: 10px;
+      font-size: 45px;
+      font-weight: 500;
+      margin-bottom: 38px;
+    }
+    div.policy-introduce {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        margin: 5px 0px;
+        font-size: 17px;
+        color: $input--word;
+      }
+    }
+
+    form.agreement-container {
+      margin: 25px 0px;
+      width: 700px;
+      label {
+        color: $input--word;
+        font-size: 17px;
+        cursor: pointer;
+        span.red {
+          color: $red;
+        }
+      }
+
+      .agreement-allCheck,
+      .check-group {
+        margin: 20px 0px;
+        width: 100%;
+        input,
+        article.agreement-content {
+          margin: 10px 0px;
+          padding: 15px;
+        }
+        input {
+          margin-right: 7px;
+          margin-top: 13px;
+          width: 17px;
+          height: 17px;
+          cursor: pointer;
+        }
+        div {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .check-group {
+        article.agreement-content {
+          width: 100%;
+          border-radius: 10px;
+          height: 200px;
+          overflow-y: scroll;
+          border: 1px solid $input--border;
+        }
+        h5 {
+          font-size: 14px;
+          margin: 6px 0px;
+          color: $input--placeholder;
+        }
+      }
+
+      .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        a,
+        input {
+          border: 1px solid $input--border;
+          padding: 15px 30px;
+          font-size: 16px;
+          font-weight: 500;
+          color: $input--word;
+          margin: 0px 4px;
+          cursor: pointer;
+        }
+        a {
+          padding-top: 17px;
+        }
+        input {
+          background-color: $guidebook--green;
+          color: white;
+        }
+      }
+    }
+  }
+}
