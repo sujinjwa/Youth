@@ -76,6 +76,9 @@
           height: 200px;
           overflow-y: scroll;
           border: 1px solid $input--border;
+          p {
+            line-height: 1.5;
+          }
         }
         h5 {
           font-size: 14px;

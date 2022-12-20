@@ -1,5 +1,5 @@
 import express from 'express';
-import { Policy1 } from '../data/policy1';
+import { Policy1 } from '../data/policy';
 
 export const getPolicy = (req, res) => {
   const POLICY = Policy1.contents.split('\n');
