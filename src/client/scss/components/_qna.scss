@@ -137,8 +137,22 @@
             font-size: 17px;
             // line-height: 1.5;
             p {
+              word-spacing: 1px;
               &.blank {
                 margin: 18px 0px;
+              }
+              &.bold {
+                font-weight: 600;
+              }
+              span {
+                &.bold {
+                  font-weight: 600;
+                }
+                &.highlight {
+                  // adding-bottom: 2px;
+                  // padding-top: 1px;
+                  background-color: $highlight;
+                }
               }
             }
             span {
