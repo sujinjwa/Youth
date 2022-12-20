@@ -1,13 +1,14 @@
 main#contents {
   .contents__hero {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     margin-top: 100px;
     .hero__photo {
       width: 100%;
       height: 100%;
+      padding: 0px 120px;
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       align-items: center;
       background-position: center;
       background-size: cover;
@@ -16,16 +17,32 @@ main#contents {
           rgba(0, 0, 0, 0.6),
           rgba(0, 0, 0, 0.6)
         ),
-        url('/uploads/home/main1.png');
+        url('/uploads/barPicture/books.png');
+      &#about {
+        // background-size: contain;
+        // background-position: top;
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url('/uploads/barPicture/writings.png');
+      }
       .hero__text {
-        text-align: center;
+        // text-align: center;
         color: $light--grey;
         line-height: 1.5;
         h3 {
-          font-size: 35px;
           animation-duration: 1s;
           animation-name: showText;
-          font-weight: 600;
+          p {
+            font-size: 21px;
+            &.title {
+              font-size: 45px;
+              font-weight: 600;
+              margin-bottom: 8px;
+            }
+          }
         }
       }
     }
