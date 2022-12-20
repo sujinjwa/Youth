@@ -17,6 +17,7 @@ module.exports = {
     toggleBtn: './src/client/js/toggleBtn',
     alert: './src/client/js/alert',
     qrContents: './src/client/js/qrContents',
+    policyCheckBox: './src/client/js/policyCheckBox',
   },
   plugins: [
     new MiniCssExtractPlugin({
