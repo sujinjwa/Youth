@@ -142,7 +142,6 @@ main#find-ID-or-PW {
             }
           }
           .name-box,
-          .email-box,
           .certifi-number-box,
           .info {
             label {
@@ -151,6 +150,25 @@ main#find-ID-or-PW {
             display: flex;
             justify-content: space-between;
             align-items: center;
+          }
+          .email-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            label {
+              width: 30%;
+            }
+            div {
+              display: flex;
+              justify-content: space-between;
+              width: 70%;
+              input#email {
+                width: 65%;
+              }
+              input#sendEmailBtn {
+                width: 35%;
+              }
+            }
           }
           .birth-box {
             display: flex;
