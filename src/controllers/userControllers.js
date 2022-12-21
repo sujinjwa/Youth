@@ -60,6 +60,18 @@ const sendMailForJoin = async (req, res) => {
       },
     });
 
+    // html template 만들기
+    const handlebarOptions = {
+      viewEngine: {
+        partialsDir: '/src/views/',
+        defaultLayout: false,
+      },
+      viewPath: '/src/views/',
+    };
+
+    // use a template file with nodemailer
+    transporter.use('compile', hbs(handlebarOptions));
+
     // 메시지 옵션 설정
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
