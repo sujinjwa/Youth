@@ -65,9 +65,9 @@ const sendMailForJoin = async (req, res) => {
       from: process.env.NODEMAILER_USER,
       to: email, // 사용자의 아이디
       subject: '[유언을쓰다] 이메일 인증 안내입니다.', // 이메일 제목
-      html: `<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
-                <div style="display:flex; align-items:center; margin: 20px">
-                  <img src="https://writeyouth.com/uploads/contents/youth_logo.png" style="width:60px" alt="" />
+      html: `<div class="wrapper" style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
+                <div class="title" style="display:flex; align-items:center; margin: 20px">
+                  <img src="https://writeyouth.com/uploads/contents/youth_logo.png" style="width:80px" alt="" />
                   <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
                 </div>
                 <hr style="width:100%; margin-bottom: 30px" />
