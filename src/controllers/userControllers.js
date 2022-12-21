@@ -2,7 +2,9 @@ import User from '../model/User';
 import fetch from 'cross-fetch';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
+import hbs from 'nodemailer-express-handlebars';
 import querystring from 'querystring';
+import path from 'path';
 // import { smtpTransport } from "../../config/email";
 
 // min ~ max 까지 랜덤으로 숫자 생성하는 함수
@@ -60,29 +62,45 @@ const sendMailForJoin = async (req, res) => {
       },
     });
 
+    // html template 만들기
+    const handlebarOptions = {
+      viewEngine: {
+        partialsDir: path.resolve('./views/'),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve('./views/'),
+    };
+
+    // use a template file with nodemailer
+    transporter.use('compile', hbs(handlebarOptions));
+
     // 메시지 옵션 설정
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
       to: email, // 사용자의 아이디
       subject: '[유언을쓰다] 이메일 인증 안내입니다.', // 이메일 제목
-      html: `<div class="wrapper" style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
-                <div class="title" style="display:flex; align-items:center; margin: 20px">
-                  <img src="https://writeyouth.com/uploads/contents/youth_logo.png" style="width:80px" alt="" />
-                  <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
-                </div>
-                <hr style="width:100%; margin-bottom: 30px" />
-                <h3>안녕하세요. 유언을 쓰다에 가입해주셔서 감사합니다.</h3>
-                <p>유언을 쓰다에 등록한 메일주소가 올바른지 확인하기 위한 메일입니다.</p>
-              
-                <h1 style="font-size:50px">${number}</h1>
-              
-                <p>회원 가입 페이지로 돌아가 인증키를 직접 입력하시거나</p>
-                <p>인증키를 복사 후 붙여넣기하여 가입을 진행해주시기 바랍니다.</p>
+      template: 'email', // the name of the template file i.e email.handlebars
+      context: {
+        number: number, // replace {{number}} with number
+      },
+      // html: `<div class="wrapper" style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
+      //           <div class="title" style="display:flex; align-items:center; margin: 20px">
+      //             <img src="https://writeyouth.com/uploads/contents/youth_logo.png" style="width:80px" alt="" />
+      //             <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
+      //           </div>
+      //           <hr style="width:100%; margin-bottom: 30px" />
+      //           <h3>안녕하세요. 유언을 쓰다에 가입해주셔서 감사합니다.</h3>
+      //           <p>유언을 쓰다에 등록한 메일주소가 올바른지 확인하기 위한 메일입니다.</p>
 
-                <hr style="width:100%; margin-top: 30px" />
-                <p style="margin-top: 10px">이 메일은 발신 전용으로 회신이 되지 않습니다.</p>
-                <p>궁금하신 사항은 nasujin744@naver.com로 문의해 주시기 바랍니다.</p>
-            </div>`,
+      //           <h1 style="font-size:50px">${number}</h1>
+
+      //           <p>회원 가입 페이지로 돌아가 인증키를 직접 입력하시거나</p>
+      //           <p>인증키를 복사 후 붙여넣기하여 가입을 진행해주시기 바랍니다.</p>
+
+      //           <hr style="width:100%; margin-top: 30px" />
+      //           <p style="margin-top: 10px">이 메일은 발신 전용으로 회신이 되지 않습니다.</p>
+      //           <p>궁금하신 사항은 nasujin744@naver.com로 문의해 주시기 바랍니다.</p>
+      //       </div>`,
       // text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
     };
 
