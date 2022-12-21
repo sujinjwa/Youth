@@ -630,8 +630,13 @@
         }
         .form-box {
           form {
-            input#sendEmailBtn {
-              font-size: 10px;
+            label {
+              font-size: 14px;
+            }
+            input {
+              &#sendEmailBtn {
+                font-size: 10px;
+              }
             }
           }
         }
