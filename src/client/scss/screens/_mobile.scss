@@ -605,6 +605,7 @@
       margin-top: 50px;
       .box {
         width: 90%;
+        padding: 0px;
         .find-box {
           h1 {
             font-size: 22px;
@@ -630,7 +631,7 @@
         .form-box {
           form {
             input#sendEmailBtn {
-              font-size: 12px;
+              font-size: 10px;
             }
           }
         }
