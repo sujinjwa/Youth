@@ -130,19 +130,22 @@ main#join {
       }
       div.name__wrapper {
         display: flex;
+        width: 100%;
         input.input__name {
           padding: 12px 14px;
-          width: 300px;
+          width: 60%;
         }
         div.gender__wrapper {
+          width: 40%;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 15px;
+          // padding: 15px;
           input.input__gender {
             cursor: pointer;
             accent-color: $youthDarkColor;
-            width: 25px;
+            width: 15px;
+            height: 15px;
             border: 1px solid $input--border;
             border-radius: 5px;
             &:checked {
@@ -160,7 +163,7 @@ main#join {
       }
       div.birth__wrapper {
         display: flex;
-        width: 482px;
+        width: 485px;
         input {
           &.input__year {
             width: 50%;
