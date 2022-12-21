@@ -43,7 +43,7 @@ export const qrPage = (req, res) => {
     pageTitle: 'Contents',
     title: qrContents[id - 1].title,
     index: id,
-    imgUrl: `/uploads/contents/${id}.jpg`,
+    imgUrl: `/uploads/contents/qrThumbnail/${id}.jpg`,
   });
 };
 

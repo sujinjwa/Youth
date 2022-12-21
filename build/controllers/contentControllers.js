@@ -68,7 +68,7 @@ var qrPage = function qrPage(req, res) {
     pageTitle: 'Contents',
     title: _qrContents.qrContents[id - 1].title,
     index: id,
-    imgUrl: "/uploads/contents/".concat(id, ".jpg")
+    imgUrl: "/uploads/contents/qrThumbnail/".concat(id, ".jpg")
   });
 };
 
