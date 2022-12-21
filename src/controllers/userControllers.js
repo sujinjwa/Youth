@@ -4,7 +4,6 @@ import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
 import querystring from 'querystring';
-import path from 'path';
 // import { smtpTransport } from "../../config/email";
 
 // min ~ max 까지 랜덤으로 숫자 생성하는 함수
@@ -65,10 +64,10 @@ const sendMailForJoin = async (req, res) => {
     // html template 만들기
     const handlebarOptions = {
       viewEngine: {
-        partialsDir: path.resolve('./views/'),
+        partialsDir: '/src/views/',
         defaultLayout: false,
       },
-      viewPath: path.resolve('./views/'),
+      viewPath: '/src/views/',
     };
 
     // use a template file with nodemailer
