@@ -486,18 +486,16 @@
     }
   }
 
-  main#join {
-    height: 115vh;
-  }
-
   main#login,
   main#join {
     .wrapper {
       margin-top: 50px;
-      padding: 0px 20px;
+      padding: 0px 5px;
+      .login__box {
+        width: 100%;
+      }
       .login__box,
       .join__box {
-        width: 100%;
         margin-top: 30px;
         padding: 0px 15px;
         h1 {
@@ -521,13 +519,17 @@
           // margin: 0 auto;
           // padding: 0px 15px;
           div.email__wrapper {
-            width: 104%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
             input.input__email {
-              width: 71%;
+              width: 70%;
             }
             input.send__email {
-              width: 31%;
+              width: 30%;
               font-size: 12px;
+              //margin-left: 0px;
+              //margin-right: 0px;
             }
           }
           div.name__wrapper {
@@ -545,9 +547,9 @@
               }
             }
           }
-          div.birth__wrapper {
-            width: 102%;
-          }
+          // div.birth__wrapper {
+          //   width: 104%;
+          // }
           input {
             width: 100%;
             padding: 12px 14px;
@@ -594,6 +596,28 @@
     }
   }
 
+  main#join {
+    height: 115vh;
+    .wrapper {
+      .join__box {
+        width: 100%;
+        form {
+          input {
+            &.input__self-authenti,
+            &.input__pw,
+            &.input__pwConfirm,
+            &.join__btn {
+              width: 97%;
+            }
+          }
+          .birth__wrapper {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
   main#find-ID-or-PW {
     height: 95vh;
     &.find-pw {
@@ -605,6 +629,7 @@
       margin-top: 50px;
       .box {
         width: 90%;
+        padding: 0px;
         .find-box {
           h1 {
             font-size: 22px;
@@ -629,8 +654,16 @@
         }
         .form-box {
           form {
-            input#sendEmailBtn {
-              font-size: 12px;
+            label {
+              font-size: 14px;
+            }
+            input {
+              &#sendEmailBtn {
+                font-size: 10px;
+              }
+            }
+            .find-btn#find-pw-btn {
+              margin-top: 25px;
             }
           }
         }
@@ -790,8 +823,8 @@
           font-size: 14px;
         }
         .check-group {
-          h5 {
-            font-size: 13px;
+          p {
+            font-size: 12px;
             line-height: 1.2;
           }
         }
