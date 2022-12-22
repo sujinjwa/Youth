@@ -26,7 +26,7 @@ main#login {
         flex-direction: column;
         align-items: center;
         h5 {
-          font-family: $gothic;
+          //font-family: $gothic;
           font-size: 15px;
           color: $grey;
           margin-bottom: 10px;
@@ -90,7 +90,7 @@ main#login {
           margin: 6px;
           padding: 12px 14px;
           padding-left: 15px;
-          font-family: $gothic;
+          //font-family: $gothic;
           font-size: 16px;
           &::placeholder {
             color: $input--placeholder;
@@ -112,7 +112,7 @@ main#login {
           padding-right: 5px;
           color: $red;
           font-size: 12px;
-          font-family: $gothic;
+          //font-family: $gothic;
           width: 95%;
           display: flex;
           justify-content: flex-start;
@@ -125,7 +125,7 @@ main#login {
       width: 470px;
       margin-top: 15px;
       a {
-        font-family: $gothic;
+        //font-family: $gothic;
         color: $medium--grey;
       }
       p {
@@ -151,7 +151,7 @@ main#login {
         border-radius: 8px;
         margin: 6px;
         padding: 14px 197px;
-        font-family: $gothic;
+        //font-family: $gothic;
         font-size: 16px;
         text-align: center;
         color: black;
