@@ -21,7 +21,7 @@ block content
                             label(for="check-1") 이용약관 동의 
                                 span.red (필수)
                         article.agreement-content
-                            for elem in contents
+                            for elem in contents1
                                 p=elem
                     
                     .check-group 
@@ -30,7 +30,8 @@ block content
                             label(for="check-2") 개인정보 수집 및 이용 동의 
                                 span.red (필수)
                         article.agreement-content
-                            p 세부내용...
+                            for elem in contents2 
+                                p=elem
                     
                     .check-group 
                         div 
