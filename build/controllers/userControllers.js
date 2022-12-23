@@ -15,6 +15,8 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 var _nodemailer = _interopRequireDefault(require("nodemailer"));
 
+var _nodemailerExpressHandlebars = _interopRequireDefault(require("nodemailer-express-handlebars"));
+
 var _querystring = _interopRequireDefault(require("querystring"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -78,7 +80,11 @@ var sendMailForJoin = /*#__PURE__*/function () {
                           viewPath: '/src/views/'
                         }; // use a template file with nodemailer
 
+<<<<<<< HEAD
                         transporter.use('compile', hbs(handlebarOptions)); // 메시지 옵션 설정
+=======
+                        transporter.use('compile', (0, _nodemailerExpressHandlebars["default"])(handlebarOptions)); // 메시지 옵션 설정
+>>>>>>> e1b6f8b3000cf6bd84f92e3cab0826b030a1a807
 
                         mailOptions = {
                           from: process.env.NODEMAILER_USER,
@@ -86,10 +92,35 @@ var sendMailForJoin = /*#__PURE__*/function () {
                           // 사용자의 아이디
                           subject: '[유언을쓰다] 이메일 인증 안내입니다.',
                           // 이메일 제목
+<<<<<<< HEAD
                           //<div class="wrapper" style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0 auto;width:475px">
                           html: "<div class=\"title\" style=\"display:flex; align-items:center; margin:20px\">\n                  <img src=\"https://writeyouth.com/uploads/contents/youth_logo.png\" style=\"width:70px; height:70px\" alt=\"\" />\n                  <h1 style=\"margin-left: 20px; font-size:28px\">\uC778\uC99D\uBC88\uD638\uB97C \uC54C\uB824\uB4DC\uB9BD\uB2C8\uB2E4.</h1>\n                </div>\n                <h3>\uC548\uB155\uD558\uC138\uC694. \uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uAC00\uC785\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4.</h3>\n                <p>\uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uB4F1\uB85D\uD55C \uBA54\uC77C\uC8FC\uC18C\uAC00 \uC62C\uBC14\uB978\uC9C0 \uD655\uC778\uD558\uAE30 \uC704\uD55C \uBA54\uC77C\uC785\uB2C8\uB2E4.</p>\n\n                <h1 style=\"font-size:50px; margin:20px 0px\">".concat(number, "</h1>\n\n                <p>\uD68C\uC6D0 \uAC00\uC785 \uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00 \uC778\uC99D\uD0A4\uB97C \uC9C1\uC811 \uC785\uB825\uD558\uC2DC\uAC70\uB098</p>\n                <p>\uC778\uC99D\uD0A4\uB97C \uBCF5\uC0AC \uD6C4 \uBD99\uC5EC\uB123\uAE30\uD558\uC5EC \uAC00\uC785\uC744 \uC9C4\uD589\uD574\uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n\n                <p style=\"margin-top: 10px\">\uC774 \uBA54\uC77C\uC740 \uBC1C\uC2E0 \uC804\uC6A9\uC73C\uB85C \uD68C\uC2E0\uC774 \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                <p>\uAD81\uAE08\uD558\uC2E0 \uC0AC\uD56D\uC740 nasujin744@naver.com\uB85C \uBB38\uC758\uD574 \uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>"),
                           //</div>`,
                           text: '오른쪽 숫자 6자리를 입력해주세요: ' + number
+=======
+                          template: 'email',
+                          // the name of the template file i.e email.handlebars
+                          context: {
+                            number: number // replace {{number}} with number
+
+                          } // html: `<div class="wrapper" style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px">
+                          //           <div class="title" style="display:flex; align-items:center; margin: 20px">
+                          //             <img src="https://writeyouth.com/uploads/contents/youth_logo.png" style="width:80px" alt="" />
+                          //             <h1 style="margin-left: 20px; font-size:28px">인증번호를 알려드립니다.</h1>
+                          //           </div>
+                          //           <hr style="width:100%; margin-bottom: 30px" />
+                          //           <h3>안녕하세요. 유언을 쓰다에 가입해주셔서 감사합니다.</h3>
+                          //           <p>유언을 쓰다에 등록한 메일주소가 올바른지 확인하기 위한 메일입니다.</p>
+                          //           <h1 style="font-size:50px">${number}</h1>
+                          //           <p>회원 가입 페이지로 돌아가 인증키를 직접 입력하시거나</p>
+                          //           <p>인증키를 복사 후 붙여넣기하여 가입을 진행해주시기 바랍니다.</p>
+                          //           <hr style="width:100%; margin-top: 30px" />
+                          //           <p style="margin-top: 10px">이 메일은 발신 전용으로 회신이 되지 않습니다.</p>
+                          //           <p>궁금하신 사항은 nasujin744@naver.com로 문의해 주시기 바랍니다.</p>
+                          //       </div>`,
+                          // text: "오른쪽 숫자 6자리를 입력해주세요: " + number,
+
+>>>>>>> 7993dc1faa9c7fc8925ec9b68c2c687c03d8a7db
                         }; // sendMail() 메서드 사용하여 메시지 전송
 
                         transporter.sendMail(mailOptions, function (error, info) {
