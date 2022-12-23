@@ -55,9 +55,10 @@
           .inner_program {
             section.box_program {
               &.menu3__program {
-                padding-top: 10px;
+                // padding-top: 10px;
                 padding-bottom: 10px;
                 .contents.menu3__column2 {
+                  height: 70vh;
                   padding-left: 0px;
                   margin: 20px 0px;
                   div.root-circle {
@@ -215,16 +216,24 @@
   footer {
     padding: 40px 15px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    ul.footer__col1 {
-      display: flex;
+    justify-content: center;
+    ul.footer__row1 {
       flex-direction: column;
       align-items: center;
-      .col1__row2 {
-        display: flex;
-        flex-direction: column;
+      .row1__col2 {
+        margin-top: 25px;
+        li {
+          justify-content: center;
+          font-size: 13px;
+        }
+      }
+    }
+    ul.footer__row2 {
+      flex-direction: column;
+      align-items: center;
+      ul.row2__col1 {
         align-items: center;
+        margin: 25px 0px;
         div.justify-content-between {
           display: flex;
           justify-content: space-between;
@@ -233,16 +242,8 @@
           }
         }
       }
-    }
-    ul.footer__col2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      ul.col2__row1 {
-        margin-top: 25px;
-        li {
-          justify-content: center;
-        }
+      ul.row2__col2 {
+        align-items: center;
       }
     }
   }

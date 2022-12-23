@@ -45,7 +45,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
           case 0:
             _main = function _main3() {
               _main = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-                var number, transporter, mailOptions;
+                var number, transporter, handlebarOptions, mailOptions;
                 return _regeneratorRuntime().wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -68,7 +68,17 @@ var sendMailForJoin = /*#__PURE__*/function () {
                             pass: process.env.NODEMAILER_PASS // 보내는 사람의 이메일 계정 비밀번호
 
                           }
-                        }); // 메시지 옵션 설정
+                        }); // html template 만들기
+
+                        handlebarOptions = {
+                          viewEngine: {
+                            partialsDir: '/src/views/',
+                            defaultLayout: false
+                          },
+                          viewPath: '/src/views/'
+                        }; // use a template file with nodemailer
+
+                        transporter.use('compile', hbs(handlebarOptions)); // 메시지 옵션 설정
 
                         mailOptions = {
                           from: process.env.NODEMAILER_USER,
@@ -100,7 +110,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
                           popup: "\uD574\uB2F9 \uC774\uBA54\uC77C \uACC4\uC815\uC73C\uB85C \uC778\uC99D\uBC88\uD638\uB97C \uC804\uC1A1\uD588\uC2B5\uB2C8\uB2E4. \n5\uBD84 \uC774\uC0C1 \uC778\uC99D \uC774\uBA54\uC77C\uC774 \uB3C4\uCC29\uD558\uC9C0 \uC54A\uC740 \uACBD\uC6B0, \uC785\uB825\uD55C \uC774\uBA54\uC77C \uBC1C\uC1A1 \uC8FC\uC18C\uB97C \uB2E4\uC2DC \uD55C \uBC88 \uD655\uC778\uD574\uC8FC\uC138\uC694."
                         }));
 
-                      case 7:
+                      case 9:
                       case "end":
                         return _context.stop();
                     }
