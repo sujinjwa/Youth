@@ -98,7 +98,8 @@ main#contents {
                   text-align: center;
                   padding: 20px;
                   font-weight: 800;
-                  color: $medium--grey;
+                  // color: $medium--grey;
+                  color: $grey-font;
                 }
               }
             }
@@ -129,7 +130,7 @@ main#contents {
       line-height: 1.5;
       h1.menu2__title {
         width: 65%;
-        color: $beige--font;
+        color: $dark-beige--font;
       }
     }
     div.contents {
@@ -157,7 +158,7 @@ main#contents {
         h1 {
           font-size: 27px;
           font-weight: 600;
-          color: $beige--font;
+          color: $dark-beige--font;
         }
         h3 {
           margin-top: 35px;

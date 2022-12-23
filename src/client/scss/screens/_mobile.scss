@@ -132,7 +132,7 @@
     &#contents {
       .contents__hero {
         margin-top: 50px;
-        height: 25vh;
+        height: 32vh;
         .hero__photo {
           padding: 0px 20px;
           .hero__text {
@@ -308,12 +308,12 @@
                   height: 50vh;
                   margin: 30px 0px;
                   div.root-circle {
-                    width: 230px;
-                    height: 230px;
+                    width: 210px;
+                    height: 210px;
                     border: 1px solid $medium--grey;
                     div.circle {
-                      width: 160px;
-                      height: 160px;
+                      width: 150px;
+                      height: 150px;
                       margin: 0px;
                       &.first {
                         top: -25%;
@@ -436,10 +436,10 @@
               width: 100%;
               margin-top: 15px;
               margin-bottom: 3px;
-              font-size: 19px;
+              font-size: 21px;
               display: flex;
               p {
-                font-size: 19px;
+                font-size: 21px;
                 margin-right: 5px;
               }
             }

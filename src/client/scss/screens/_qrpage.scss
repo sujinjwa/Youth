@@ -56,6 +56,13 @@ main#contents {
                 padding-top: 3px;
                 background-color: $highlight;
               }
+              &.link {
+                font-size: 18px;
+              }
+              &.slash {
+                font-weight: 600;
+                margin: 0px 8px;
+              }
             }
           }
           div {
@@ -79,7 +86,8 @@ main#contents {
             }
             ul {
               width: 100%;
-              background-color: $background;
+              //background-color: $background;
+              background-color: $light--grey2;
               padding: 20px;
               line-height: 1.5;
               li {
