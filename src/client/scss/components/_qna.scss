@@ -166,7 +166,9 @@
               &.changed {
                 display: none;
                 &.toggle {
-                  display: inline-block;
+                  // display: inline-block;
+                  // display: contents;
+                  display: inline;
                 }
               }
               &.underline {

@@ -87,7 +87,8 @@ main#contents {
             ul {
               width: 100%;
               //background-color: $background;
-              background-color: $light--grey2;
+              // background-color: $light--grey2;
+              background-color: $box-bg;
               padding: 20px;
               line-height: 1.5;
               li {
@@ -161,6 +162,7 @@ main#contents {
               font-weight: 600;
             }
             p {
+              text-align: center;
               margin-top: 10px;
             }
           }
@@ -173,16 +175,16 @@ main#contents {
           div.grid-wrapper {
             margin-top: 50px;
             div.grid {
-              border-top: 2px solid $guidebook--green;
-              border-bottom: 2px solid $guidebook--green;
-              background-color: $guidebook--green;
+              border-top: 2px solid $input--word;
+              border-bottom: 2px solid $input--word;
+              background-color: $input--word;
               display: grid;
               grid-template-columns: 1fr 3fr 3fr;
               grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
               height: 60vh;
               width: 100%;
               row-gap: 2px;
-              color: $guidebook--green;
+              color: $input--word;
               div {
                 padding: 13px;
                 background-color: white;
@@ -192,7 +194,7 @@ main#contents {
                 &#category {
                   font-weight: 600;
                   font-size: 18px;
-                  background-color: $background;
+                  background-color: $box-bg;
                 }
               }
             }
