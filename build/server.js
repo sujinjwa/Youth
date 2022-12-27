@@ -57,7 +57,9 @@ app.use((0, _expressSession["default"])({
   cookie: {// maxAge: 10000,
   },
   store: _connectMongo["default"].create({
-    mongoUrl: process.env.DB_URL
+    mongoUrl: process.env.DB_URL,
+    secret: 'thisshouldbeabettersecret!',
+    touchAfter: 24 * 60 * 60
   }) // session을 mongoDB에 저장
 
 }));

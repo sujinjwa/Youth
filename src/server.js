@@ -44,7 +44,10 @@ app.use(
     cookie: {
       // maxAge: 10000,
     },
-    store: MongoStore.create({ mongoUrl: process.env.DB_URL }), // session을 mongoDB에 저장
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL,
+    secret: 'thisshouldbeabettersecret!',
+touchAfter: 24 * 60 * 60,  }), // session을 mongoDB에 저장
+
   })
 );
 
