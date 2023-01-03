@@ -28,6 +28,7 @@ var _middlewares = require("./middlewares");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // import helmet from "helmet";
+// import expressHbs from 'express-handlebars';
 var app = (0, _express["default"])(); // if (process.env.NODE_ENV === "production") {
 //   app.use(
 //     helmet({
@@ -46,7 +47,9 @@ var logger = (0, _morgan["default"])('dev');
 app.use(logger);
 app.use('/assets', _express["default"]["static"]('assets')); // 정적 파일인 "assets" 폴더 서버에 로드
 
-app.use('/uploads', _express["default"]["static"]('uploads'));
+app.use('/uploads', _express["default"]["static"]('uploads')); // app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
+// app.set('view engine', '.hbs');
+
 app.set('views', './src/views');
 app.set('view engine', 'pug'); // session 미들웨어
 

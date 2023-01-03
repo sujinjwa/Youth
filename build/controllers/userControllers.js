@@ -17,6 +17,8 @@ var _nodemailer = _interopRequireDefault(require("nodemailer"));
 
 var _querystring = _interopRequireDefault(require("querystring"));
 
+var _mongoose = require("mongoose");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
@@ -37,7 +39,7 @@ var sendingEmail, sentNumber; // 이메일 전송 함수
 
 var sendMailForJoin = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var email, pageTitle, regPass, existingUser, main, _main;
+    var email, pageTitle, existingUser, regPass, main, _main;
 
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
@@ -45,7 +47,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
           case 0:
             _main = function _main3() {
               _main = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-                var number, transporter, handlebarOptions, mailOptions;
+                var number, transporter, mailOptions;
                 return _regeneratorRuntime().wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -68,17 +70,17 @@ var sendMailForJoin = /*#__PURE__*/function () {
                             pass: process.env.NODEMAILER_PASS // 보내는 사람의 이메일 계정 비밀번호
 
                           }
-                        }); // html template 만들기
-
-                        handlebarOptions = {
-                          viewEngine: {
-                            partialsDir: '/src/views/',
-                            defaultLayout: false
-                          },
-                          viewPath: '/src/views/'
-                        }; // use a template file with nodemailer
-
-                        transporter.use('compile', hbs(handlebarOptions)); // 메시지 옵션 설정
+                        }); // // html template 만들기
+                        // const handlebarOptions = {
+                        //   viewEngine: {
+                        //     partialsDir: '/src/views/',
+                        //     defaultLayout: false,
+                        //   },
+                        //   viewPath: '/src/views/',
+                        // };
+                        // use a template file with nodemailer
+                        // transporter.use('compile', hbs(handlebarOptions));
+                        // 메시지 옵션 설정
 
                         mailOptions = {
                           from: process.env.NODEMAILER_USER,
@@ -87,7 +89,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
                           subject: '[유언을쓰다] 이메일 인증 안내입니다.',
                           // 이메일 제목
                           //<div class="wrapper" style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0 auto;width:475px">
-                          html: "<div class=\"title\" style=\"display:flex; align-items:center; margin:20px\">\n                  <img src=\"https://writeyouth.com/uploads/contents/youth_logo.png\" style=\"width:70px; height:70px\" alt=\"\" />\n                  <h1 style=\"margin-left: 20px; font-size:28px\">\uC778\uC99D\uBC88\uD638\uB97C \uC54C\uB824\uB4DC\uB9BD\uB2C8\uB2E4.</h1>\n                </div>\n                <h3>\uC548\uB155\uD558\uC138\uC694. \uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uAC00\uC785\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4.</h3>\n                <p>\uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uB4F1\uB85D\uD55C \uBA54\uC77C\uC8FC\uC18C\uAC00 \uC62C\uBC14\uB978\uC9C0 \uD655\uC778\uD558\uAE30 \uC704\uD55C \uBA54\uC77C\uC785\uB2C8\uB2E4.</p>\n\n                <h1 style=\"font-size:50px; margin:20px 0px\">".concat(number, "</h1>\n\n                <p>\uD68C\uC6D0 \uAC00\uC785 \uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00 \uC778\uC99D\uD0A4\uB97C \uC9C1\uC811 \uC785\uB825\uD558\uC2DC\uAC70\uB098</p>\n                <p>\uC778\uC99D\uD0A4\uB97C \uBCF5\uC0AC \uD6C4 \uBD99\uC5EC\uB123\uAE30\uD558\uC5EC \uAC00\uC785\uC744 \uC9C4\uD589\uD574\uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n\n                <p style=\"margin-top: 10px\">\uC774 \uBA54\uC77C\uC740 \uBC1C\uC2E0 \uC804\uC6A9\uC73C\uB85C \uD68C\uC2E0\uC774 \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                <p>\uAD81\uAE08\uD558\uC2E0 \uC0AC\uD56D\uC740 nasujin744@naver.com\uB85C \uBB38\uC758\uD574 \uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>"),
+                          html: "<div class=\"title\" style=\"display:flex; align-items:center; margin:20px\">\n                  <img src=\"https://writeyouth.com/uploads/contents/youth_logo.png\" style=\"width:70px; height:70px\" alt=\"\" />\n                  <h1 style=\"margin-left: 20px; font-size:28px\">\uC778\uC99D\uBC88\uD638\uB97C \uC54C\uB824\uB4DC\uB9BD\uB2C8\uB2E4.</h1>\n                </div>\n                <h3>\uC548\uB155\uD558\uC138\uC694. \uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uAC00\uC785\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4.</h3>\n                <p>\uC720\uC5B8\uC744 \uC4F0\uB2E4\uC5D0 \uB4F1\uB85D\uD55C \uBA54\uC77C\uC8FC\uC18C\uAC00 \uC62C\uBC14\uB978\uC9C0 \uD655\uC778\uD558\uAE30 \uC704\uD55C \uBA54\uC77C\uC785\uB2C8\uB2E4.</p>\n\n                <h1 style=\"font-size:50px; margin:20px 0px\">".concat(number, "</h1>\n\n                <p>\uD68C\uC6D0 \uAC00\uC785 \uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00 \uC778\uC99D\uD0A4\uB97C \uC9C1\uC811 \uC785\uB825\uD558\uC2DC\uAC70\uB098</p>\n                <p>\uC778\uC99D\uD0A4\uB97C \uBCF5\uC0AC \uD6C4 \uBD99\uC5EC\uB123\uAE30\uD558\uC5EC \uAC00\uC785\uC744 \uC9C4\uD589\uD574\uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n\n                <p style=\"margin-top: 10px\">\uC774 \uBA54\uC77C\uC740 \uBC1C\uC2E0 \uC804\uC6A9\uC73C\uB85C \uD68C\uC2E0\uC774 \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                <p>\uAD81\uAE08\uD558\uC2E0 \uC0AC\uD56D\uC740 write.your.youth@gmail.com\uC73C\uB85C \uBB38\uC758\uD574 \uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>"),
                           //</div>`,
                           text: '오른쪽 숫자 6자리를 입력해주세요: ' + number
                         }; // sendMail() 메서드 사용하여 메시지 전송
@@ -110,7 +112,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
                           popup: "\uD574\uB2F9 \uC774\uBA54\uC77C \uACC4\uC815\uC73C\uB85C \uC778\uC99D\uBC88\uD638\uB97C \uC804\uC1A1\uD588\uC2B5\uB2C8\uB2E4. \n5\uBD84 \uC774\uC0C1 \uC778\uC99D \uC774\uBA54\uC77C\uC774 \uB3C4\uCC29\uD558\uC9C0 \uC54A\uC740 \uACBD\uC6B0, \uC785\uB825\uD55C \uC774\uBA54\uC77C \uBC1C\uC1A1 \uC8FC\uC18C\uB97C \uB2E4\uC2DC \uD55C \uBC88 \uD655\uC778\uD574\uC8FC\uC138\uC694."
                         }));
 
-                      case 9:
+                      case 7:
                       case "end":
                         return _context.stop();
                     }
@@ -126,10 +128,33 @@ var sendMailForJoin = /*#__PURE__*/function () {
 
             email = req.body.email;
             pageTitle = 'Join';
-            regPass = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+            _context2.next = 6;
+            return _User["default"].findOne({
+              email: email
+            });
+
+          case 6:
+            existingUser = _context2.sent;
+            regPass = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_09a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/; // try {
+            //   if(!regPass.test(email)) {
+            //     throw '잘못된 이메일입니다. 다시 확인해주세요.';
+            //   }
+            //   if(existingUser) {
+            //     if (existingUser.socialOnly === true) {
+            //       throw '이미 카카오톡 혹은 네이버로 회원가입한 계정입니다. \n 해당 계정으로 로그인해주세요.'
+            //     }
+            //     throw '이미 사용중인 이메일입니다.'
+            //   }
+            // } catch(error) {
+            //     return res.status(400).render('users/join', {
+            //       pageTitle,
+            //       popup: error,
+            //     })
+            //   }
+            // }
 
             if (regPass.test(email)) {
-              _context2.next = 7;
+              _context2.next = 10;
               break;
             }
 
@@ -138,15 +163,7 @@ var sendMailForJoin = /*#__PURE__*/function () {
               popup: '잘못된 이메일입니다. 다시 확인해주세요.'
             }));
 
-          case 7:
-            _context2.next = 9;
-            return _User["default"].findOne({
-              email: email
-            });
-
-          case 9:
-            existingUser = _context2.sent;
-
+          case 10:
             if (!existingUser) {
               _context2.next = 14;
               break;
@@ -214,7 +231,7 @@ var sendMailForFindPW = /*#__PURE__*/function () {
                           from: process.env.NODEMAILER_USER,
                           to: email,
                           subject: '[유언을쓰다] 이메일 인증 안내입니다.',
-                          html: "<div style=\"display:flex; flex-direction:column; justify-content:center; align-items:center; margin:0 auto; width:475px\">\n                  <div style=\"display:flex; align-items:center; margin: 20px\">\n                    <img src=\"https://tumblbug-upi.imgix.net/330fc16f-de5c-4d76-bbeb-a477519c3f29.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=200&mask=ellipse&w=200&s=4a832561eefefc964968a6ea17e7fc24\" style=\"width:60px\" alt=\"\" />\n                    <h1 style=\"margin-left: 20px; font-size:28px\">\uC778\uC99D\uBC88\uD638\uB97C \uC54C\uB824\uB4DC\uB9BD\uB2C8\uB2E4.</h1>\n                  </div>\n                  <hr style=\"width:100%; margin-bottom: 30px\" />\n                  <h3>\uBE44\uBC00\uBC88\uD638 \uC7AC\uC124\uC815\uC744 \uC704\uD574 \uC0AC\uC6A9\uC790 \uD655\uC778\uC744 \uC9C4\uD589\uD569\uB2C8\uB2E4.</h3>\n                \n                  <h1 style=\"font-size:50px\">".concat(number, "</h1>\n                \n                  <p>\uBE44\uBC00\uBC88\uD638 \uCC3E\uAE30 \uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00 \uC778\uC99D\uD0A4\uB97C \uC9C1\uC811 \uC785\uB825\uD558\uC2DC\uAC70\uB098</p>\n                  <p>\uC778\uC99D\uD0A4\uB97C \uBCF5\uC0AC \uD6C4 \uBD99\uC5EC\uB123\uAE30\uD558\uC5EC \uBE44\uBC00\uBC88\uD638 \uC7AC\uC124\uC815\uC744 \uC9C4\uD589\uD574\uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n\n                  <hr style=\"width:100%; margin-top: 30px\" />\n                  <p style=\"margin-top: 10px\">\uC774 \uBA54\uC77C\uC740 \uBC1C\uC2E0 \uC804\uC6A9\uC73C\uB85C \uD68C\uC2E0\uC774 \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                  <p>\uAD81\uAE08\uD558\uC2E0 \uC0AC\uD56D\uC740 nasujin744@naver.com\uB85C \uBB38\uC758\uD574 \uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n              </div>")
+                          html: "<div class=\"title\" style=\"display:flex; align-items:center; margin:20px\">\n                  <img src=\"https://writeyouth.com/uploads/contents/youth_logo.png\" style=\"width:70px; height:70px\" alt=\"\" />\n                  <h1 style=\"margin-left: 20px; font-size:28px\">\uC778\uC99D\uBC88\uD638\uB97C \uC54C\uB824\uB4DC\uB9BD\uB2C8\uB2E4.</h1>\n                </div>\n                <h3>\uBE44\uBC00\uBC88\uD638 \uC7AC\uC124\uC815\uC744 \uC704\uD574 \uC0AC\uC6A9\uC790 \uD655\uC778\uC744 \uC9C4\uD589\uD569\uB2C8\uB2E4.</h3>\n                \n                <h1 style=\"font-size:50px; margin:20px 0px\">".concat(number, "</h1>\n                \n                <p>\uBE44\uBC00\uBC88\uD638 \uCC3E\uAE30 \uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00 \uC778\uC99D\uD0A4\uB97C \uC9C1\uC811 \uC785\uB825\uD558\uC2DC\uAC70\uB098</p>\n                <p>\uC778\uC99D\uD0A4\uB97C \uBCF5\uC0AC \uD6C4 \uBD99\uC5EC\uB123\uAE30\uD558\uC5EC \uBE44\uBC00\uBC88\uD638 \uC7AC\uC124\uC815\uC744 \uC9C4\uD589\uD574\uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n\n                <p style=\"margin-top: 10px\">\uC774 \uBA54\uC77C\uC740 \uBC1C\uC2E0 \uC804\uC6A9\uC73C\uB85C \uD68C\uC2E0\uC774 \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                <p>\uAD81\uAE08\uD558\uC2E0 \uC0AC\uD56D\uC740 write.your.youth@gmail.com\uC73C\uB85C \uBB38\uC758\uD574 \uC8FC\uC2DC\uAE30 \uBC14\uB78D\uB2C8\uB2E4.</p>\n              </div>")
                         };
                         transporter.sendMail(mailOptions, function (error, info) {
                           if (error) {

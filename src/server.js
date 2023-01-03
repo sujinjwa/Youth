@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 // import helmet from "helmet";
 import cors from 'cors';
+// import expressHbs from 'express-handlebars';
 import MongoStore from 'connect-mongo';
 import globalRouter from './routers/globalRouters';
 import contentRouter from './routers/contentRouters';
@@ -32,6 +33,8 @@ app.use(logger);
 app.use('/assets', express.static('assets')); // 정적 파일인 "assets" 폴더 서버에 로드
 app.use('/uploads', express.static('uploads'));
 
+// app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
+// app.set('view engine', '.hbs');
 app.set('views', './src/views');
 app.set('view engine', 'pug');
 
@@ -44,10 +47,11 @@ app.use(
     cookie: {
       // maxAge: 10000,
     },
-    store: MongoStore.create({ mongoUrl: process.env.DB_URL,
-    secret: 'thisshouldbeabettersecret!',
-touchAfter: 24 * 60 * 60,  }), // session을 mongoDB에 저장
-
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL,
+      secret: 'thisshouldbeabettersecret!',
+      touchAfter: 24 * 60 * 60,
+    }), // session을 mongoDB에 저장
   })
 );
 
